@@ -59,17 +59,26 @@ if (sizeof($errors) > 0) {
     exit;
 }
 
-stmt("
-    UPDATE FCM_USUARIOS
-    SET
-    USU_NOME = ?,
-    USU_NASCIMENTO = ?,
-    USU_CELULAR = ?,
-    USU_ENDERECO = ?
-    WHERE USU_CODIGO = ?
+stmt(
+    prepare: "
+        UPDATE FCM_USUARIOS
+        SET
+        USU_NOME = ?,
+        USU_NASCIMENTO = ?,
+        USU_CELULAR = ?,
+        USU_ENDERECO = ?
+        WHERE USU_CODIGO = ?
     ",
-    [$name, $birthday, $phone_number, $adress, $_SESSION["user_id"]]
+    execute_array: [$name, $birthday, $phone_number, $adress, $_SESSION["user_id"]]
 );
+
+$user = stmt(
+    prepare: "SELECT * FROM FCM_USUARIOS WHERE USU_CODIGO = ?",
+    execute_array: [$_SESSION["user_id"]],
+    fetch_object: true
+)->data[0];
+
+$_SESSION["user_name"] = $user->USU_NOME;
 
 header("location: views/profile_page.php"); 
 

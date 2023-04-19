@@ -17,7 +17,7 @@ if (!isset($_SESSION["user_id"])) {
     <title>Página inicial</title>
 </head>
 <body>
-    <h1>Bem-vindo, <?= $_SESSION["user_name"] ?>!</h1>
+    <h1>Bem-vindo(a), <?= $_SESSION["user_name"] ?>!</h1>
     
     <div>
         <button>
