@@ -26,10 +26,12 @@ if (isset($_SESSION["user_id"])) {
  
     <div class="container">
 
-        <div class="logo-container">  
-            <a href="../index.php">
-                <img class="logo" src="../images/logo.png" alt="logo">
-            </a>
+        <div class="logo-container"> 
+            <div class="logo-position">
+                <a href="../index.php">
+                    <img class="logo" src="../images/logo.png" alt="logo">
+                </a>
+            </div> 
         </div>
 
         <div class="div-form">

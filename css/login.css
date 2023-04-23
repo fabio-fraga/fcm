@@ -24,12 +24,20 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
+}
 
+.logo-position {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 500px;
 }
 
 .logo {
     width: 100%;
-    margin-bottom: 500px;
+    height: 20%;
 }
 
 .div-form {
