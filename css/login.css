@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-image: url(../images/background.png);
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    width: 150px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+}
+
+.logo {
+    width: 100%;
+    margin-bottom: 500px;
+}
+
+.div-form {
+    width: 420px;
+    height: 350px;
+    background-color: rgba(255, 255, 255, 0.72);
+    border-radius: 20px;
+    box-shadow: 0px 4.38188px 2.92125px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.name-login {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    line-height: 43px;
+    color: #FF6600;
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+form {
+    width: 100%;
+    height: 376px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.input-login {
+    box-sizing: border-box;
+    width: 320px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1.46063px solid #b4b4b4;
+    border-radius: 7px;
+    margin-top: 5%;
+    padding-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.div-forgot-password {
+    width: 320px;
+    margin-top: 2%;
+}
+
+.forgot-password {
+    text-align: right;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+}
+
+a {
+    color: #3959e6;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 320px;
+    height: 32px;
+    background: #45A351;
+    border-radius: 7px;
+    margin-top: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    line-height: 20px;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: #48b657;
+}
+
+.register {
+    width: 320px;
+}
+
+.p-register {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 15px;
+}

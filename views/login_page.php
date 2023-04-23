@@ -15,134 +15,67 @@ if (isset($_SESSION["user_id"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="4index.css">
-    <link rel="shortcut icon" href="../1tela/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/welcome.css">
     <title>free-Commerce - Login</title>
-    <style>
-        *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-}
-
-body{
-    background-color: rgb(196, 241, 128);
-}
-
-.nometopocadastro{
-    position: absolute;
-    left: 42%;
-    margin-top: 10px;
-    margin-bottom: 59px;
-    font-family: fantasy;
-    color: rgba(92, 88, 88, 0.774);
-
-}
-
-.nomeformulario{
-    font-family: fantasy;
-    color: orangered;
-    padding-top: 20px;
-}
-
-.imgcadastro{
-    width: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.larguracadastro{
-    position: absolute;
-    top: 50px;
-    left: 38%;
-    
-}
-
-.larguraespaçocadastro{
-   background: #ffffff85;
-    width: 340px;
-    height: 600px;
-    text-align: center;
-    border-radius: 20px;
-    position: absolute;
-}
-
-.nomecadastro{
-    width: 90%;
-    padding-bottom: 2px;
-    margin-top: 15px;
-    margin-bottom: 3px;
-    bottom: 14%;
-    cursor: pointer;
-    border-radius: 10px;
-   
-}
-
-
-.button {
-    position: absolute;
-    height: 50px;
-    padding-top: 4%;
-    left: 50%;
-    display: flex;
-    justify-content: center;
-    
-
-}
-
-.tamanhobutton{
-    position: absolute;
-    width: 180px;
-    height: 90%;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: green;
-    color: white;
-    font-family: fantasy;  
-    
-}
-
-.label{
-   font-family: fantasy;
-   color: rgba(92, 88, 88, 0.774);
-}
-    </style>
 </head>
 <body>
+ 
+    <div class="container">
 
-<p class="nometopocadastro"> Entre e veja as novidades </p>
+        <div class="logo-container">  
+            <a href="../index.php">
+                <img class="logo" src="../images/logo.png" alt="logo">
+            </a>
+        </div>
 
-    <div class=larguracadastro>
+        <div class="div-form">
 
-    <div class="larguraespaçocadastro">
+            <form action="../login.php" method="POST">
 
-        <h1 class="nomeformulario">Login</h1>
-    <nav>
-        <a href=""><img class="imgcadastro"src="google.png" alt=""> </a>
-       <a href=""> <img class="imgcadastro"src="" alt="">   </a>
-        <a href=""><img class="imgcadastro" src="" alt=""> </a>
-    </nav>
-        <form action="../login.php" method="POST">
-            <?php if(isset($_GET['err'])): ?>
+                <h1 class="name-login">Faça o seu login</h1>
+
+                <?php if(isset($_GET['err'])): ?>
+                    <div>
+                        <?= $_GET['err'] ?>
+                    </div>
+                <?php endif ?>
+                
                 <div>
-                    <?= $_GET['err'] ?>
+                    <input class="input-login" type="text" name="email" id="email" placeholder="E-mail" required>
                 </div>
-            <?php endif ?>
-            
-            <div>
-                <label class="label"for="email"> Seu E-email </label>
-            <input class="nomecadastro" type="text" name="email" id="email" required>
-            </div>
 
-            <div>
-                <label class="label"for="senha"> Sua senha </label>
-            <input class="nomecadastro" type="password" name="password" id="senha" minlength="8" maxlength="45" required>
-            </div>
-            <div>
-            <div class="button">
-            <button class="tamanhobutton"> Entrar </button>
-            </div>
-        <div>
-</div>
+                <div>
+                    <input class="input-login" type="password" name="password" id="senha" minlength="8" maxlength="45" placeholder="Senha" required>
+                </div>
+
+                <div class="div-forgot-password">
+                    <p class="forgot-password">
+                        <a href="">Esqueceu sua senha?</a>
+                    </p>
+                </div>
+
+                <div>
+                    <div class="button">
+                        <button class="btn-login">Entrar</button>
+                    </div>
+                <div>
+
+                <div class="register">
+                    <p class="p-register">
+                        É novo no free-Commerce? 
+                        <a href="user_register_page.php">Crie sua conta!</a>
+                    </p>
+                </div>
+                   
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
 </html>
