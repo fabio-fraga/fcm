@@ -12,10 +12,18 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
-
+/* css do login */
 .container {
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    width: 50%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +54,6 @@ body {
 
 .div-form {
     width: 420px;
-    height: 350px;
     background-color: rgba(255, 255, 255, 0.72);
     border-radius: 20px;
     box-shadow: 0px 4.38188px 2.92125px rgba(0, 0, 0, 0.2);
@@ -54,24 +61,25 @@ body {
     justify-content: center;
     margin-left: 5%;
     margin-right: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .name-login {
     width: 100%;
-    height: 100px;
     display: flex;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 28px;
     line-height: 43px;
     color: #FF6600;
-    margin-top: -30px;
-    margin-bottom: -30px;
+    margin-bottom: 20px;
+
 }
 
 form {
     width: 100%;
-    height: 376px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,7 +95,7 @@ form {
     background: #FFFFFF;
     border: 1.46063px solid #b4b4b4;
     border-radius: 7px;
-    margin-top: 5%;
+    margin-bottom: 5%;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -116,7 +124,7 @@ a:hover {
     height: 32px;
     background: #45A351;
     border-radius: 7px;
-    margin-top: 10%;
+    margin-top: 7%;
     font-family: 'Montserrat', sans-serif;
     font-size: 17px;
     line-height: 20px;
@@ -138,4 +146,54 @@ a:hover {
     font-size: 13px;
     text-align: center;
     margin-top: 15px;
+}
+
+/* a partir daqui é o css do registro */
+
+.logo-position-2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 800px;
+}
+
+ .adress {
+    margin-left: 7%;
+    margin-right: 5%;
+} 
+
+.input-adress {
+    box-sizing: border-box;
+    width: 160px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1.46063px solid #b4b4b4;
+    border-radius: 7px;
+    margin-top: 5%;
+    padding-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.select-state {
+    width: 80px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1.46063px solid #b4b4b4;
+    border-radius: 7px;
+    padding-left: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.adress-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 10px;
+    color: #FF6600;
+    display: flex;
+    justify-content: center;
 }

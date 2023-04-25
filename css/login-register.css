@@ -1,0 +1,418 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-image: url(../images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+/* css do login */
+@media(max-width: 1920px){
+
+     /* css do login */
+     .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .main {
+        width: 50%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo-container {
+        width: 150px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+    }
+    
+    .logo-position {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 450px;
+    }
+    
+    .logo {
+        width: 100%;
+        height: 20%;
+    }
+    
+    .div-form {
+        width: 350px;
+        background-color: rgba(255, 255, 255, 0.72);
+        border-radius: 20px;
+        box-shadow: 0px 4.38188px 2.92125px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .name-login {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+        line-height: 43px;
+        color: #FF6600;
+        margin-bottom: 20px;
+    
+    }
+    
+    form {
+        width: 100%;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    
+    .input-login {
+        box-sizing: border-box;
+        width: 270px;
+        height: 30px;
+        background: #FFFFFF;
+        border: 1.46063px solid #b4b4b4;
+        border-radius: 7px;
+        margin-bottom: 3%;
+        padding-left: 8px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+   
+    .div-forgot-password {
+        width: 300px;
+        margin-top: 2%;
+    }
+    
+    .forgot-password {
+        text-align: right;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+    }
+    
+    a {
+        color: #3959e6;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-login {
+        width: 270px;
+        height: 30px;
+        background: #45A351;
+        border-radius: 7px;
+        margin-top: 7%;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        line-height: 20px;
+        color: #FFFFFF;
+        border: none;
+        cursor: pointer;
+        box-sizing: border-box;
+        
+    }
+    
+    .btn-login:hover {
+        background: #48b657;
+    }
+    
+    .register {
+        width: 300px;
+    }
+    
+    .p-register {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+        text-align: center;
+        margin-top: 12px;
+    }
+    
+    /* a partir daqui é o css do registro */
+    
+    .logo-position-2 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 680px;
+    }
+    
+     .adress {
+        margin-left: 7%;
+        margin-right: 5%;
+    } 
+    
+    .input-adress {
+        box-sizing: border-box;
+        width: 130px;
+        height: 27px;
+        background: #FFFFFF;
+        border: 1.46063px solid #b4b4b4;
+        border-radius: 7px;
+        margin-top: 3%;
+        padding-left: 10px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    
+    .select-state {
+        width: 80px;
+        height: 30px;
+        background: #FFFFFF;
+        border: 1.46063px solid #b4b4b4;
+        border-radius: 7px;
+        padding-left: 8px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: center;
+        margin-top: 5%;
+    }
+    
+    .adress-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        line-height: 10px;
+        color: #FF6600;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3%;
+    }
+}
+
+
+
+
+
+
+
+
+@media(max-width: 768px){
+   
+      /* css do login */
+      .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .main {
+        width: 50%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo-container {
+        width: 130px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+    }
+    
+    .logo-position {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 400px;
+    }
+    
+    .logo {
+        width: 100%;
+        height: 20%;
+    }
+    
+    .div-form {
+        width: 300px;
+        background-color: rgba(255, 255, 255, 0.72);
+        border-radius: 20px;
+        box-shadow: 0px 4.38188px 2.92125px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+    
+    .name-login {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        line-height: 40px;
+        color: #FF6600;
+        margin-bottom: 20px;
+    
+    }
+    
+    form {
+        width: 100%;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    
+    .input-login {
+        box-sizing: border-box;
+        width: 250px;
+        height: 25px;
+        background: #FFFFFF;
+        border: 1.46063px solid #b4b4b4;
+        border-radius: 7px;
+        margin-bottom: 3%;
+        padding-left: 8px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+   
+    .div-forgot-password {
+        width: 300px;
+        margin-top: 2%;
+    }
+    
+    .forgot-password {
+        text-align: right;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+        margin-right: 30px;
+    }
+    
+    a {
+        color: #3959e6;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-login {
+        width: 250px;
+        height: 25px;
+        background: #45A351;
+        border-radius: 7px;
+        margin-top: 7%;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        line-height: 20px;
+        color: #FFFFFF;
+        border: none;
+        cursor: pointer;
+        box-sizing: border-box;
+        
+    }
+    
+    .btn-login:hover {
+        background: #48b657;
+    }
+    
+    .register {
+        width: 300px;
+    }
+    
+    .p-register {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+        text-align: center;
+        margin-top: 12px;
+    }
+    
+    /* a partir daqui é o css do registro */
+    
+    .logo-position-2 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 620px;
+    }
+    
+     .adress {
+        margin-left: 7%;
+        margin-right: 5%;
+    } 
+    
+    .input-adress {
+        box-sizing: border-box;
+        width: 125px;
+        height: 25px;
+        background: #FFFFFF;
+        border: 1.46063px solid #b4b4b4;
+        border-radius: 7px;
+        margin-top: 3%;
+        padding-left: 10px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    
+    .select-state {
+        width: 80px;
+        height: 25px;
+        background: #FFFFFF;
+        border: 1.46063px solid #b4b4b4;
+        border-radius: 7px;
+        padding-left: 8px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: center;
+        margin-top: 5%;
+    }
+    
+    .adress-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        line-height: 10px;
+        color: #FF6600;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3%;
+    }
+}
