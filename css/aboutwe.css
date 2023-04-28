@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@500;700&family=Inter&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'inter', sans-serif;
+}
+
+body {
+    background-color: rgb(196, 241, 128);
+
+}
+
+.ajustelogo{
+    margin-left: 40%;
+    padding-top: 2%;
+
+}
+
+.tamanhologo{
+    width: 30%;
+  
+}
+
+.nomeheader{
+    margin-left: 41%;
+    padding-top: 3%;
+    font-family:'Montserrat', sans-serif; 
+    color: rgb(248, 99, 0);
+}
+
+.container{
+     display: flex;
+     justify-content: center;
+}
+
+.largura-quem-somos{
+    margin-top: 50px;
+    font-weight: 500;
+    color: rgb(114, 51, 10);
+}
+.linha1{
+    font-family:'Montserrat', sans-serif; 
+}
+.linha2{
+   margin-left: 2%;
+   font-family:'Montserrat', sans-serif; 
+}
+
+.linha3{
+    margin-left: 5%;
+    font-family:'Montserrat', sans-serif; 
+}
+
+.linha4{
+    margin-left: 7%;
+    font-family:'Montserrat', sans-serif; 
+}
+
+.linha5{
+   margin-left: 14%;
+   font-family:'Montserrat', sans-serif; 
+}
+
+
+.nomebody{
+    margin-left: 41%;
+    padding-top: 4%;
+    font-family:'Montserrat', sans-serif; 
+    color: rgb(248, 99, 0);
+}
+
+.container2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+    gap: 45px;
+
+}
+
+.nomepixel{
+     display: flex;
+     justify-content: center;
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 600;
+     color: rgb(114, 51, 10);
+     padding-bottom: 50px;
+}

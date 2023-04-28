@@ -33,7 +33,7 @@ if (isset($_SESSION["user_id"])) {
         
         <div class="larguraheader">
             <nav class="larguranomeheader">
-                <a class="nomeheader" href="">Quem somos?</a>
+                <a class="nomeheader" href="aboutwe_page.php">Quem somos?</a>
                 <a class="nomeheader" href="">Serviços</a>
                 <a class="nomeheader" href="login_page.php">Login </a>
                 <a class="nomeheader" href="user_register_page.php">Cadastre-se</a>
