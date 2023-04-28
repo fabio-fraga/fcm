@@ -70,7 +70,7 @@ $_SESSION["street_id"] = $user->LOG_CODIGO;
         
         <div>
             <label for="">CEP:</label>
-            <input id="cep" type="text" name="cep" value="" required>
+            <input id="cep" type="text" name="cep" value="">
         </div>
                 
         <div>
@@ -93,7 +93,7 @@ $_SESSION["street_id"] = $user->LOG_CODIGO;
             <input id="locality" type="text" name="locality" value="<?= $user->LOC_NOME ?>" required>
         </div>
                 
-        <select id="federal_unit" name="federal_unit" required>
+        <select id="federative_unit" name="federative_unit" required>
             <option value="UF" <?=($user->UNF_NOME === 'Selecione')?'selected':''?> disabled>UF</option>
             <option value="AC" <?=($user->UNF_NOME === 'AC')?'selected':''?>>AC</option>
             <option value="AL" <?=($user->UNF_NOME === 'AL')?'selected':''?>>AL</option>

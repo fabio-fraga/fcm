@@ -46,7 +46,6 @@ $required_fields = [$name, $phone_number, $password, $street, $locality, $federa
 foreach ($required_fields as $required_field) {
     if (empty($required_field) === true || has_only_spaces($required_field) === true) {
         array_push($errors, "Preencha todos os campos obrigatórios!");
-        break;
     }
 }
 
