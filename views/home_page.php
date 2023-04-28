@@ -27,6 +27,12 @@ if (!isset($_SESSION["user_id"])) {
 
     <div>
         <button>
+             <a style="text-decoration: none;" href="seller_page.php?user_id=<?= $_SESSION["user_id"] ?>">Venda seus produtos</a>
+        </button>
+    </div>
+
+    <div>
+        <button>
             <a style="text-decoration: none;"
                 href="../user_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
                 onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')"

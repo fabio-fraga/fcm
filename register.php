@@ -61,15 +61,10 @@ if (has_only_spaces($_POST["complement"]) === true) {
 
 $required_fields = [$name, $cpf, $email, $phone_number, $password, $street, $locality, $federative_unit];
 
-$index = 0;
 foreach ($required_fields as $required_field) {
     if (empty($required_field) === true || has_only_spaces($required_field) === true) {
         array_push($errors, "Preencha todos os campos obrigatórios!");
-        echo $index;
-        exit;
-        break;
     }
-    $index++;
 }
 
 if (sizeof($errors) > 0) {
