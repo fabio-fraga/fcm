@@ -10,24 +10,21 @@ if (!isset($_SESSION["user_id"])) {
 require("../database/db.php");
 
 $user = stmt(
-    prepare: "SELECT * FROM FCM_USUARIOS WHERE USU_CODIGO = ?",
+    prepare: "
+        SELECT * FROM FCM_USUARIOS
+        JOIN FCM_LOGRADOUROS_DOS_USUARIOS ON LDU_USU_CODIGO = ?
+        JOIN FCM_LOGRADOUROS ON LOG_CODIGO = LDU_LOG_CODIGO
+        JOIN FCM_LOCALIDADES ON LOC_CODIGO = LOG_LOC_CODIGO
+        JOIN FCM_UNIDADES_FEDERATIVAS ON UNF_CODIGO = LOC_UNF_CODIGO
+        JOIN FCM_PAISES ON PAIS_CODIGO = UNF_PAIS_CODIGO;
+    ",
     execute_array: [$_SESSION['user_id']],
     fetch_object: true
 )->data[0];
 
-$delimiters = [',', '.'];
-
-$adress = str_replace($delimiters, ',', $user->USU_ENDERECO);
-
-$adress_array = explode(',', $adress);
-
-$street = trim($adress_array[0]);
-$house_number = trim($adress_array[1]);
-$neighborhood = trim($adress_array[2]);
-$city = trim(explode(' - ', $adress_array[3])[0]);
-$state = trim(explode(' - ', $adress_array[3])[1]);
-$cep = trim(explode(': ', $adress_array[4])[1]);
-$complement = trim(explode(': ', $adress_array[5])[1]);
+$_SESSION["federative_unit_id"] = $user->UNF_CODIGO;
+$_SESSION["locality_id"] = $user->LOC_CODIGO;
+$_SESSION["street_id"] = $user->LOG_CODIGO;
 
 ?>
 
@@ -67,69 +64,64 @@ $complement = trim(explode(': ', $adress_array[5])[1]);
                 
         <div>
             <label class="label" for="telefone">Telefone:</label>
-            <input type="text" name="phone_number" id="telefone" minlength="11" maxlength="11" value="<?= $user->USU_CELULAR ?>" required>
+            <input type="text" name="phone_number" id="telefone" minlength="11" maxlength="11" value="<?= $user->USU_TELEFONE ?>" required>
         </div>
 
         
         <div>
             <label for="">CEP:</label>
-            <input id="cep" type="text" name="cep" value="<?= $cep ?>" required>
+            <input id="cep" type="text" name="cep" value="" required>
         </div>
                 
         <div>
             <label for="">Logradouro:</label>
-            <input id="street" type="text" name="street" value="<?= $street ?>" required>
+            <input id="street" type="text" name="street" value="<?= $user->LOG_NOME ?>" required>
         </div>
                 
         <div>
             <label for="">Complemento:</label>
-            <input id="complement" type="text" name="complement" value="<?= $complement ?>" required>
-        </div>
-
-        <div>
-            <label for="">Bairro:</label>
-            <input id="neighborhood" class="nomecadastro" type="text" name="neighborhood" value="<?= $neighborhood ?>" required>
+            <input id="complement" type="text" name="complement" value="<?= $user->LDU_COMPLEMENTO ?>" required>
         </div>
                 
         <div>
             <label for="">Número da residência:</label>
-            <input id="houseNumber" type="text" name="house_number" value="<?= $house_number ?>" required>
+            <input id="houseNumber" type="text" name="house_number" value="<?= $user->LDU_NUMERO ?>" required>
         </div>
                 
         <div>
             <label for="">Cidade:</label>
-            <input id="city" type="text" name="city" value="<?= $city ?>" required>
+            <input id="locality" type="text" name="locality" value="<?= $user->LOC_NOME ?>" required>
         </div>
                 
-        <select id="state" name="state" required>
-            <option value="Estado" <?=($state === 'Selecione')?'selected':''?> disabled>Estado</option>
-            <option value="AC" <?=($state === 'AC')?'selected':''?>>AC</option>
-            <option value="AL" <?=($state === 'AL')?'selected':''?>>AL</option>
-            <option value="AP" <?=($state === 'AP')?'selected':''?>>AP</option>
-            <option value="AM" <?=($state === 'AM')?'selected':''?>>AM</option>
-            <option value="BA" <?=($state === 'BA')?'selected':''?>>BA</option>
-            <option value="CE" <?=($state === 'CE')?'selected':''?>>CE</option>
-            <option value="ES" <?=($state === 'ES')?'selected':''?>>ES</option>
-            <option value="GO" <?=($state === 'GO')?'selected':''?>>GO</option>
-            <option value="MA" <?=($state === 'MA')?'selected':''?>>MA</option>
-            <option value="MT" <?=($state === 'MT')?'selected':''?>>MT</option>
-            <option value="MS" <?=($state === 'MS')?'selected':''?>>MS</option>
-            <option value="MG" <?=($state === 'MG')?'selected':''?>>MG</option>
-            <option value="PA" <?=($state === 'PA')?'selected':''?>>PA</option>
-            <option value="PB" <?=($state === 'PB')?'selected':''?>>PB</option>
-            <option value="PR" <?=($state === 'PR')?'selected':''?>>PR</option>
-            <option value="PE" <?=($state === 'PE')?'selected':''?>>PE</option>
-            <option value="PI" <?=($state === 'PI')?'selected':''?>>PI</option>
-            <option value="RJ" <?=($state === 'RJ')?'selected':''?>>RJ</option>
-            <option value="RN" <?=($state === 'RN')?'selected':''?>>RN</option>
-            <option value="RS" <?=($state === 'RS')?'selected':''?>>RS</option>
-            <option value="RO" <?=($state === 'RO')?'selected':''?>>RO</option>
-            <option value="RR" <?=($state === 'RR')?'selected':''?>>RR</option>
-            <option value="SC" <?=($state === 'SC')?'selected':''?>>SC</option>
-            <option value="SP" <?=($state === 'SP')?'selected':''?>>SP</option>
-            <option value="SE" <?=($state === 'SE')?'selected':''?>>SE</option>
-            <option value="TO" <?=($state === 'TO')?'selected':''?>>TO</option>
-            <option value="DF" <?=($state === 'DF')?'selected':''?>>DF</option>
+        <select id="federal_unit" name="federal_unit" required>
+            <option value="UF" <?=($user->UNF_NOME === 'Selecione')?'selected':''?> disabled>UF</option>
+            <option value="AC" <?=($user->UNF_NOME === 'AC')?'selected':''?>>AC</option>
+            <option value="AL" <?=($user->UNF_NOME === 'AL')?'selected':''?>>AL</option>
+            <option value="AP" <?=($user->UNF_NOME === 'AP')?'selected':''?>>AP</option>
+            <option value="AM" <?=($user->UNF_NOME === 'AM')?'selected':''?>>AM</option>
+            <option value="BA" <?=($user->UNF_NOME === 'BA')?'selected':''?>>BA</option>
+            <option value="CE" <?=($user->UNF_NOME === 'CE')?'selected':''?>>CE</option>
+            <option value="ES" <?=($user->UNF_NOME === 'ES')?'selected':''?>>ES</option>
+            <option value="GO" <?=($user->UNF_NOME === 'GO')?'selected':''?>>GO</option>
+            <option value="MA" <?=($user->UNF_NOME === 'MA')?'selected':''?>>MA</option>
+            <option value="MT" <?=($user->UNF_NOME === 'MT')?'selected':''?>>MT</option>
+            <option value="MS" <?=($user->UNF_NOME === 'MS')?'selected':''?>>MS</option>
+            <option value="MG" <?=($user->UNF_NOME === 'MG')?'selected':''?>>MG</option>
+            <option value="PA" <?=($user->UNF_NOME === 'PA')?'selected':''?>>PA</option>
+            <option value="PB" <?=($user->UNF_NOME === 'PB')?'selected':''?>>PB</option>
+            <option value="PR" <?=($user->UNF_NOME === 'PR')?'selected':''?>>PR</option>
+            <option value="PE" <?=($user->UNF_NOME === 'PE')?'selected':''?>>PE</option>
+            <option value="PI" <?=($user->UNF_NOME === 'PI')?'selected':''?>>PI</option>
+            <option value="RJ" <?=($user->UNF_NOME === 'RJ')?'selected':''?>>RJ</option>
+            <option value="RN" <?=($user->UNF_NOME === 'RN')?'selected':''?>>RN</option>
+            <option value="RS" <?=($user->UNF_NOME === 'RS')?'selected':''?>>RS</option>
+            <option value="RO" <?=($user->UNF_NOME === 'RO')?'selected':''?>>RO</option>
+            <option value="RR" <?=($user->UNF_NOME === 'RR')?'selected':''?>>RR</option>
+            <option value="SC" <?=($user->UNF_NOME === 'SC')?'selected':''?>>SC</option>
+            <option value="SP" <?=($user->UNF_NOME === 'SP')?'selected':''?>>SP</option>
+            <option value="SE" <?=($user->UNF_NOME === 'SE')?'selected':''?>>SE</option>
+            <option value="TO" <?=($user->UNF_NOME === 'TO')?'selected':''?>>TO</option>
+            <option value="DF" <?=($user->UNF_NOME === 'DF')?'selected':''?>>DF</option>
         </select>
                         
         <div>
@@ -145,18 +137,17 @@ $complement = trim(explode(': ', $adress_array[5])[1]);
         <a style="text-decoration: none;" href="home_page.php">Voltar</a>
     </button>
 
-    <script>
+    <script>        
         let inputCep = document.querySelector("#cep")
-        
+
         inputCep.addEventListener("input", function() {
             if (this.value.length === 8) {
                 getAdress(this.value)
             } else {
                 document.querySelector("#street").value = ''
                 document.querySelector("#complement").value = ''
-                document.querySelector("#neighborhood").value = ''
-                document.querySelector("#city").value = ''
-                document.querySelector("#state").value = "Estado"
+                document.querySelector("#locality").value = ''
+                document.querySelector("#federal_unit").value = "UF"
             }
         })
 
@@ -167,9 +158,8 @@ $complement = trim(explode(': ', $adress_array[5])[1]);
             if (typeof response["erro"] !== undefined && response["erro"] !== true) {
                 document.querySelector("#street").value = response["logradouro"]
                 document.querySelector("#complement").value = response["complemento"]
-                document.querySelector("#neighborhood").value = response["bairro"]
-                document.querySelector("#city").value = response["localidade"]
-                document.querySelector("#state").value = response["uf"]   
+                document.querySelector("#locality").value = response["localidade"]
+                document.querySelector("#federal_unit").value = response["uf"]   
             }
         }
     </script>
