@@ -12,12 +12,9 @@ $password = $_POST["password"];
 
 $street = $_POST["street"];
 $house_number = $_POST["house_number"] ?: "S/N";
-$neighborhood = $_POST["neighborhood"];
-$city = $_POST["city"];
-$state = $_POST["state"];
-$cep = !empty($_POST["cep"]) ? ". CEP: " . substr_replace($_POST["cep"], '-', 5, 0) . "." : '.';
-$complement = !empty($_POST["complement"]) ? " Complemento: {$_POST["complement"]}." : '';
-$adress = "{$street}, {$house_number}, {$neighborhood}, {$city} - {$state}{$cep}{$complement}";
+$complement = $_POST["complement"] ?: null;
+$locality = $_POST["locality"];
+$federal_unit = $_POST["federal_unit"];
 
 $users = stmt(
     prepare: "SELECT * FROM FCM_USUARIOS",
@@ -58,15 +55,11 @@ if (strlen($password) < 8 || strlen($password) > 45) {
     array_push($errors, "A senha deve ter de 8 a 45 caracteres!");
 }
 
-if (has_only_spaces($_POST["cep"]) === true) {
-    array_push($errors, "O campo CEP não pode conter somente caracteres em branco!");
-}
-
 if (has_only_spaces($_POST["complement"]) === true) {
     array_push($errors, "O campo complemento não pode conter somente caracteres em branco!");
 }
 
-$required_fields = [$name, $cpf, $email, $phone_number, $password, $street, $neighborhood, $city, $state];
+$required_fields = [$name, $cpf, $email, $phone_number, $password, $street, $locality, $federal_unit];
 
 foreach ($required_fields as $required_field) {
     if (empty($required_field) === true || has_only_spaces($required_field) === true) {
@@ -81,12 +74,48 @@ if (sizeof($errors) > 0) {
     exit;
 }
 
+$federal_unit_id = stmt(
+    prepare: "SELECT * FROM FCM_UNIDADES_FEDERATIVAS WHERE UNF_NOME = ?",
+    execute_array: [$federal_unit],
+    fetch_object: true
+)->data[0]->UNF_CODIGO;
+
 stmt(
     prepare: "
-        INSERT INTO FCM_USUARIOS(USU_CPF, USU_NOME, USU_NASCIMENTO, USU_EMAIL, USU_CELULAR, USU_ENDERECO, USU_SENHA)
-        VALUES(?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO FCM_LOCALIDADES (LOC_NOME, LOC_UNF_CODIGO)
+        VALUES (?, ?)
     ",
-    execute_array: [$cpf, $name, $birthday, $email, $phone_number, $adress, sha1($password)]
+    execute_array: [$locality, $federal_unit_id]
+);
+
+$locality_id = $dbh->lastInsertId();
+
+stmt(
+    prepare:"
+        INSERT INTO FCM_LOGRADOUROS (LOG_NOME, LOG_LOC_CODIGO)
+        VALUES (?, ?)
+    ",
+    execute_array: [$street, $locality_id]
+);
+
+$street_id = $dbh->lastInsertId();
+
+stmt(
+    prepare: "
+        INSERT INTO FCM_USUARIOS (USU_CPF, USU_NOME, USU_NASCIMENTO, USU_EMAIL, USU_TELEFONE, USU_SENHA)
+        VALUES (?, ?, ?, ?, ?, ?)
+    ",
+    execute_array: [$cpf, $name, $birthday, $email, $phone_number, sha1($password)]
+);
+
+$user_id = $dbh->lastInsertId();
+
+stmt(
+    prepare:"
+        INSERT INTO FCM_LOGRADOUROS_DOS_USUARIOS (LDU_USU_CODIGO, LDU_LOG_CODIGO, LDU_NUMERO, LDU_COMPLEMENTO)
+        VALUES (?, ?, ?, ?)
+    ",
+    execute_array: [$user_id, $street_id, $house_number, $complement]
 );
 
 header("location: views/login_page.php");

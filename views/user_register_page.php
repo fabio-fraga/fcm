@@ -70,7 +70,8 @@ if (isset($_SESSION["user_id"])) {
                     <div>
                         <input class="input-login" type="password" name="password" minlength="8" maxlength="45" placeholder="Senha" required>    
                     </div>
-                
+                    
+            </div>
                     <div class="adress">
                         <legend class="adress-title"><strong>Endereço</strong></legend>
                         
@@ -78,12 +79,11 @@ if (isset($_SESSION["user_id"])) {
                         <input class="input-adress" id="street" type="text" name="street" placeholder="Rua" required>
                         <input class="input-adress" id="houseNumber" type="number" name="house_number" placeholder="N°">
                         <input class="input-adress" id="complement" type="text" name="complement" placeholder="Complemento">
-                        <input class="input-adress" id="neighborhood" type="text" name="neighborhood" placeholder="Bairro" required>
-                        <input class="input-adress" id="city" type="text" name="city" placeholder="Cidade" required>
+                        <input class="input-adress" id="locality" type="text" name="locality" placeholder="Localidade" required>
     
                         <div class="state">
-                            <select class="select-state" id="state" name="state" required>
-                                <option value="Estado" selected disabled>Estado</option>
+                            <select class="select-state" id="federal_unit" name="federal_unit" required>
+                                <option value="UF" selected disabled>UF</option>
                                 <option value="AC">AC</option>
                                 <option value="AL">AL</option>
                                 <option value="AP">AP</option>
@@ -131,7 +131,6 @@ if (isset($_SESSION["user_id"])) {
                     
                 </form>
     
-            </div>
         </div>
 
     </div>
@@ -145,9 +144,8 @@ if (isset($_SESSION["user_id"])) {
         } else {
             document.querySelector("#street").value = ''
             document.querySelector("#complement").value = ''
-            document.querySelector("#neighborhood").value = ''
-            document.querySelector("#city").value = ''
-            document.querySelector("#state").value = "Estado"
+            document.querySelector("#locality").value = ''
+            document.querySelector("#federal_unit").value = "UF"
         }
     })
 
@@ -156,11 +154,13 @@ if (isset($_SESSION["user_id"])) {
         let response = await fetch(`https://viacep.com.br/ws/${cep}/json/`).then((res) => res.json())
         
         if (typeof response["erro"] !== undefined && response["erro"] !== true) {
+            document.querySelector("#street").disabled = true
             document.querySelector("#street").value = response["logradouro"]
             document.querySelector("#complement").value = response["complemento"]
-            document.querySelector("#neighborhood").value = response["bairro"]
-            document.querySelector("#city").value = response["localidade"]
-            document.querySelector("#state").value = response["uf"]   
+            document.querySelector("#locality").disabled = true
+            document.querySelector("#locality").value = response["localidade"]
+            document.querySelector("#federal_unit").disabled = true
+            document.querySelector("#federal_unit").value = response["uf"]   
         }
     }
     </script>
