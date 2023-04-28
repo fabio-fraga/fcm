@@ -82,7 +82,7 @@ if (isset($_SESSION["user_id"])) {
                         <input class="input-adress" id="locality" type="text" name="locality" placeholder="Localidade" required>
     
                         <div class="state">
-                            <select class="select-state" id="federal_unit" name="federal_unit" required>
+                            <select class="select-state" id="federative_unit" name="federative_unit" required>
                                 <option value="UF" selected disabled>UF</option>
                                 <option value="AC">AC</option>
                                 <option value="AL">AL</option>
@@ -145,7 +145,7 @@ if (isset($_SESSION["user_id"])) {
             document.querySelector("#street").value = ''
             document.querySelector("#complement").value = ''
             document.querySelector("#locality").value = ''
-            document.querySelector("#federal_unit").value = "UF"
+            document.querySelector("#federative_unit").value = "UF"
         }
     })
 
@@ -154,13 +154,10 @@ if (isset($_SESSION["user_id"])) {
         let response = await fetch(`https://viacep.com.br/ws/${cep}/json/`).then((res) => res.json())
         
         if (typeof response["erro"] !== undefined && response["erro"] !== true) {
-            document.querySelector("#street").disabled = true
             document.querySelector("#street").value = response["logradouro"]
             document.querySelector("#complement").value = response["complemento"]
-            document.querySelector("#locality").disabled = true
             document.querySelector("#locality").value = response["localidade"]
-            document.querySelector("#federal_unit").disabled = true
-            document.querySelector("#federal_unit").value = response["uf"]   
+            document.querySelector("#federative_unit").value = response["uf"]   
         }
     }
     </script>

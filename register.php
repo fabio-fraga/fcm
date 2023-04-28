@@ -10,11 +10,11 @@ $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 $phone_number = $_POST["phone_number"];
 $password = $_POST["password"];
 
-$street = $_POST["street"];
-$house_number = $_POST["house_number"] ?: "S/N";
+$house_number = $_POST["house_number"] ?: null;
 $complement = $_POST["complement"] ?: null;
+$street = $_POST["street"];
 $locality = $_POST["locality"];
-$federal_unit = $_POST["federal_unit"];
+$federative_unit = $_POST["federative_unit"];
 
 $users = stmt(
     prepare: "SELECT * FROM FCM_USUARIOS",
@@ -59,13 +59,17 @@ if (has_only_spaces($_POST["complement"]) === true) {
     array_push($errors, "O campo complemento não pode conter somente caracteres em branco!");
 }
 
-$required_fields = [$name, $cpf, $email, $phone_number, $password, $street, $locality, $federal_unit];
+$required_fields = [$name, $cpf, $email, $phone_number, $password, $street, $locality, $federative_unit];
 
+$index = 0;
 foreach ($required_fields as $required_field) {
     if (empty($required_field) === true || has_only_spaces($required_field) === true) {
         array_push($errors, "Preencha todos os campos obrigatórios!");
+        echo $index;
+        exit;
         break;
     }
+    $index++;
 }
 
 if (sizeof($errors) > 0) {
@@ -74,9 +78,9 @@ if (sizeof($errors) > 0) {
     exit;
 }
 
-$federal_unit_id = stmt(
+$federative_unit_id = stmt(
     prepare: "SELECT * FROM FCM_UNIDADES_FEDERATIVAS WHERE UNF_NOME = ?",
-    execute_array: [$federal_unit],
+    execute_array: [$federative_unit],
     fetch_object: true
 )->data[0]->UNF_CODIGO;
 
@@ -85,7 +89,7 @@ stmt(
         INSERT INTO FCM_LOCALIDADES (LOC_NOME, LOC_UNF_CODIGO)
         VALUES (?, ?)
     ",
-    execute_array: [$locality, $federal_unit_id]
+    execute_array: [$locality, $federative_unit_id]
 );
 
 $locality_id = $dbh->lastInsertId();
