@@ -39,23 +39,23 @@
 
 <div class="container2">
     <div class="dupla1">
-         <img  src="dudapixel.gif" alt="pixelduda">
+         <img  src="../images/gif/dudapixel.gif" alt="pixelduda">
          <p class="nomepixel"> Eduarda beatriz</p>
-         <img  src="fabiopixel.gif" alt="pixelfabio">
+         <img  src="../images/gif/fabiopixel.gif" alt="pixelfabio">
         <p class="nomepixel"> Fabio Moura</p>
     </div>
 
     <div class="dupla2">
-        <img src="gabipixel.gif" alt="">
+        <img src="../images/gif/gabipixel.gif" alt="">
         <p class="nomepixel"> Gabriela Batista </p>
-        <img src="jhonpixel.gif" alt="">
+        <img src="../images/gif/jhonpixel.gif" alt="">
         <p class="nomepixel"> John Henrick </p>
     </div>
 
     <div class="dupla3">
-        <img src="jeniferpixel.gif" alt="">
+        <img src="../images/gif/jeniferpixel.gif" alt="">
         <p class="nomepixel"> Jennifer Fonseca </p>
-         <img src="matheuspixel.gif" alt=""> 
+         <img src="../images/gif/matheuspixel.gif" alt=""> 
          <p class="nomepixel"> Matheus Vinícius </p>
     </div>
 </div>

@@ -403,7 +403,7 @@ body {
         padding-left: 8px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-align: center;
-        margin-top: 5%;
+        margin-top: 3%;
     }
     
     .adress-title {
@@ -415,4 +415,5 @@ body {
         justify-content: center;
         margin-bottom: 3%;
     }
-}
+} 
+ 
