@@ -17,6 +17,13 @@ $categories = stmt(
     fetch_object: true
 )->data;
 
+$seller_products = stmt(
+    prepare: "
+        SELECT * FROM FCM_PRODUTOS WHERE PRO_CMT_CODIGO = ?
+    ",
+    execute_array: [$_SESSION["user_id"]]
+);
+
 ?>
 
 <!DOCTYPE html>
@@ -66,5 +73,29 @@ $categories = stmt(
         <button>Cadastrar</button>
 
     </form>
+
+    <?php if ($seller_products->row_count > 0): ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <?php foreach ($seller_products as $product): ?>
+                    <tr>
+                        <td><?= $product->data->PRO_NOME ?></td>
+                        <td><?= $product->data->PRO_VALOR ?></td>
+                        <td><?= $product->data->PRO_QUANTIDADE_DISPONIVEL ?></td>
+                    </tr>
+                <?php endforeach ?>
+
+            </tbody>
+        </table>
+    <?php endif ?>
 </body>
 </html>
+
