@@ -591,3 +591,10 @@ VALUES
 ("SP", 30),
 ("SE", 30),
 ("TO", 30);
+
+INSERT INTO FCM_CATEGORIAS (CAT_NOME)
+VALUES 
+("Roupas"),
+("Utensílios"),
+("Alimentos"),
+("Outros");
