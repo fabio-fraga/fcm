@@ -109,9 +109,17 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
         <?php endif ?>
     </form>
 
-    <button>    
-        <a style="text-decoration: none;" href="home_page.php">Voltar</a>
-    </button>
+    <div>
+        <button>    
+            <a style="text-decoration: none;" href="products_page.php">Meus produtos</a>
+        </button>
+    </div>
+
+    <div>
+        <button>    
+            <a style="text-decoration: none;" href="home_page.php">Voltar</a>
+        </button>
+    </div>
     
     <?php if ($seller->row_count > 0): ?>
         <div>
