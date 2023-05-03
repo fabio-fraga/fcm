@@ -93,6 +93,9 @@ $seller_products = stmt(
                         <td><?= $product->PRO_NOME ?></td>
                         <td><?= $product->PRO_VALOR ?></td>
                         <td><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
+                        <td>
+                            <a style="text-decoration: none; color: red" href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')">&#128465;</a>
+                        </td>
                     </tr>
                 <?php endforeach ?>
 
