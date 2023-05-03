@@ -21,7 +21,8 @@ $seller_products = stmt(
     prepare: "
         SELECT * FROM FCM_PRODUTOS WHERE PRO_CMT_CODIGO = ?
     ",
-    execute_array: [$_SESSION["user_id"]]
+    execute_array: [$_SESSION["user_id"]], 
+    fetch_object: true
 );
 
 ?>
@@ -75,6 +76,8 @@ $seller_products = stmt(
     </form>
 
     <?php if ($seller_products->row_count > 0): ?>
+        <h1>Seus produtos</h1>
+        
         <table>
             <thead>
                 <tr>
@@ -85,11 +88,11 @@ $seller_products = stmt(
             </thead>
             
             <tbody>
-                <?php foreach ($seller_products as $product): ?>
+                <?php foreach ($seller_products->data as $product): ?>
                     <tr>
-                        <td><?= $product->data->PRO_NOME ?></td>
-                        <td><?= $product->data->PRO_VALOR ?></td>
-                        <td><?= $product->data->PRO_QUANTIDADE_DISPONIVEL ?></td>
+                        <td><?= $product->PRO_NOME ?></td>
+                        <td><?= $product->PRO_VALOR ?></td>
+                        <td><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
                     </tr>
                 <?php endforeach ?>
 
