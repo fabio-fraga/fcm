@@ -2,9 +2,16 @@
 
 session_start();
 
+require("../database/db.php");
+
 if (!isset($_SESSION["user_id"])) {
     header("location: welcome_page.php");
 }
+
+$all_products = stmt(
+    prepare: "SELECT * FROM FCM_PRODUTOS JOIN FCM_CATEGORIAS ON CAT_CODIGO = PRO_CAT_CODIGO",
+    fetch_object: true
+)->data;
 
 ?>
 
@@ -58,6 +65,26 @@ if (!isset($_SESSION["user_id"])) {
         <a  href="seller_page.php?user_id=<?= $_SESSION["user_id"] ?>"> <span class="tamanho_itens"> Venda seus produtos </span> </a>
     </div>
 </div>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Valor</th>
+        <th>Quantidade disponível</th>
+        <th>Categoria</th>
+    </thead>
+    
+    <tbody>
+        <?php foreach ($all_products as $product): ?>
+            <tr>
+                <td><?= $product->PRO_NOME ?></td>
+                <td><?= $product->PRO_VALOR ?></td>
+                <td><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
+                <td><?= $product->CAT_NOME ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
 
     <div class="largura_button">
         <button class="tamanho_button">
