@@ -16,7 +16,7 @@ if (isset($_SESSION["user_id"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="1index.css">
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- link da fonte montserrat do google fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +63,25 @@ if (isset($_SESSION["user_id"])) {
             </nav>
         </div>
 
-    </main>
+        <div class="lugardovideo">
+
+    <div class="nomeinfo">
+        <h1> <span class="orange">informações </span> <span class="black">para sua</span> <span class="green">utilidade</span></h1>
+    </div>
+
+    <div class="nomevideo1">
+        <p> Saiba como ultlizar a plataforma através do nosso tutorial em video <br>
+            Em menos de 4minutos você ira ficar por dentro de tudo, de uma forma <br>
+            rapida, simples, e legal, <strong> Assista e fique por dentro!!!</strong>
+        </p>
+    </div>
+
+    <div class="ajustevideo">
+        <video class="tamanhovideo" src="" controls></video> 
+    </div> 
+        </div>
+</main>
+
 </body>
 </html>
 

@@ -201,3 +201,37 @@ margin-top: 7%;
     margin-top: 7%;
     }   
 }
+
+.lugardovideo{
+    position: absolute;
+    margin-top: 45%;
+}
+
+.nomeinfo{
+ margin-left: 60%;
+ width: 700px;
+ font-family: 'Montserrat', sans-serif;
+
+}
+.ajustevideo{
+    margin-top: 10%;
+    margin-left: 5%;
+    cursor: pointer;
+
+
+}
+
+.tamanhovideo{
+    width: 80%;
+    height: 70%;
+    border-radius: 15px;
+}
+
+.nomevideo1{
+    position: absolute;
+    margin-left: 90%;
+    width: 700px;
+    margin-top: 20%;
+    font-family: 'Montserrat', sans-serif;
+    color:black
+}
