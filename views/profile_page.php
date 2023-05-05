@@ -130,7 +130,15 @@ $_SESSION["street_id"] = $user->LOG_CODIGO;
         </div>
 
         <button>Alterar</button>
-
+        
+        <button>
+            <a style="text-decoration: none;"
+                    href="../user_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
+                    onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')"
+                >
+                        Apagar Conta 
+            </a>
+        </button>
     </form>
 
     <button>    

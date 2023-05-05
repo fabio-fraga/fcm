@@ -33,10 +33,16 @@ $seller_products = stmt(
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.co" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <title>Meus produtos</title>
 </head>
 <body>
-    <h1>Meus produtos</h1>
+    <header>
+        <h1>Meus produtos</h1>
+    </header>
 
     <p>Cadastre produtos:</p>
 
@@ -100,11 +106,11 @@ $seller_products = stmt(
                             <a style="text-decoration: none; color: red" href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')">&#128465;</a>
                         </td>
                     </tr>
-                <?php endforeach ?>
-
-            </tbody>
-        </table>
-    <?php endif ?>
+                    <?php endforeach ?>
+                    
+                </tbody>
+            </table>
+            <?php endif ?>
 </body>
 </html>
 
