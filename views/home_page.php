@@ -81,9 +81,17 @@ $all_products = stmt(
                 <td><?= $product->PRO_VALOR ?></td>
                 <td><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
                 <td><?= $product->CAT_NOME ?></td>
+                <td>
+                    <a href="../cart_add.php?product_id=<?= $product->PRO_CODIGO ?>">Adicionar ao carrinho</a>
+                </td>              
             </tr>
         <?php endforeach; ?>
     </tbody>
+    <?php if(isset($_GET['err'])): ?>
+        <div class="error">
+            <p><?= $_GET['err'] ?></p>
+        </div>
+    <?php endif ?>
 </table>
 
     <div class="largura_button">
