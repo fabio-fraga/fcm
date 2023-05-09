@@ -18,18 +18,48 @@ $product = stmt(
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/product_update.css">
     <title>Atualização</title>
 </head>
 <body>
+    <div class="container1">
+       
+        <div class="tamanho_link">
+            <a  href="profile_page.php?user_id=<?= $_SESSION["user_id"] ?>"> <img class="tamanho_img" src="../images/img_home/perfil.png" alt="Perfil"></a>
+        
+            <a href="notification.php"> <img class="tamanho_img" src="../images/img_home/sino.png" alt="notificação"> </a>
+        </div>
+            
+        <div class="nome_header">
+            <h1> Atualize seus produtos </h1>
+        </div>
+    </div>   
+
+        <div>
+        <a href="products_page.php"> <img class="tamanho_logo" src="../images/logo.png" alt="logo"></a> 
+        </div>
+<div class="container2">
+    <div class="product_img">
+        <img src="../images/coxinha.jpg" alt="">
+    </div>
+
     <form action="../product_update.php" method='POST'>
-        Produto: <input name="name" type="text" value="<?= $product->PRO_NOME ?>">
-        Valor: <input name="value" type="number" value="<?= $product->PRO_VALOR ?>">
-        Quantidade: <input name="amount" type="number" value="<?= $product->PRO_QUANTIDADE_DISPONIVEL ?>">
-        <input type="hidden" name="id" value="<?= $product->PRO_CODIGO?>">
-        <button>Alterar</button>
+        <div class="product_edit">
+            <label class="product" for="product"> produto: </label>
+            <input name="name" type="text" id="product" value="<?= $product->PRO_NOME ?>">
 
+            <label class="product" for="value"> Valor: </label>
+            <input name="value" type="number" id="value" value="<?= $product->PRO_VALOR ?>">
+
+            <label class="product" for="quantity"> Quantidade: </label>
+            <input name="amount" type="number" id="quantity" value="<?= $product->PRO_QUANTIDADE_DISPONIVEL ?>">
+            
+            <input type="hidden" name="id" value="<?= $product->PRO_CODIGO?>">
+            <button class="button">Alterar</button>
+        </div>
     </form>
-    <a href="products_page.php">Voltar</a>
-
+</div>   
 </body>
 </html>

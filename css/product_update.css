@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-image: url(../images/background.png);
+}
+
+.container1{
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+}
+
+.tamanho_link{
+    position: absolute;
+    display: flex;
+    gap: 60px;
+    margin-left: 80%;
+}
+
+.nome_header{
+    color: #928f8f;
+    font-family:'Montserrat', sans-serif; 
+    font-size: medium;
+}
+
+.tamanho_logo{
+    width: 10%;
+    margin-top: -5%;
+    margin-left: 6%;
+    padding-top: 1%;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3%;
+    margin-top: 6%;
+    margin-left: 22%;
+    width: 55%;
+    box-shadow: 5px 5px 38px 0px rgba(49, 80, 46, 0.2);
+    border-radius: 15px; 
+  }
+
+.product_img img{
+    border-radius: 10px;
+}
+
+.product_edit{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15%;
+}
+
+.product_edit label{
+    padding-top: 10%;
+    font-family:'Montserrat', sans-serif; 
+}
+
+.product_edit input{
+    padding-top: 3%;
+    border-radius: 10px;
+    border-color: rgb(189, 185, 185);
+    background-color:white;
+    cursor: pointer;
+    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.button{
+    margin-top: 15%;
+    border-radius: 20px;
+    border-color:rgb(189, 185, 185);
+    background-color: white;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+}
