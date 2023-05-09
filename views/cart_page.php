@@ -8,7 +8,7 @@ $cart = stmt(
     prepare: "
         SELECT * FROM FCM_CARRINHO_DE_COMPRAS
         JOIN FCM_PRODUTOS ON PRO_CODIGO = CDC_PRO_CODIGO
-        JOIN FCM_USUARIOS ON USU_CODIGO = ?
+        JOIN FCM_USUARIOS ON CDC_USU_CODIGO = ?
     ",
     execute_array: [$_SESSION["user_id"]],
     fetch_object: true
