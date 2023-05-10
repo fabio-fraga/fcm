@@ -41,52 +41,81 @@ foreach ($cart as $product) {
         <a href="home_page.php">Voltar</a>
     </button>
     </div>
-    <div class="container">
-        <div class="title">
-            <div class="product-title">Produtos</div>
-            <div>Preço unitário</div>
-            <div>quantidade</div>
-            <div>Preço total</div>
-            <div>Ações</div>
-        </div>
-
-        <?php foreach($cart as $product): ?>
-
-        <div class="first-line">
-            <p>
-                <?= $product->CMR_NOME ?>
-            </p>
-        </div>
-
-        <div class="second-line">
-            <div class="product">
-                <form action="../cart_update.php" method="POST">
-                    <input type="hidden" name="selected" value="<?= $product->CDC_SELECIONADO == 0 ? 1 : 0 ?>">
-                    <input type="hidden" name="product_id" value="<?= $product->PRO_CODIGO ?>">
-                    <input type="checkbox" onclick="this.form.submit()" <?= $product->CDC_SELECIONADO == 1 ? "checked" : '' ?>>
-                    <?= $product->PRO_NOME ?>
-                </form>
+    <div class="main">
+        <div class="container">
+            <div class="title">
+                <div class="product-title">Produtos</div>
+                <div>Preço unitário</div>
+                <div>quantidade</div>
+                <div>Preço total</div>
+                <div>Ações</div>
             </div>
-            <div><?= $product->PRO_VALOR ?></div>
-            <div>
-                <a href="../cart_update.php?action=diminuir&product_id=<?= $product->PRO_CODIGO ?>"><button style="cursor: pointer">-</button></a>
-                <span id="<?= $product->CDC_PRO_CODIGO?>"><?= $product->CDC_QUANTIDADE ?></span>
-                <a href="../cart_update.php?action=aumentar&product_id=<?= $product->PRO_CODIGO ?>"><button style="cursor: pointer">+</button></a>
-            </div>
-            <div><?= $product->PRO_VALOR * $product->CDC_QUANTIDADE ?></div>
-            <div>  <a href="../cart_delete.php?product_id=<?= $product->CDC_PRO_CODIGO ?>">Remover</a></div>
-            
-        </div>
-        <?php endforeach ?>        
-    </div>
-
     
-        <footer>
-            <div class="total">
-                <h2>Total: <?= $soma ?></h2>
+            <?php foreach($cart as $product): ?>
+    
+            <div class="first-line">
+                <p>
+                    <?= $product->CMR_NOME ?>
+                </p>
             </div>
-            
-        </footer>
+    
+            <div class="second-line">
+                <div class="product">
+                    <div>
+                        <form action="../cart_update.php" method="POST">
+                            <input type="hidden" name="selected" value="<?= $product->CDC_SELECIONADO == 0 ? 1 : 0 ?>">
+                            <input type="hidden" name="product_id" value="<?= $product->PRO_CODIGO ?>">
+                            <input type="checkbox" onclick="this.form.submit()" <?= $product->CDC_SELECIONADO == 1 ? "checked" : '' ?>>
+                        </form>
+                    </div>
+                    <div>
+                        <img class="img-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/100px-Placeholder_view_vector.svg.png">
+                    </div>
+                    <div>
+                        <?= $product->PRO_NOME ?>
+                    </div>
+                </div>
+                <div> R$ <?= number_format( $product->PRO_VALOR , 2, ',', '.') ?></div>
+                <div>
+                    <a href="../cart_update.php?action=diminuir&product_id=<?= $product->PRO_CODIGO ?>"><button class="btn-diau" style="cursor: pointer">-</button></a>
+                    <span id="<?= $product->CDC_PRO_CODIGO?>"><?= $product->CDC_QUANTIDADE ?></span>
+                    <a href="../cart_update.php?action=aumentar&product_id=<?= $product->PRO_CODIGO ?>"><button class="btn-diau" style="cursor: pointer">+</button></a>
+                </div>
+                <div> R$ <?= number_format( $product->PRO_VALOR * $product->CDC_QUANTIDADE , 2, ',', '.')  ?></div>
+                <div class="btn-delete">  
+                    <a href="../cart_delete.php?product_id=<?= $product->CDC_PRO_CODIGO ?>"  onclick="return confirm('Tem certeza que deseja retirar esse item do carrinho?')">
+
+                        <svg fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                            width="20" height="20" viewBox="0 0 41.336 41.336"
+                            xml:space="preserve">
+                            <g>
+                                <path d="M36.335,5.668h-8.167V1.5c0-0.828-0.672-1.5-1.5-1.5h-12c-0.828,0-1.5,0.672-1.5,1.5v4.168H5.001c-1.104,0-2,0.896-2,2
+                                    s0.896,2,2,2h2.001v29.168c0,1.381,1.119,2.5,2.5,2.5h22.332c1.381,0,2.5-1.119,2.5-2.5V9.668h2.001c1.104,0,2-0.896,2-2
+                                    S37.438,5.668,36.335,5.668z M14.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5
+                                    s1.5,0.672,1.5,1.5V35.67z M22.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5
+                                    s1.5,0.672,1.5,1.5V35.67z M25.168,5.668h-9V3h9V5.668z M30.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21
+                                    c0-0.828,0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5V35.67z"/>
+                            </g>
+                        </svg>
+
+                    </a>
+                </div>
+                
+            </div>
+            <?php endforeach ?>        
+        </div>
+    
+    </div>
+    <div class="footer">
+            <div class="total">
+                <form action="">
+                    Total: R$ <?= number_format( $soma , 2, ',', '.') ?> 
+                </form>
+                <div >
+                    <button class="button">Continuar</button>
+                </div>
+            </div>            
+    </div>       
   
 </body>
 </html>
