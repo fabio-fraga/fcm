@@ -10,32 +10,37 @@ body {
 }
 
 .bemvindo_topo{
-    font-size:medium;
-    padding-top: 10px;
-    font-family: 'Montserrat', sans-serif; 
-    color:white;
-    background-color:#6a886e;
+    margin-left: 38%;
+    padding-top: 1%;
 }
 
+
 .lugar-bemvindo_topo{
-    margin-left: 41%;
+    font-size:medium;
+    color:#6a886e;
+    font-family: 'Montserrat', sans-serif; 
+   
 }
 .container{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     width: 100%;
-    background-color: #6a886e;
+    background-color:rgba(255,255, 255, 0.8);
+    border-bottom: 3px solid #fc5d02;
+    padding-top: 1%;
+    
 }
 
 .lugar_img{
     grid-column-start: 2;
     grid-column-end: 4;
+    margin-bottom: 20px;
+    width: 160px;
 }
 
 .tamanho_logo{
     width: 60%;
-    margin-top: -3%;
-    margin-left: -5%;
+    margin-left: 6%;
 }
 
 
@@ -43,17 +48,27 @@ body {
     grid-column-start: 4;
     grid-column-end: 10;
     margin-right: 7%;
+    border-top-color:#6a886e;
 }
 
 #txtBusca{
     width: 90%;
     height: 40%;
-    font-size:large;
-    border-radius: 10px;
-    border: none;
-    margin-top: 4%;
+    font-size:medium;
+    border-radius: 5px;
+    border: 2px solid #fc5d02; 
+    margin-top: 3%;
     font-family: 'Montserrat', sans-serif;
     margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    padding-left: 8px;
+}
+
+#txtBusca:focus {
+    border: 2px solid #fc5d02;
+    outline: none;
+    background-image: url();
 }
 
 .tamanho_link{
@@ -61,20 +76,21 @@ body {
     grid-column-end: 12;
     display: flex;
     flex-direction: row;
-    gap: 15%;
-    margin-left: 6%;
-    margin-top: 8%;   
+    gap: 30%;
+    margin-left: 10%;
+    margin-top: 8%;  
 }
 
 .tamanho_img {
     cursor: pointer;
+    width: 90%;
 }
 
 .itens_dropdown{
     background-color: white;
     font-family:'Montserrat', sans-serif; 
     position: absolute;
-    display: flex;
+    display: none;
     text-align: center;
     justify-content: center;
     width: 13%;
@@ -82,6 +98,12 @@ body {
     margin-left: 10%;
     box-shadow: 5px 5px 38px 0px rgba(18, 32, 17, 0.2);
     border-radius: 10px; 
+}
+
+li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #999;
+
 }
 
 .largura_button{
@@ -300,4 +322,16 @@ body {
     padding-top: 7px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.list {
+    list-style: none;
+}
+
+.lupa {
+   position: absolute;
+   margin-left: 42%;
+    margin-bottom: 20px;
+    
+    
 }
