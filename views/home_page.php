@@ -46,50 +46,51 @@ foreach ($all_places as $place) {
     <title>free-Commerce</title>
 </head>
 <body>
-    <div class="bemvindo_topo">
-        <h1>Bem-vindo(a), <?= $_SESSION["user_name"] ?>!</h1>
-    </div>
-
-    <div">
-        <button>
-            <a style="text-decoration: none;" href="../logout.php">Sair</a>
-        </button>
-    </div>
-
     <header>
-        <div class="container">
-            <div class="tamanho_pesquisa">
-                <input type="text" id="txtBusca" placeholder="Oq Você Procura?....."/>
-            </div>
-        
-            <div class="tamanho_link">
-                <a href="cart_page.php"><img src="../images/img_home/cart.png" alt="CarrinhoDeCompras"> </a>
+                <div class="bemvindo_topo">
+                    <h5 class="lugar-bemvindo_topo">Bem-vindo(a), <?= $_SESSION["user_name"] ?>!</h5>
+                </div>
 
-                <a  href="profile_page.php?user_id=<?= $_SESSION["user_id"] ?>"> <img class="tamanho_img" src="../images/img_home/perfil.png" alt="Perfil"></a>
-            
-                <a href="notification.php"> <img class="tamanho_img" src="../images/img_home/sino.png" alt="notificação"> </a>
-            </div>
-        </div>
+            <div class="container">
+                <div class="lugar_img">
+                   <img class="tamanho_logo" src="../images/img_home/logo_white.png" alt="logo">
+                </div>
 
-        <div>
-            <img class="tamanho_logo" src="../images/logo.png" alt="logo">
-        </div>
+                <div class="tamanho_pesquisa">
+                    <input type="text" id="txtBusca" placeholder="Oq Você Procura no Free-Commerce?..."/>
+                </div>
+
+                <div class="tamanho_link">
+                    <a  href="cart_page.php"> <img class="tamanho_img" src="../images/img_home/cart.png" alt="CarrinhoDeCompras"> </a>
+                    
+                    <a href="notification.php"> <img class="tamanho_img" src="../images/img_home/sino.png" alt="notificação"> </a>
+                    
+                    <div id="icon-dropdown" onclick="showDropdown()"> <img class="tamanho_img" src="../images/img_home/perfil.png" alt="Perfil"></div>
+
+                    <div class="itens_dropdown" id="itens-dropdown">  
+                        <ul>
+                            <li ><a href="profile_page.php?user_id=<?= $_SESSION["user_id"] ?>"> Perfil </a></li>
+                            <li ><a href="seller_page.php?user_id=<?= $_SESSION["user_id"] ?>"> Venda seus produtos</a></li>
+                            <li> <a href="../logout.php"> Sair da conta </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
     </header>
+        
+    <script>
 
-    <div class="itens">
-        <div class="link_itens">
-            <a href="category_page.php"> <span class="tamanho_itens"> Categorias </span> </a>
-        </div>
+        let dropdown = document.getElementById("itens-dropdown")
 
-        <div class="link_itens">
-            <a href="fresh_page.php"> <span class="tamanho_itens"> Fresquinhos </span> </a>
-        </div>
+        function showDropdown(){
+            if (dropdown.style.display == 'block'){
+                dropdown.style.display = 'none'
+            }else{
+                dropdown.style.display = 'block'
+            }
+        }
+    </script>
 
-        <div class="link_itens">
-            <a  href="seller_page.php?user_id=<?= $_SESSION["user_id"] ?>"> <span class="tamanho_itens"> Venda seus produtos </span> </a>
-        </div>
-    </div>
-    
     <div class="main-container">
         <div class="filters-container">
             <div class="filters">
