@@ -33,16 +33,15 @@ foreach ($cart as $product) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/header.css">
     <title>Meu carrinho</title>
 </head>
 <body>
-    <div class="back-button">
-    <button>
-        <a href="home_page.php">Voltar</a>
-    </button>
-    </div>
+
+    <?php include "header_page.php"?>
+
     <div class="main">
-        <div class="container">
+        <div class="main-container">
             <div class="title">
                 <div class="product-title">Produtos</div>
                 <div>Preço unitário</div>
