@@ -1,7 +1,9 @@
 <header> 
     <div class="container">
         <div class="lugar_img">
-            <img class="tamanho_logo" src="../images/logo.png" alt="logo">
+            <a href="/">
+                <img class="tamanho_logo" src="../images/logo.png" alt="logo">
+            </a>
         </div>
 
         <div class="tamanho_pesquisa">
