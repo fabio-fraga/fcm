@@ -26,19 +26,14 @@ if (isset($_SESSION["user_id"])) {
 <body>
 
     <div class="container">
-
         <div class="main"> 
             <div class="logo-container"> 
-                <div class="logo-position-2">
-                    <a href="../index.php">
-                        <img class="logo" src="../images/logo.png" alt="logo">
-                    </a>
-                </div> 
+                <a href="../index.php">
+                    <img class="logo" src="../images/logo.png" alt="logo">
+                </a>
             </div>
             
             <div class="div-form">
-                
-    
                 <form action="../register.php" method="POST">
     
                     <h1 class="name-login">Faça o seu cadastro</h1>
@@ -71,7 +66,6 @@ if (isset($_SESSION["user_id"])) {
                         <input class="input-login" type="password" name="password" minlength="8" maxlength="45" placeholder="Senha" required>    
                     </div>
                     
-            </div>
                     <div class="adress">
                         <legend class="adress-title"><strong>Endereço</strong></legend>
                         
@@ -112,27 +106,25 @@ if (isset($_SESSION["user_id"])) {
                                 <option value="TO">TO</option>
                                 <option value="DF">DF</option>
                             </select>
-                        </div>
-                        
-                    </div>
-    
+                        </div>        
+                    </div> 
+
                     <div>
                         <div class="button">
                             <button class="btn-login">Finalizar</button>
                         </div>
                     <div>
-    
+        
                     <div class="register">
                         <p class="p-register">
                             Já tem uma conta no free-Commerce?
                             <a href="login_page.php">Faça login!</a>
                         </p>
                     </div>
-                    
                 </form>
-    
+            </div>
+                     
         </div>
-
     </div>
 
     <script>

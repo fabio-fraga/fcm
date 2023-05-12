@@ -25,46 +25,38 @@ body {
     }
     
     .main {
-        width: 50%;
-        height: 80%;
-        display: flex;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
         justify-content: center;
         align-items: center;
     }
     
     .logo-container {
-        width: 150px;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-    }
-    
-    .logo-position {
         width: 100%;
-        height: 100%;
         display: flex;
+        grid-row-start: 2;
+        grid-row-end: 3;
         justify-content: center;
-        align-items: center;
-        padding-bottom: 450px;
+        align-content: center;
+        margin-bottom: 10px;
     }
-    
+
     .logo {
-        width: 100%;
-        height: 20%;
+        width: 130px;
     }
-    
+
     .div-form {
+        grid-row-start: 3;
+        grid-row-end: 4;
         width: 350px;
         background-color: rgba(255, 255, 255, 0.72);
         border-radius: 20px;
         box-shadow: 0px 4.38188px 2.92125px rgba(0, 0, 0, 0.2);
         display: flex;
         justify-content: center;
-        margin-left: 5%;
-        margin-right: 5%;
-        padding-top: 10px;
+        padding-top: 5px;
         padding-bottom: 10px;
     }
     
@@ -104,7 +96,7 @@ body {
     }
    
     .div-forgot-password {
-        width: 300px;
+        width: 270px;
         margin-top: 2%;
     }
     
@@ -163,11 +155,9 @@ body {
     
     .logo-position-2 {
         width: 100%;
-        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-bottom: 680px;
     }
     
      .adress {
@@ -207,6 +197,7 @@ body {
         color: #FF6600;
         display: flex;
         justify-content: center;
+        margin-top: 3%;
         margin-bottom: 3%;
     }
 }
@@ -225,13 +216,14 @@ body {
         width: 100%;
         height: 100vh;
         display: flex;
+        justify-items: center;
         justify-content: center;
         align-items: center;
     }
     
     .main {
         width: 50%;
-        height: 80%;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -243,16 +235,6 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-    }
-    
-    .logo-position {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 400px;
     }
     
     .logo {
@@ -366,15 +348,6 @@ body {
     }
     
     /* a partir daqui é o css do registro */
-    
-    .logo-position-2 {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 620px;
-    }
     
      .adress {
         margin-left: 7%;
