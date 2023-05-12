@@ -7,19 +7,7 @@
 
 body {
     background-image: url(../images/background.png);
-}
-
-.bemvindo_topo{
-    margin-left: 38%;
-    padding-top: 1%;
-}
-
-
-.lugar-bemvindo_topo{
-    font-size:medium;
-    color:#6a886e;
-    font-family: 'Montserrat', sans-serif; 
-   
+    margin-top: 100px;
 }
 
 .main-container {
@@ -30,12 +18,14 @@ body {
 }
 
 .filters-container {
+    position: fixed;
     grid-column-start: 1;
     grid-column-end: 4;
     padding: 10px;
 }
 
 .filters {
+    width: 100%;
     background-color: #fff;
     opacity: 0.9;
     margin-left: 25%;
@@ -69,6 +59,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 #999;
     cursor: pointer;
+    max-height: 300px;
 }
 
 .item-container {
@@ -95,7 +86,7 @@ body {
 
 .title {
     font-size: 22px;
-    color: #f60;
+    color: #fc5d02;
 }
 
 .price {
@@ -184,7 +175,7 @@ body {
 .modal-product-title {
     font-size: 40px;
     font-weight: bold;
-    color: #f60;
+    color: #fc5d02;
     margin-bottom: 2px;
 }
 
@@ -206,7 +197,11 @@ body {
 }
 
 .payment, .promotions-link {
-    color: #f60;
+    color: #fc5d02;
+}
+
+.promotions-link:hover {
+    text-decoration: underline;
 }
 
 .add-cart, .buy-now {

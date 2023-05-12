@@ -43,28 +43,12 @@ foreach ($all_places as $place) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/header.css">
     <title>free-Commerce</title>
 </head>
 <body>
     
     <?php include "header_page.php"?>
-    
-        <div class="bemvindo_topo">
-            <h5 class="lugar-bemvindo_topo">Bem-vindo(a), <?= $_SESSION["user_name"] ?>!</h5>
-        </div>
-        
-    <script>
-
-        let dropdown = document.getElementById("itens-dropdown")
-
-        function showDropdown(){
-            if (dropdown.style.display == 'block'){
-                dropdown.style.display = 'none'
-            }else{
-                dropdown.style.display = 'block'
-            }
-        }
-    </script>
 
     <div class="main-container">
         <div class="filters-container">
