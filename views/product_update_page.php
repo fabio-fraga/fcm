@@ -21,25 +21,17 @@ $product = stmt(
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/product_update.css">
+    <link rel="stylesheet" href="../css/header.css">
     <title>Atualização</title>
 </head>
 <body>
-    <div class="container1">
-       
-        <div class="tamanho_link">
-            <a  href="profile_page.php?user_id=<?= $_SESSION["user_id"] ?>"> <img class="tamanho_img" src="../images/img_home/perfil.png" alt="Perfil"></a>
-        
-            <a href="notification.php"> <img class="tamanho_img" src="../images/img_home/sino.png" alt="notificação"> </a>
-        </div>
-            
-        <div class="nome_header">
-            <h1> Atualize seus produtos </h1>
-        </div>
-    </div>   
-
-        <div>
-        <a href="products_page.php"> <img class="tamanho_logo" src="../images/logo.png" alt="logo"></a> 
-        </div>
+  
+    <?php include "header_page.php" ?>
+    
+    <div class="nome_header">
+        <h1> Atualize seus produtos </h1>
+    </div>
+    
 <div class="container2">
     <div class="product_img">
         <img src="../images/coxinha.jpg" alt="">
