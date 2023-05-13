@@ -8,6 +8,10 @@
 body {
     background-image: url(../images/background.png);
     margin-top: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .main-container {
