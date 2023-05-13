@@ -1,0 +1,143 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-image: url(../images/background.png);
+}
+
+.Container1{
+    margin-top: 10%;
+    margin-left: 2%;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    padding-bottom: 4%;
+    border: 2px solid rgb(190, 197, 190);
+    box-shadow: 5px 5px 38px 0px rgba(0, 0, 0, 72);
+    border-radius: 10px;
+}
+
+.name-top{
+    font-family:'Montserrat', sans-serif;
+    padding-left: 29%;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    font-size: medium;
+    color:#6a886e;
+    margin-left: 5%;
+}
+
+.input-grup{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5% ;
+}
+
+.grup {
+    margin-right: 50px;
+    padding-bottom: 6%;
+    margin-left: 7%;
+}
+
+.grup input{
+    border: 2px solid#6a886e;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+}
+
+.label {
+  font-family:'Montserrat', sans-serif;
+  color: #6a886e;
+  font-size: medium;
+  display: flex;
+  flex-direction: column;
+  padding-top:2%;
+  padding-bottom: 9%;
+}
+ 
+.UF{
+    margin-left: 43%;
+    margin-top: 1%;
+}
+
+.button-font{
+    color: #6a886e;
+    font-family:'Montserrat', sans-serif;
+    border: none;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.password{
+    font-family:'Montserrat', sans-serif;
+    margin-left: 13%;
+    margin-top: 5%;
+    color:#6a886e;
+    padding-bottom: 2%;
+}
+
+.password input{
+    border: 2px solid#6a886e;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.alter{
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-evenly;
+}    
+
+.container2{
+    margin-top: -46%;
+    margin-left: 65%;
+}
+
+.tamanho-name-container2{
+    font-size: large;
+}
+
+.name-container2{
+    margin-left: 13%;
+    padding-bottom: 5%;
+    padding-top: 2%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    color: #6a886e;
+}
+
+.img-item-container2 {
+    width:60%;
+    border-radius: 10%;
+    box-shadow: 5px 5px 38px 0px rgba(0, 0, 0, 72);
+    border: 2px solid rgb(190, 197, 190);
+}
+
+.alter-container2{
+    margin-left: 25%;
+    padding-top: 5%;
+}
+
+.button-font-container2{
+    color: #6a886e;
+    font-family:'Montserrat', sans-serif;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+}
+
+.button-back{
+    border:none;
+    color: #6a886e;
+    font-family:'Montserrat', sans-serif;
+    font-size: large;
+    margin-top: 25%;
+    margin-left: 25%;
+}
