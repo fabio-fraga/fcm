@@ -7,6 +7,7 @@
 
 body {
     background-image: url(../images/background.png);
+    font-family: 'Montserrat', sans-serif;
     margin-top: 100px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,7 +33,7 @@ body {
     width: 100%;
     background-color: #fff;
     opacity: 0.9;
-    margin-left: 25%;
+    margin-left: 10%;
     margin-right: 3%;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 #999;

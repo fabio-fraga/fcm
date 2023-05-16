@@ -11,8 +11,8 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     width: 100%;
+    background-image: url('../images/background.png');
     box-shadow: 0px 8px 16px 0px rgba(59, 185, 86, 0.2); 
-    background-image: url(../images/background.png);
     padding-top: 10px;
     padding-bottom: 10px;
 }
