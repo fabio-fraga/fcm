@@ -38,7 +38,7 @@
             </div>
         </div>
         <!-- Nome, nascimento, foto, apelido, descrição -->
-        <div class="public-informations" onclick="window.location=''">
+        <div class="public-informations" onclick="window.location='public_informations_page.php'">
             <div class="card-icon">
                 <svg fill="#000000" width="62" height="62" viewBox="0 -2.93 32.537 32.537" xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(-481.391 -197.473)">
