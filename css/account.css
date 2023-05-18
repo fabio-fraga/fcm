@@ -1,0 +1,57 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 100px;
+}
+
+.account-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.orders, .cards, .public-informations, .adresses, .security, .favorites {
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 #999;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 150px;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.orders, .cards {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.public-informations, .adresses {
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.security, .favorites {
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.card-information {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.information-content {
+    color: #999;
+    margin-top: 5px;
+    font-size: 14px;
+}
