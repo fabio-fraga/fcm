@@ -32,11 +32,14 @@ $product = stmt(
         <h1> Atualize seus produtos </h1>
     </div>
     
-<div class="container2">
-    <div class="product_img">
-        <img src="../images/coxinha.jpg" alt="">
+<div class="container_full">
+    <div class="container1">
+        <div class="product_img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/800px-Placeholder_view_vector.svg.png">
+        </div>
     </div>
 
+<div class="container2">
     <form action="../product_update.php" method='POST'>
         <div class="product_edit">
             <label class="product" for="product"> produto: </label>
@@ -52,6 +55,7 @@ $product = stmt(
             <button class="button">Alterar</button>
         </div>
     </form>
-</div>   
+</div> 
+</div>  
 </body>
 </html>
