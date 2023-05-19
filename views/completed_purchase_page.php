@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/completed_purchase.css">
     <script>
         setTimeout(() => {
-            document.querySelector(".msg").innerHTML = "Compra finalizada! Estamos te redicionando para a página inicial!"
+            document.querySelector(".msg").innerHTML = "Compra finalizada! Estamos te redirecionando para a página inicial!"
         }, 5000);
 
         setTimeout(() => {
