@@ -55,6 +55,6 @@ foreach ($user_products as $product) {
     );
 }
 
-header("location: views/completed_purchase_page.php");
+header("location: send_email.php");
 
 ?>
