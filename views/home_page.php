@@ -180,8 +180,8 @@ foreach ($all_places as $place) {
                                 <div class="payment">
                                     <a class="payment-link" href="">Ver formas de pagamento</a>
                                 </div>
-                                <?php if (isset($_GET["err"])): ?>
-                                    <div class="err">
+                                <?php if (isset($_GET["err"]) && $_GET["key"] == $key): ?>
+                                    <div id="err-<?= $key ?>" class="err">
                                         <?= $_GET["err"] ?>
                                     </div>
                                 <?php endif ?>
@@ -259,6 +259,7 @@ foreach ($all_places as $place) {
                 openModal(key)
             }
         })
+
     </script>
 </body>
 </html>
