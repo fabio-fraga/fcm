@@ -201,11 +201,16 @@ body {
     font-size: 50px;
 }
 
-.payment, .promotions-link {
+.payment {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.payment-link, .promotions-link {
     color: #fc5d02;
 }
 
-.promotions-link:hover {
+.payment-link:hover, .promotions-link:hover {
     text-decoration: underline;
 }
 
@@ -233,4 +238,27 @@ body {
     padding-top: 7px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.btn-diau {
+    background-color: #ff6600;
+    border-radius: 2px;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.amount {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.err {
+    color: red;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

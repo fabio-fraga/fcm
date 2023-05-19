@@ -14,11 +14,11 @@ $cart = stmt(
     ",
     execute_array: [$_SESSION["user_id"]],
     fetch_object: true
-)->data;
+);
 
 $soma = 0;
 
-foreach ($cart as $product) {
+foreach ($cart->data as $product) {
     if ($product->CDC_SELECIONADO == 1) {
         $soma += $product->PRO_VALOR * $product->CDC_QUANTIDADE;
     }
@@ -45,12 +45,21 @@ foreach ($cart as $product) {
             <div class="title">
                 <div class="product-title">Produtos</div>
                 <div>Preço unitário</div>
-                <div>quantidade</div>
+                <div>Quantidade</div>
                 <div>Preço total</div>
                 <div>Ações</div>
             </div>
+
+            <?php if ($cart->row_count == 0): ?>
+                <div class="empty-cart">
+                    <div>
+                        &#128722;
+                    </div>
+                    <h6>Carrinho vazio!</h6>
+                </div>
+            <?php endif ?>
     
-            <?php foreach($cart as $product): ?>
+            <?php foreach($cart->data as $product): ?>
     
             <div class="first-line">
                 <p>
@@ -64,7 +73,7 @@ foreach ($cart as $product) {
                         <form action="../cart_update.php" method="POST">
                             <input type="hidden" name="selected" value="<?= $product->CDC_SELECIONADO == 0 ? 1 : 0 ?>">
                             <input type="hidden" name="product_id" value="<?= $product->PRO_CODIGO ?>">
-                            <input type="checkbox" onclick="this.form.submit()" <?= $product->CDC_SELECIONADO == 1 ? "checked" : '' ?>>
+                            <input class="checkbox" type="checkbox" onclick="this.form.submit()" <?= $product->CDC_SELECIONADO == 1 ? "checked" : '' ?>>
                         </form>
                     </div>
                     <div>
@@ -107,14 +116,30 @@ foreach ($cart as $product) {
     </div>
     <div class="footer">
             <div class="total">
-                <form action="">
-                    Total: R$ <?= number_format( $soma , 2, ',', '.') ?> 
-                </form>
-                <div >
-                    <button class="button">Continuar</button>
+                Total: R$ <?= number_format( $soma , 2, ',', '.') ?> 
+                <div>
+                    <button onclick="window.location='../checkout.php'" class="button">Continuar</button>
                 </div>
             </div>            
     </div>       
-  
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let checkboxes = document.querySelectorAll(".checkbox")
+            let btn = document.querySelector(".button")
+            let counter_selected_checkboxes = 0
+
+            for (i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    counter_selected_checkboxes++
+                }
+            }
+
+            if (document.querySelector(".first-line") == null || counter_selected_checkboxes == 0) {
+                btn.setAttribute("disabled", '');
+                btn.style.cursor = "not-allowed"
+                btn.style.backgroundColor = "#bac1bb"
+            }
+        })
+    </script>
 </body>
 </html>

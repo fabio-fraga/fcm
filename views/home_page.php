@@ -163,20 +163,33 @@ foreach ($all_places as $place) {
                                 <div class="modal-seller">
                                     Vendido por <strong><?= $product->CMR_NOME ?></strong>
                                 </div>
+                                <div>
+                                    Quantidade disponível: <strong id="amount-available-<?= $key ?>" class="product_amount"><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></strong>
+                                </div>
                                 <div class="price-container">
                                     <span class="coin">R$</span>
                                     <span class="modal-price"><?= number_format($product->PRO_VALOR, 2, ',', '.') ?></span>
                                 </div>
-                                <div>
-                                    <a class="payment" href="">Ver formas de pagamento</a>
+                                <?php if ($product->PRO_QUANTIDADE_DISPONIVEL > 0): ?>
+                                    <div>
+                                        <button id="btn-amount-decrease-<?= $key ?>" onclick="changeAmount(<?= $key ?>, 'decrease')" class="btn-diau" style="cursor: pointer">-</button>
+                                        <span id="item-amount-<?= $key ?>" class="amount">1</span>
+                                        <button id="btn-amount-increase-<?= $key ?>" onclick="changeAmount(<?= $key ?>, 'increase')" class="btn-diau" style="cursor: pointer">+</button>
+                                    </div>
+                                <?php endif ?>
+                                <div class="payment">
+                                    <a class="payment-link" href="">Ver formas de pagamento</a>
+                                </div>
+                                <?php if (isset($_GET["err"])): ?>
+                                    <div class="err">
+                                        <?= $_GET["err"] ?>
+                                    </div>
+                                <?php endif ?>
+                                <div onclick="window.location='../cart_add.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.getElementById(`item-amount-<?= $key ?>`).innerHTML + '&key=<?= $key ?>'">
+                                    <button id="btn-add-cart-<?= $key ?>" class="add-cart">Adicionar ao carrinho</button>
                                 </div>
                                 <div>
-                                    <a href="../cart_add.php?product_id=<?= $product->PRO_CODIGO ?>">
-                                        <button class="add-cart">Adicionar ao carrinho</button>
-                                    </a>
-                                </div>
-                                <div>
-                                    <button class="buy-now">Comprar agora</button>
+                                    <button id="btn-buy-now-<?= $key ?>" class="buy-now" onclick="window.location='checkout_page.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.getElementById(`item-amount-<?= $key ?>`).innerHTML">Comprar agora</button>
                                 </div>
                             </div>
             
@@ -196,8 +209,7 @@ foreach ($all_places as $place) {
         </div>
     </div>
 
-    <script>
-        
+    <script>  
         function openModal(id) {
             let modal = document.getElementById(id);
             modal.style.display = "block";
@@ -209,6 +221,44 @@ foreach ($all_places as $place) {
             modal.style.display = "none";
             document.body.style.overflow = "auto";
         }
+
+        function changeAmount(itemId, action) {
+            let itemAmount = parseInt(document.getElementById(`item-amount-${itemId}`).innerHTML)
+            let itemMaximumAmount = parseInt(document.getElementById(`amount-available-${itemId}`).innerHTML)
+
+            if (itemAmount > 1 && action == "decrease") {
+                document.getElementById(`item-amount-${itemId}`).innerHTML = itemAmount - 1
+            } else if (itemAmount < itemMaximumAmount && action == "increase") {
+                document.getElementById(`item-amount-${itemId}`).innerHTML = itemAmount + 1
+            }         
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let productAmount = document.querySelectorAll(".product_amount")
+            
+            for (i = 0; i < productAmount.length; i++) {
+                if (parseInt(productAmount[i].innerHTML) == 0) {
+                    let productBuyButton = document.getElementById(`btn-buy-now-${i}`)
+                    let addCartButton = document.getElementById(`btn-add-cart-${i}`)
+
+                    productBuyButton.setAttribute("disabled", '');
+                    productBuyButton.style.cursor = "not-allowed"
+                    productBuyButton.style.backgroundColor = "#bac1bb"
+                    addCartButton.setAttribute("disabled", '');
+                    addCartButton.style.cursor = "not-allowed"
+                    addCartButton.style.backgroundColor = "#bac1bb"
+                }
+            }
+
+            let urlParams = new URLSearchParams(window.location.search);
+
+            let err = urlParams.get('err');
+            let key = urlParams.get('key');
+
+            if (err != null && key != null) {
+                openModal(key)
+            }
+        })
     </script>
 </body>
 </html>

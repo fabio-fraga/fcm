@@ -1,0 +1,135 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #EDFFD6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 100px;
+}
+
+.main-title {
+    color: #FF6600;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.address-payment {
+    grid-column-start: 2;
+    grid-column-end: 8;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.item-resume {
+    grid-column-start: 9;
+    grid-column-end: 12;
+}
+
+.item-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 #999;
+    height: 380px;
+}
+
+.data-grid {
+    margin: 50px;
+}
+
+.resume-title {
+    color: #45a351;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.product-title {
+    font-size: 35px;
+    font-weight: bold;
+    color: #fc5d02;
+    margin-bottom: 2px;
+}
+
+.seller {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.price-container {
+    margin-top: 5px;
+}
+
+.coin {
+    vertical-align: top;
+}
+
+.price {
+    font-size: 30px;
+}
+
+.total {
+    margin-top: 30px;
+    display: flex;
+}
+
+.total-title {
+    color: #fc5d02;
+    font-weight: bold;
+}
+
+.total-value {
+    width: 100%;
+    text-align: right;
+    color: #45a351;
+    font-size: 30px;
+}
+
+.buy-now {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+    height: 34px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #45a351;
+}
+
+.address-title, .payment-title {
+    margin-bottom: 10px;
+}
+
+.division-line {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+.credit-card, .boleto, .pix {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.pick-up {
+    display: flex;
+    gap: 10px;
+}
+
+.input-radio {
+    accent-color: #fc5d02;
+}
