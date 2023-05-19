@@ -16,40 +16,80 @@ body {
 .nome_header{
     color: orangered;
     font-family:'Montserrat', sans-serif; 
-    font-size:small;
+    font-size:x-small;
     margin-left: 38%;
     margin-top: 10%;
 }
 
-.container1{
-    margin-left: 25%;
-    padding-top: 3%;
-    
+.Container1{
+    margin-left: 15%;
+    margin-top: 8%;
+    display: flex;
+    flex-direction: column;
 }
 
-.container2 {
-    margin-left: 50%;
-    margin-top: -17%;
-  }
+.container2{
+    margin-left: 55%;
+    margin-top: -28%;
+    display:flex;
+    flex-direction: column;
+}
 
 .product_img img{
    width: 30%;
+   margin-top: -5%;
+   margin-left: 10%;
+   cursor: pointer;
+}
+
+.button1{
+margin-left: 12%;
+margin-top: 4%;
+width: 25%;
+height: 30px;
+border: none;
+border-radius: 5px;
+background-color: #2C7736;
+}
+
+.button1 a{
+    color: white;
 }
 
 .product_edit{
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 3%;
+ display: flex;
+ flex-direction: column;
 }
 
 .product_edit label{
     font-family: 'Montserrat', sans-serif;
+    padding-top: 5%;
+    color: #2C7736;
+    font-weight: bold;
 }
 
 .product_edit input{
-    width: 30%;
+   width: 50%;
+   height: 30px;
+ border-radius: 5px;
+ outline: none;
+    border: 1px solid #b4b4b4;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 1%;
+    cursor: pointer;
 }
 
-.button{
-    width: 30%;
+.button2{
+    width: 50%;
+    margin-top: 5%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+background-color: #2C7736;
+cursor: pointer;
+color: white;
+}
+
+button:hover {
+    background-color: #45A351;
 }
