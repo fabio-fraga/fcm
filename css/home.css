@@ -64,7 +64,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 #999;
     cursor: pointer;
-    max-height: 300px;
 }
 
 .item-container {
@@ -85,17 +84,17 @@ body {
 }
 
 .seller {
-    font-size: 15px;
+    font-size: 14px;
     color: #45A351;
 }
 
 .title {
-    font-size: 22px;
+    font-size: 16px;
     color: #fc5d02;
 }
 
 .price {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .sales {
