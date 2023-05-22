@@ -37,10 +37,12 @@ if (isset($_SESSION["user_id"])) {
                 <form action="../register.php" method="POST">
     
                     <h1 class="name-login">Faça o seu cadastro</h1>
-    
-                    <?php foreach (json_decode($_GET["register_errors"]) as $err): ?>
-                        <div><?= $err ?></div>
-                    <?php endforeach ?>
+
+                    <?php if (isset($_GET["register_errors"])): ?>
+                        <?php foreach ($_GET["register_errors"] as $err): ?>
+                            <div><?= $err ?></div>
+                        <?php endforeach ?>
+                    <?php endif ?>
                     
                     <div>
                         <input class="input-login" type="text" name="name" id="nome" placeholder="Nome completo" required>

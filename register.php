@@ -29,47 +29,48 @@ foreach ($users as $user) {
     array_push($cpfs, $user->USU_CPF);
 }
 
-$errors = [];
+$errors = '';
 
 if (in_array($cpf, $cpfs)) {
-    array_push($errors, "CPF já cadastrado!");
+    $errors .= "register_errors[]=CPF já cadastrado!&";
 }
 
 if (in_array($email, $emails)) {
-    array_push($errors, "E-mail já cadastrado!");
+    $errors .= "register_errors[]=E-mail já cadastrado!&";
 }
 
 if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-    array_push($errors, "Insira um e-mail válido!");
+    $errors .= "register_errors[]=Insira um e-mail válido!&";
 }
 
 if (strlen(filter_var($cpf, FILTER_SANITIZE_NUMBER_INT)) !== 11) {
-    array_push($errors, "O CPF precisa ter 11 dígitos numéricos!");
+    $errors .= "register_errors[]=O CPF precisa ter 11 dígitos numéricos!&";
 }
 
 if (strlen(filter_var($phone_number, FILTER_SANITIZE_NUMBER_INT)) !== 11) {
-    array_push($errors, "O número de celular precisa ter 11 dígitos numéricos!");
+    $errors .= "register_errors[]=O número de celular precisa ter 11 dígitos numéricos!&";
 }
 
 if (strlen($password) < 8 || strlen($password) > 45) {
-    array_push($errors, "A senha deve ter de 8 a 45 caracteres!");
+    $errors .= "register_errors[]=A senha deve ter de 8 a 45 caracteres!&";
 }
 
 if (has_only_spaces($_POST["complement"]) === true) {
-    array_push($errors, "O campo complemento não pode conter somente caracteres em branco!");
+    $errors .= "register_errors[]=O campo complemento não pode conter somente caracteres em branco!&";
 }
 
 $required_fields = [$name, $cpf, $email, $phone_number, $password, $street, $locality, $federative_unit];
 
 foreach ($required_fields as $required_field) {
     if (empty($required_field) === true || has_only_spaces($required_field) === true) {
-        array_push($errors, "Preencha todos os campos obrigatórios!");
+        $errors .= "register_errors[]=Preencha todos os campos obrigatórios!&";
     }
 }
 
-if (sizeof($errors) > 0) {
-    $errors = json_encode($errors);
-    header("location: views/user_register_page.php?register_errors={$errors}");
+$errors = $errors[strlen($errors) - 1] == '&' ? $errors = rtrim($errors, '&') : $errors;
+
+if (strlen($errors) > 0) {
+    header("location: views/user_register_page.php?$errors");
     exit;
 }
 
