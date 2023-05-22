@@ -120,7 +120,19 @@ foreach ($all_places as $place) {
                         </div>
                         <div class="title"><?= $product->PRO_NOME ?></div>
                         <div class="price">R$ <?= number_format($product->PRO_VALOR, 2, ',', '.') ?></div>
-                        <div class="sales">10 vendidos</div>
+                        <?php
+                            $product_sales = stmt("
+                                SELECT 
+                                COALESCE(SUM(VEN_PRO_QUANTIDADE), 0) AS PRO_SALES
+                                FROM FCM_VENDAS
+                                WHERE
+                                VEN_PRO_CODIGO = ?
+                            ",
+                            execute_array: [$product->PRO_CODIGO],
+                            fetch_object: true
+                            )->data[0]->PRO_SALES;
+                        ?>
+                        <div class="sales"><?= $product_sales == 0 ? "Nenhuma venda" : $product_sales . " vendido(s)"?></div>
                         <div class="rating">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="14" height="14" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="14" height="14" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
