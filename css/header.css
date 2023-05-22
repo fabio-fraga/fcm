@@ -61,6 +61,7 @@
     grid-column-start: 1;
     grid-column-end: 12;
     height: 100%;
+    width: 100%;
     font-size:medium;
     border: none;
     outline: none;
@@ -74,6 +75,9 @@
     grid-column-end: 13;
     margin-left: 30%;
     text-align: center;
+    background: none;
+    border: none;
+    outline: none;
 }
 
 #txtBusca:focus + .lupa {
