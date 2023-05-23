@@ -109,8 +109,8 @@ foreach ($all_places as $place) {
         </div>
 
         <div class="products-container">     
-            <?php foreach ($all_products as $key => $product): ?>
-                <div class="grid-item" onclick="openModal(<?= $key ?>)">
+            <?php foreach ($all_products as $product): ?>
+                <div class="grid-item" onclick="openModal(<?= $product->PRO_CODIGO ?>)">
                     <div class="item-container">
                         <div class="img-container">
                             <img class="img-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/800px-Placeholder_view_vector.svg.png">
@@ -144,7 +144,7 @@ foreach ($all_places as $place) {
                 </div>
 
                 <!-- Modal -->
-                <div id="<?= $key ?>" class="modal">
+                <div id="modal-<?= $product->PRO_CODIGO ?>" class="modal">
                     <div class="modal-content">
                         <div class="carousel">
                             <div class="previous">
@@ -176,7 +176,7 @@ foreach ($all_places as $place) {
                                     Vendido por <strong><?= $product->CMR_NOME ?></strong>
                                 </div>
                                 <div>
-                                    Quantidade disponível: <strong id="amount-available-<?= $key ?>" class="product_amount"><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></strong>
+                                    Quantidade disponível: <strong id="amount-available-<?= $product->PRO_CODIGO ?>" class="product_amount"><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></strong>
                                 </div>
                                 <div class="price-container">
                                     <span class="coin">R$</span>
@@ -184,24 +184,24 @@ foreach ($all_places as $place) {
                                 </div>
                                 <?php if ($product->PRO_QUANTIDADE_DISPONIVEL > 0): ?>
                                     <div>
-                                        <button id="btn-amount-decrease-<?= $key ?>" onclick="changeAmount(<?= $key ?>, 'decrease')" class="btn-diau" style="cursor: pointer">-</button>
-                                        <span id="item-amount-<?= $key ?>" class="amount">1</span>
-                                        <button id="btn-amount-increase-<?= $key ?>" onclick="changeAmount(<?= $key ?>, 'increase')" class="btn-diau" style="cursor: pointer">+</button>
+                                        <button id="btn-amount-decrease-<?= $product->PRO_CODIGO ?>" onclick="changeAmount(<?= $product->PRO_CODIGO ?>, 'decrease')" class="btn-diau" style="cursor: pointer">-</button>
+                                        <span id="item-amount-<?= $product->PRO_CODIGO ?>" class="amount">1</span>
+                                        <button id="btn-amount-increase-<?= $product->PRO_CODIGO ?>" onclick="changeAmount(<?= $product->PRO_CODIGO ?>, 'increase')" class="btn-diau" style="cursor: pointer">+</button>
                                     </div>
                                 <?php endif ?>
                                 <div class="payment">
                                     <a class="payment-link" href="">Ver formas de pagamento</a>
                                 </div>
-                                <?php if (isset($_GET["err"]) && $_GET["key"] == $key): ?>
-                                    <div id="err-<?= $key ?>" class="err">
+                                <?php if (isset($_GET["err"]) && $_GET["product_id"] == $product->PRO_CODIGO): ?>
+                                    <div id="err-<?= $product->PRO_CODIGO ?>" class="err">
                                         <?= $_GET["err"] ?>
                                     </div>
                                 <?php endif ?>
-                                <div onclick="window.location='../cart_add.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.getElementById(`item-amount-<?= $key ?>`).innerHTML + '&key=<?= $key ?>'">
-                                    <button id="btn-add-cart-<?= $key ?>" class="add-cart">Adicionar ao carrinho</button>
+                                <div onclick="window.location='../cart_add.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.querySelector(`#item-amount-<?= $product->PRO_CODIGO ?>`).innerHTML">
+                                    <button id="btn-add-cart-<?= $product->PRO_CODIGO ?>" class="add-cart">Adicionar ao carrinho</button>
                                 </div>
                                 <div>
-                                    <button id="btn-buy-now-<?= $key ?>" class="buy-now" onclick="window.location='checkout_page.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.getElementById(`item-amount-<?= $key ?>`).innerHTML">Comprar agora</button>
+                                    <button id="btn-buy-now-<?= $product->PRO_CODIGO ?>" class="buy-now" onclick="window.location='checkout_page.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.getElementById(`item-amount-<?= $product->PRO_CODIGO ?>`).innerHTML">Comprar agora</button>
                                 </div>
                             </div>
             
@@ -211,7 +211,7 @@ foreach ($all_places as $place) {
                                 </svg>
                             </div>
                             
-                            <span class="close-modal" onclick="closeModal(<?= $key ?>)">
+                            <span class="close-modal" onclick="closeModal(<?= $product->PRO_CODIGO ?>)">
                                 &#128473;
                             </span>
                         </div>
@@ -223,25 +223,25 @@ foreach ($all_places as $place) {
 
     <script>  
         function openModal(id) {
-            let modal = document.getElementById(id);
+            let modal = document.querySelector(`#modal-${id}`);
             modal.style.display = "block";
             document.body.style.overflow = "hidden";
         }
 
         function closeModal(id) {
-            let modal = document.getElementById(id);
+            let modal = document.querySelector(`#modal-${id}`);
             modal.style.display = "none";
             document.body.style.overflow = "auto";
         }
 
         function changeAmount(itemId, action) {
-            let itemAmount = parseInt(document.getElementById(`item-amount-${itemId}`).innerHTML)
-            let itemMaximumAmount = parseInt(document.getElementById(`amount-available-${itemId}`).innerHTML)
+            let itemAmount = parseInt(document.querySelector(`#item-amount-${itemId}`).innerHTML)
+            let itemMaximumAmount = parseInt(document.querySelector(`#amount-available-${itemId}`).innerHTML)
 
             if (itemAmount > 1 && action == "decrease") {
-                document.getElementById(`item-amount-${itemId}`).innerHTML = itemAmount - 1
+                document.querySelector(`#item-amount-${itemId}`).innerHTML = itemAmount - 1
             } else if (itemAmount < itemMaximumAmount && action == "increase") {
-                document.getElementById(`item-amount-${itemId}`).innerHTML = itemAmount + 1
+                document.querySelector(`#item-amount-${itemId}`).innerHTML = itemAmount + 1
             }         
         }
 
@@ -249,9 +249,10 @@ foreach ($all_places as $place) {
             let productAmount = document.querySelectorAll(".product_amount")
             
             for (i = 0; i < productAmount.length; i++) {
+                productAmountId = productAmount[i].id.split("-")[2]
                 if (parseInt(productAmount[i].innerHTML) == 0) {
-                    let productBuyButton = document.getElementById(`btn-buy-now-${i}`)
-                    let addCartButton = document.getElementById(`btn-add-cart-${i}`)
+                    let productBuyButton = document.querySelector(`#btn-buy-now-${productAmountId}`)
+                    let addCartButton = document.querySelector(`#btn-add-cart-${productAmountId}`)
 
                     productBuyButton.setAttribute("disabled", '');
                     productBuyButton.style.cursor = "not-allowed"
@@ -264,15 +265,15 @@ foreach ($all_places as $place) {
 
             let urlParams = new URLSearchParams(window.location.search);
 
-            let err = urlParams.get('err');
-            let key = urlParams.get('key');
+            let err = urlParams.get("err");
+            let productId = urlParams.get("product_id");
 
-            if (err != null && key != null) {
-                openModal(key)
+            if (err != null && productId != null) {
+                openModal(productId)
             }
         })
-
     </script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
 

@@ -7,14 +7,15 @@
         </div>
 
         <div class="tamanho_pesquisa">
-            <form class="search-form" action="../search.php" method="POST">
-                <input type="text" name="search" id="txtBusca" placeholder="O que está procurando?" onclick="document.querySelector('.lupa').removeAttribute('disabled')"/>
+            <form class="search-form" action=".php" method="GET">
+                <input type="text" name="search" id="txtBusca" placeholder="O que está procurando?" onclick="document.querySelector('.lupa').removeAttribute('disabled')" autocomplete="off"/>
                 <button class="lupa" disabled>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class="stroke-lens" d="M17 17L21 21" stroke="#fc5d02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path class="stroke-lens" d="M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#fc5d02" stroke-width="2"/>
                     </svg>
                 </button>
+                <div id="searchContent"></div>
             </form>     
         </div>
 

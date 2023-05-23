@@ -41,6 +41,7 @@
     justify-items: center;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 
 .search-form {
@@ -97,6 +98,25 @@
     margin-top: 8%;  
     position: relative;
     display: flex;
+}
+
+#searchContent {
+    position: absolute;
+    margin-top: 30px;
+    background-color: #fff;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 #999;
+}
+
+.search-item {
+    background-color: #fff;
+    padding: 6px 14px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.search-item:hover {
+    background-color: #ddd;
 }
 
 .tamanho_img {
