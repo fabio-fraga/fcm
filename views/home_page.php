@@ -4,6 +4,10 @@ session_start();
 
 require("../database/db.php");
 
+if (!isset($_SESSION["user_id"])) {
+    header("location: welcome_page.php");
+}
+
 $all_products = stmt(
     prepare: "
         SELECT * FROM FCM_PRODUTOS
@@ -193,21 +197,12 @@ foreach ($all_places as $place) {
                                         <?= $_GET["err"] ?>
                                     </div>
                                 <?php endif ?>
-                                <?php  if (isset($_SESSION["user_id"])): ?>
-                                    <div>
-                                        <button id="btn-add-cart-<?= $product->PRO_CODIGO ?>" class="add-cart" onclick="window.location='../cart_add.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.querySelector(`#item-amount-<?= $product->PRO_CODIGO ?>`).innerHTML">Adicionar ao carrinho</button>
-                                    </div>
-                                    <div>
-                                        <button id="btn-buy-now-<?= $product->PRO_CODIGO ?>" class="buy-now" onclick="window.location='checkout_page.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.getElementById(`item-amount-<?= $product->PRO_CODIGO ?>`).innerHTML">Comprar agora</button>
-                                    </div>
-                                <?php else: ?>
-                                    <div>
-                                        <button id="btn-add-cart-<?= $product->PRO_CODIGO ?>" class="add-cart" onclick="window.location='login_page.php'">Adicionar ao carrinho</button>
-                                    </div>
-                                    <div>
-                                        <button id="btn-buy-now-<?= $product->PRO_CODIGO ?>" class="buy-now" onclick="window.location='login_page.php'">Comprar agora</button>
-                                    </div>
-                                <?php endif ?>
+                                <div onclick="window.location='../cart_add.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.querySelector(`#item-amount-<?= $product->PRO_CODIGO ?>`).innerHTML">
+                                    <button id="btn-add-cart-<?= $product->PRO_CODIGO ?>" class="add-cart">Adicionar ao carrinho</button>
+                                </div>
+                                <div>
+                                    <button id="btn-buy-now-<?= $product->PRO_CODIGO ?>" class="buy-now" onclick="window.location='checkout_page.php?product_id=<?= $product->PRO_CODIGO ?>&amount=' + document.getElementById(`item-amount-<?= $product->PRO_CODIGO ?>`).innerHTML">Comprar agora</button>
+                                </div>
                             </div>
             
                             <div class="heart">

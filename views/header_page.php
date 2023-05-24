@@ -1,9 +1,3 @@
-<?php 
-
-session_start();
-
-?>
-
 <header> 
     <div class="container">
         <div class="lugar_img">
@@ -27,23 +21,19 @@ session_start();
 
         <div class="tamanho_link">
             <a  href="cart_page.php"> <img class="tamanho_img" src="../images/img_home/cart.png" alt="CarrinhoDeCompras"> </a>
-             <?php  if (isset($_SESSION["user_id"])): ?> 
-                <a href="notification.php"> <img class="tamanho_img" src="../images/img_home/sino.png" alt="notificação"> </a>
-                        
-                <div class="dropdown">
-                    <img class="tamanho_img" src="../images/img_home/perfil.png" alt="Perfil">
-                    <div class="dropdown-content">
-                        <span class="dropdown-username">Olá, <?= $_SESSION["user_name"] ?>!</span>
-                        <a class="dropdown-link" href="account_page.php">Sua conta</a>
-                        <a class="dropdown-link" href="profile_page.php?user_id=<?= $_SESSION["user_id"] ?>"> Perfil </a>
-                        <a class="dropdown-link" href="seller_page.php?user_id=<?= $_SESSION["user_id"] ?>"> Venda seus produtos</a>
-                        <a class="dropdown-link" href="../logout.php"> Sair da conta </a>
-                    </div>
+                    
+            <a href="notification.php"> <img class="tamanho_img" src="../images/img_home/sino.png" alt="notificação"> </a>
+                    
+            <div class="dropdown">
+                <img class="tamanho_img" src="../images/img_home/perfil.png" alt="Perfil">
+                <div class="dropdown-content">
+                    <span class="dropdown-username">Olá, <?= $_SESSION["user_name"] ?>!</span>
+                    <a class="dropdown-link" href="account_page.php">Sua conta</a>
+                    <a class="dropdown-link" href="profile_page.php?user_id=<?= $_SESSION["user_id"] ?>"> Perfil </a>
+                    <a class="dropdown-link" href="seller_page.php?user_id=<?= $_SESSION["user_id"] ?>"> Venda seus produtos</a>
+                    <a class="dropdown-link" href="../logout.php"> Sair da conta </a>
                 </div>
-            <?php else: ?> 
-                <a class="a-login" href="login_page.php">Entre </a>  
-                <a class="a-register" href="user_register_page.php">Cadastrar </a>  
-            <?php endif ?> 
+            </div>
         </div>
     </div>
 </header>
