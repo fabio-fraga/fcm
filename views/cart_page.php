@@ -4,6 +4,11 @@ session_start();
 
 require("../database/db.php");
 
+if (!isset($_SESSION["user_id"])) {
+    header("location: login_page.php");
+}
+
+
 $cart = stmt(
     prepare: "
         SELECT * FROM FCM_CARRINHO_DE_COMPRAS

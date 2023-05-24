@@ -58,7 +58,7 @@ if (isset($_SESSION["user_id"])) {
             </div>
 
             <nav class="bordaultimonome">
-            <a class="ultimonomemain" href="/views/user_register_page.php"> <h2> Cadastre-se </h2> </a>
+            <a class="ultimonomemain" href="home_page.php"> <h2> Veja os produtos </h2> </a>
             </nav>
         </div>
 
