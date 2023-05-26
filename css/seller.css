@@ -151,7 +151,9 @@ body {
 .name_product{
     font-size: large;
     color: orangered;
-    margin-top: 3%;
+    grid-column-start: 8;
+    grid-column-end: 12;
+    margin-top: 4%;
     margin-left: 4%;
 }
 
@@ -208,8 +210,10 @@ body {
 }
 
 .name_left2{
+    grid-column-start: 8;
+    grid-column-end: 12;
     margin-top: 4%;
-    margin-left: 1%;
+    margin-left: 2%;
 }
 
 .product_button3{
