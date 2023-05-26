@@ -37,80 +37,86 @@ $seller_products = stmt(
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.co" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/header.css">
     <title>Meus produtos</title>
 </head>
 <body>
-    <header>
-        <h1>Meus produtos</h1>
-    </header>
 
-    <p>Cadastre produtos:</p>
+    <?php include "header_page.php" ?>
 
-    <form action="../product_register.php" method="POST">
+<div class="Container_grid">
+    <div class="Container">
+        <h2 class="nameh1_form">Cadastre seus produtos</h2>
+
+    <form  class="form" action="../product_register.php" method="POST">
         <?php if (isset($_GET['err'])): ?>
             <div>
                 <?= $_GET['err'] ?>
             </div>
         <?php endif ?>
 
-        <div>
+        <div class="choice">
             <label for="">Nome do produto:</label>
             <input type="text" name="name" placeholder="Nome do produto">
         </div>
     
-        <div>
+        <div class="choice" >
             <label for="">Valor do produto:</label>
             <input type="number" name="price" placeholder="Valor do produto">
         </div>
     
-        <div>
+        <div class="choice" >
             <label for="">Quantidade do produto:</label>
             <input type="number" name="amount" placeholder="Quantidade do produto">
         </div>
 
-        <div>
+        <div class="choice" >
             <label for="">Categoria:</label>
-            <select name="category">
+            <select  class="category" name="category">
                 <?php foreach ($categories as $categorie): ?>
                     <option value="<?= $categorie->CAT_CODIGO ?>"><?= $categorie->CAT_NOME ?></option>
                 <?php endforeach ?>
             </select>
         </div>
-
-        <button>Cadastrar</button>
-
+        <button class="button">Cadastrar</button>
     </form>
+    </div>
+</div>
 
-    <?php if ($seller_products->row_count > 0): ?>
-        <h1>Seus produtos</h1>
+<div class="Container_grid2">
+    <div class="Container_2">
+        <?php if ($seller_products->row_count > 0): ?>
+            <h2 class="name_container2">Seus produtos</h2>
         
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <?php foreach ($seller_products->data as $product): ?>
-                    <tr>
-                        <td><?= $product->PRO_NOME ?></td>
-                        <td><?= $product->PRO_VALOR ?></td>
-                        <td><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
-                        <td>
-                            <a href="product_update_page.php?product_id=<?= $product->PRO_CODIGO?>">atualizar</a>
-                        </td>
-                        <td>
-                            <a style="text-decoration: none; color: red" href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')">&#128465;</a>
-                        </td>
+            <table class="tl_container2">
+                <thead>
+                    <tr class="fast">
+                        <th class="name_th">Nome</th>
+                        <th class="name_th">Valor</th>
+                        <th class="name_th">Quantidade</th>
                     </tr>
+                </thead>
+            
+                <tbody>
+                    <?php foreach ($seller_products->data as $product): ?>
+                        <tr class="oi">
+                            <td><?= $product->PRO_NOME ?></td>
+                            <td><?= $product->PRO_VALOR ?></td>
+                            <td><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
+                            <td>
+                                <a href="product_update_page.php?product_id=<?= $product->PRO_CODIGO?>">atualizar</a>
+                            </td>
+                            <td>
+                                <a style="text-decoration: none; color: red" href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')">&#128465;</a>
+                            </td>
+                        </tr>
                     <?php endforeach ?>
-                    
                 </tbody>
             </table>
-            <?php endif ?>
+        <?php endif ?>
+    </div>
+</div>
 </body>
 </html>
 
