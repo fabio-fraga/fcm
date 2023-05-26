@@ -59,6 +59,11 @@ body {
     margin-left: 5%;
 }
 
+.choice input:focus{
+    outline: none;
+    border: 1px solid #FF6600;
+}
+
 .category{
     width: 90%;
     height: 30px;
@@ -66,6 +71,11 @@ body {
     border-radius: 5px;
     margin-left: 5%;
     color: #6e6d6d;
+}
+
+.category:focus{
+    outline: none;
+    border: 1px solid #FF6600;
 }
 
 .button{

@@ -75,6 +75,11 @@ body {
     border-radius: 5px;
 }
 
+.nickname input:focus{
+    outline: none;
+    border: 1px solid #FF6600;
+}
+
 .adress {
     font-weight: 600;
     color: green;
@@ -95,7 +100,9 @@ body {
     border-radius: 5px;
 }
 
-.input-adress input{
+.input-adress:focus{
+    outline: none;
+    border: 1px solid #FF6600;
 }
 
 .state{
