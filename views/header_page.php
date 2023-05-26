@@ -7,7 +7,7 @@
         </div>
 
         <div class="tamanho_pesquisa">
-            <form class="search-form" action="../search.php" method="POST">
+            <form class="search-form" action="../search.php" method="GET">
                 <input type="text" name="search" id="txtBusca" placeholder="O que está procurando?" onclick="document.querySelector('.lupa').removeAttribute('disabled')"/>
                 <button class="lupa" disabled>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

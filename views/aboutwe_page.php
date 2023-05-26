@@ -47,7 +47,7 @@
 
     <div class="dupla2">
         <img src="../images/gif/gabipixel.gif" alt="">
-        <p class="nomepixel"> Gabriela Batista </p>
+        <p class="nomepixel"> Gabriella Batista </p>
         <img src="../images/gif/jhonpixel.gif" alt="">
         <p class="nomepixel"> John Henrick </p>
     </div>
