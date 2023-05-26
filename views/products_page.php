@@ -92,19 +92,19 @@ $seller_products = stmt(
             <table class="tl_container2">
                 <thead>
                     <tr class="fast">
-                        <th class="name_th">Nome</th>
-                        <th class="name_th">Valor</th>
-                        <th class="name_th">Quantidade</th>
+                        <th class="name_t">Nome</th>
+                        <th class="name_t">Valor</th>
+                        <th class="name_t">Quantidade</th>
                     </tr>
                 </thead>
             
                 <tbody>
                     <?php foreach ($seller_products->data as $product): ?>
                         <tr class="oi">
-                            <td><?= $product->PRO_NOME ?></td>
-                            <td><?= $product->PRO_VALOR ?></td>
-                            <td><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
-                            <td>
+                            <td class="name_td1"><?= $product->PRO_NOME ?></td>
+                            <td class="name_td2"><?= $product->PRO_VALOR ?></td>
+                            <td class="name_td3"><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
+                            <td class="update4">
                                 <a href="product_update_page.php?product_id=<?= $product->PRO_CODIGO?>">atualizar</a>
                             </td>
                             <td>

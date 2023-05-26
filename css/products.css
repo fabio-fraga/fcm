@@ -108,19 +108,43 @@ body {
 
 .name_container2{
     margin-top: 15%;
-    margin-left: 10%;
+    margin-left: 25%;
     color: orangered;
 }
 
 .tl_container2{
-    margin-top: 7%;
-    display: flex;
-    flex-direction: column;
-    background-color: #45A351;
-    background-color: rgba(255, 255, 255, 0.72);
-    text-align: left;
+   display: flex;
+   flex-direction: column;
 }
 
 .fast{
-    text-align: left;
+    display: flex;
+    gap: 25%;
+    margin-top: 5%;
+}
+
+.oi{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4%;
+}
+
+.name_td1{
+position: absolute;
+margin-right: 35%;
+}
+
+.name_td2{
+    position: absolute;
+    margin-right: 11%;
+}
+
+.name_td3{
+    position: absolute;
+    margin-left: 17%;
+}
+
+.update4{
+    margin-left: 87%;
 }
