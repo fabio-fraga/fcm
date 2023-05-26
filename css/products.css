@@ -107,20 +107,31 @@ body {
 }
 
 .name_container2{
-    margin-top: 15%;
-    margin-left: 25%;
+    margin-top: 14%;
+    margin-left: 28%;
     color: orangered;
 }
 
 .tl_container2{
-   display: flex;
-   flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    width: 120%;
+    height: 70%;
+    margin-left: -10%;
+    border-radius: 15px;
 }
 
 .fast{
     display: flex;
     gap: 25%;
+    margin-left: 10%;
     margin-top: 5%;
+    color: green;
+}
+
+.name_th{
+    margin-left: -15%;
+
 }
 
 .oi{
@@ -128,23 +139,40 @@ body {
     flex-direction: row;
     justify-content: center;
     margin-top: 4%;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
 }
 
 .name_td1{
 position: absolute;
-margin-right: 35%;
+margin-right: 30%;
 }
 
 .name_td2{
     position: absolute;
-    margin-right: 11%;
+    margin-right: 7%;
 }
 
 .name_td3{
     position: absolute;
-    margin-left: 17%;
+    margin-left: 10%;
 }
 
 .update4{
-    margin-left: 87%;
+    margin-left: 60%;
+}
+
+.update4 a{
+    color: green;
+}
+
+.trash{
+    margin-left: 7%;
+}
+
+.trash a{
+    color: red;
+    height: 20%;
+    font-weight: 600;
+    
 }

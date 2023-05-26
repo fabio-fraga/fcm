@@ -94,7 +94,7 @@ $seller_products = stmt(
                     <tr class="fast">
                         <th class="name_t">Nome</th>
                         <th class="name_t">Valor</th>
-                        <th class="name_t">Quantidade</th>
+                        <th class="name_th">Quantidade</th>
                     </tr>
                 </thead>
             
@@ -107,8 +107,8 @@ $seller_products = stmt(
                             <td class="update4">
                                 <a href="product_update_page.php?product_id=<?= $product->PRO_CODIGO?>">atualizar</a>
                             </td>
-                            <td>
-                                <a style="text-decoration: none; color: red" href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')">&#128465;</a>
+                            <td class="trash">
+                                <a href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')">&#128465;</a>
                             </td>
                         </tr>
                     <?php endforeach ?>
