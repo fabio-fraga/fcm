@@ -133,12 +133,23 @@ body {
     grid-column-end: 12;
     display: flex;
     flex-direction: column;
+    margin-top: 10%;
+    background-color: rgba(255, 255, 255, 0.72);
+    height: 35%;
+    width: 107%;
+    margin-left: -5%;
+    border-radius: 15px;
 }
 
 .name_product{
     font-size: large;
-    margin-top: 20%;
     color: orangered;
+    margin-top: 3%;
+    margin-left: 4%;
+}
+
+.name_left{
+    margin-left: 2%;
 }
 
 .left1{
@@ -153,21 +164,61 @@ body {
     margin-left: 20%;
 }
 
-.product_button{
+.name_product a{
+    color: white;
+}
+
+.product_button2{
+    grid-column-start: 8;
+    grid-column-end: 12;
+    margin-left: 18%;
     margin-top: 3%;
-    margin-left: 10%;
-    width: 70%;
+    width: 60%;
     height: 35px;
     border: none;
     border-radius: 5px;
     background-color: #2C7736;
     cursor: pointer;
-}
-
-.product_button a{
     color: white;
 }
 
-.product_button:hover{
+.product_button2 a{
+    color: white;
+}
+
+.product_button2:hover{
+    background-color: #45A351;
+}
+
+.container_form3{
+    grid-column-start: 8;
+    grid-column-end: 12;
+    margin-top: 10%;
+    background-color: rgba(255, 255, 255, 0.72);
+    margin-top: -35%;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.name_left2{
+    margin-top: 4%;
+    margin-left: 1%;
+}
+
+.product_button3{
+    grid-column-start: 8;
+    grid-column-end: 12;
+    margin-left: 18%;
+    margin-top: 5%;
+    width: 60%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2C7736;
+    cursor: pointer;
+    color: white;
+}
+
+.product_button3:hover{
     background-color: #45A351;
 }

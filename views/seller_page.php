@@ -46,7 +46,7 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
 <div class="container_top">
     <div class="container_form1">
         <h3 class="name_form1">Olá, <?= $_SESSION["user_name"] ?>!</h3>
-        <p class="name_p1"> Comece a vender seus produtos no Free-commerce</p>
+        <p class="name_p1"> Crie sua lojinha e comece a vender no Free-commerce</p>
     
         <?php if ($seller->row_count === 0): ?>
             <p class="name_p3">Complete o cadastro para que possa começar <br> <span class="name_p3_left"> a vender seus produtos! É rapidinho </span> </p>
@@ -129,21 +129,23 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
 
     <div class="container_form2">
         <div class="name_product">
-            <p> Clique aqui, você poderá facilmente visualizar e editar todos os detalhes dos produtos que você cadastrou e adicionou, proporcionando um controle completo <span class="left1"> sobre suas informações de produtos.</span></p>
-            <button class="product_button"> <a href="products_page.php">Meus produtos</a> </button>
+            <p  class="name_left"> Clique aqui, você poderá facilmente visualizar e editar todos os detalhes dos produtos que você cadastrou e adicionou, proporcionando um controle completo <span class="left1"> sobre suas informações de produtos.</span></p>
+            <button class="product_button2"> <a href="products_page.php">Meus produtos</a> </button>
         </div>
-        
-        <?php if ($seller->row_count > 0): ?>
-            <div class="name_product">
-                <p>Por favor, esteja ciente de que ao clicar  essa opção, <span class="left2"> todos os seus produtos e dados serão </span> <span class="left3"> permanentemente apagados </span> </p>
-                <button class="product_button">
-                    <a style="text-decoration: none;"
-                    href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
-                    onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')">
-                    Apagar conta de vendedor </a>
-            </button>
-        </div>
-    </div> 
+    </div>
+
+    <div class="container_form3">
+        <div class="name_product">
+            <?php if ($seller->row_count > 0): ?>
+                <p class="name_left2">Por favor, esteja ciente de que ao clicar  essa opção <span class="left2"> todos os seus produtos e dados serão </span> <span class="left3"> permanentemente apagados </span> </p>
+                    <button class="product_button3">
+                        <a
+                        href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
+                        onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')">
+                        Apagar conta de vendedor </a>
+                </button>
+        </div> 
+    </div>    
 </div>      
     <?php endif ?>
 
