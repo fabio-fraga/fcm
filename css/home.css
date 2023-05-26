@@ -261,3 +261,8 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.a-login, .a-register {
+    color: #fc5d02;
+    font-size: 15px;
+}

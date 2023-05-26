@@ -1,0 +1,86 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #EDFFD6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 100px;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}    
+
+.public-info-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.menu {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.content {
+    grid-column-start: 6;
+    grid-column-end: 11;
+}
+
+.form-public-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    color: #FF6600;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.title {
+    color: #45A351;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.field, .field-description {
+    margin-bottom: 10px;
+    font-size: 15px;
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.field {
+    height: 30px;
+}
+
+.field-description {
+    resize: none;
+}
+
+.field:focus, .field-description:focus {
+    outline: none;
+    border: 1px solid #FF6600;
+}
+
+.btn {
+    width: 33%;
+    height: 30px;
+    margin: auto;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2C7736;
+    cursor: pointer;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+    background-color: #45A351;
+}

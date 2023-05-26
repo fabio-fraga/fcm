@@ -33,22 +33,32 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/seller.css">
+    <link rel="stylesheet" href="../css/header.css">
     <title>Vendedor</title>
 </head>
 <body>
-    <h1>Olá, <?= $_SESSION["user_name"] ?>!</h1>
 
-    <?php if ($seller->row_count === 0): ?>
-        <p>Complete o cadastro para que possa começar a vender seus produtos! É rapidinho ;)</p>
-    <?php else: ?>
-        <p>Seus dados:</p>
-    <?php endif ?>
+    <?php include "header_page.php" ?>
     
-    <?php if ($seller->row_count === 0): ?>
-        <form action="../seller_register.php" method="POST">
-    <?php else: ?>
-        <form action="../seller_update.php" method="POST">
-    <?php endif ?>
+<div class="container_top">
+    <div class="container_form1">
+        <h3 class="name_form1">Olá, <?= $_SESSION["user_name"] ?>!</h3>
+        <p class="name_p1"> Comece a vender seus produtos no Free-commerce</p>
+    
+        <?php if ($seller->row_count === 0): ?>
+            <p class="name_p3">Complete o cadastro para que possa começar <br> <span class="name_p3_left"> a vender seus produtos! É rapidinho </span> </p>
+        <?php else: ?>
+            <p class="name_p2">Seus dados:</p>
+        <?php endif ?>
+    
+        <?php if ($seller->row_count === 0): ?>
+            <form action="../seller_register.php" method="POST">
+        <?php else: ?>
+            <form action="../seller_update.php" method="POST">
+        <?php endif ?>
     
         <?php if (isset($_GET['err'])): ?>
             <div>
@@ -56,18 +66,26 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
             </div>
         <?php endif ?>
         
-        <div>
-            <label for="">Negócio ou apelido:</label>
+        <div class="nickname">
+            <label for="">Nome da loja:</label>
             <input type="text" name="seller" value="<?= $seller->data[0]->CMR_NOME ?: '' ?>" placeholder="Negócio ou apelido">
         </div>
 
         <div class="adress">
-            <legend class="adress-title">Endereço</legend>
-                        
-            <input class="input-adress" id="cep" type="text" name="cep" placeholder="CEP">
-            <input class="input-adress" id="street" type="text" name="street" placeholder="Rua" value="<?= $seller->data[0]->LOG_NOME ?: '' ?>" required>
-            <input class="input-adress" id="locality" type="text" name="locality" placeholder="Localidade" value="<?= $seller->data[0]->LOC_NOME ?: '' ?>" required>
-    
+            <div class="padding_adress">
+                <label class="adress-title">Endereço:</label> 
+                <input class="input-adress" id="cep" type="text" name="cep" placeholder="CEP">
+            </div>
+
+            <div class="padding_adress">
+                <input class="input-adress" id="street" type="text" name="street" placeholder="Rua" value="<?= $seller->data[0]->LOG_NOME ?: '' ?>" required>
+            </div>
+
+            <div class="padding_adress">
+                <input class="input-adress" id="locality" type="text" name="locality" placeholder="Localidade" value="<?= $seller->data[0]->LOC_NOME ?: '' ?>" required>
+            </div>
+        </div>
+
             <div class="state">
                 <select class="select-state" id="federative_unit" name="federative_unit" required>
                     <option value="UF" <?=($seller->data[0]->UNF_NOME === 'Selecione')?'selected':''?> selected disabled>UF</option>
@@ -100,38 +118,33 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
                     <option value="DF" <?=($seller->data[0]->UNF_NOME === 'DF')?'selected':''?>>DF</option>
                 </select>
             </div>                   
-        </div>
 
         <?php if ($seller->row_count === 0): ?>
-            <button>Finalizar cadastro</button>
+            <button class="alt"> Finalizar cadastro</button>
         <?php else: ?>
-            <button>Alterar</button>
+            <button class="alt">Alterar</button>
         <?php endif ?>
-    </form>
+            </form>
+    </div> 
 
-    <div>
-        <button>    
-            <a style="text-decoration: none;" href="products_page.php">Meus produtos</a>
-        </button>
-    </div>
-
-    <div>
-        <button>    
-            <a style="text-decoration: none;" href="home_page.php">Voltar</a>
-        </button>
-    </div>
-    
-    <?php if ($seller->row_count > 0): ?>
-        <div>
-            <button>
-                <a style="text-decoration: none;"
+    <div class="container_form2">
+        <div class="name_product">
+            <p> Clique aqui, você poderá facilmente visualizar e editar todos os detalhes dos produtos que você cadastrou e adicionou, proporcionando um controle completo <span class="left1"> sobre suas informações de produtos.</span></p>
+            <button class="product_button"> <a href="products_page.php">Meus produtos</a> </button>
+        </div>
+        
+        <?php if ($seller->row_count > 0): ?>
+            <div class="name_product">
+                <p>Por favor, esteja ciente de que ao clicar  essa opção, <span class="left2"> todos os seus produtos e dados serão </span> <span class="left3"> permanentemente apagados </span> </p>
+                <button class="product_button">
+                    <a style="text-decoration: none;"
                     href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
-                    onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')"
-                >
-                        Apagar conta de vendedor
-                </a>
+                    onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')">
+                    Apagar conta de vendedor </a>
             </button>
         </div>
+    </div> 
+</div>      
     <?php endif ?>
 
     <script>

@@ -6,7 +6,6 @@ require("database/db.php");
 
 $product_id = $_GET["product_id"];
 $amount = $_GET["amount"];
-$key = $_GET["key"];
 
 $product_exist = stmt(
     prepare: "SELECT * FROM FCM_CARRINHO_DE_COMPRAS WHERE CDC_PRO_CODIGO = ? AND CDC_USU_CODIGO = ?",
@@ -14,7 +13,7 @@ $product_exist = stmt(
 )->row_count;
 
 if ($product_exist) {
-    header('location: views/home_page.php?err=Este produto já está no seu carrinho de compras!&key=' . $key);
+    header('location: views/home_page.php?err=Este produto já está no seu carrinho de compras!&product_id=' . $product_id);
     exit;
 }
 
