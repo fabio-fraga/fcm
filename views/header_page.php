@@ -13,13 +13,8 @@ session_start();
         </div>
 
         <div class="tamanho_pesquisa">
-<<<<<<< HEAD
-            <form class="search-form" action="../search.php" method="GET">
+            <form class="search-form" action="home_page.php" method="GET">
                 <input type="text" name="search" id="txtBusca" placeholder="O que está procurando?" onclick="document.querySelector('.lupa').removeAttribute('disabled')"/>
-=======
-            <form class="search-form" action=".php" method="GET">
-                <input type="text" name="search" id="txtBusca" placeholder="O que está procurando?" onclick="document.querySelector('.lupa').removeAttribute('disabled')" autocomplete="off"/>
->>>>>>> 3fada0d84ce36bb5da918b93dc989f354b8d2d71
                 <button class="lupa" disabled>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class="stroke-lens" d="M17 17L21 21" stroke="#fc5d02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

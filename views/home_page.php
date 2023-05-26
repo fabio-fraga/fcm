@@ -4,15 +4,31 @@ session_start();
 
 require("../database/db.php");
 
-$all_products = stmt(
-    prepare: "
-        SELECT * FROM FCM_PRODUTOS
-        JOIN FCM_CATEGORIAS ON CAT_CODIGO = PRO_CAT_CODIGO
-        JOIN FCM_USUARIOS ON USU_CODIGO = PRO_CMT_CODIGO
-        JOIN FCM_COMERCIOS ON CMR_USU_CODIGO = USU_CODIGO
-    ",
-    fetch_object: true
-)->data;
+$search = $_GET["search"];
+
+if (isset($_GET["search"])) {
+    $all_products = stmt(
+        prepare: "
+            SELECT * FROM FCM_PRODUTOS
+            JOIN FCM_CATEGORIAS ON CAT_CODIGO = PRO_CAT_CODIGO
+            JOIN FCM_USUARIOS ON USU_CODIGO = PRO_CMT_CODIGO
+            JOIN FCM_COMERCIOS ON CMR_USU_CODIGO = USU_CODIGO
+            WHERE UPPER (PRO_NOME) LIKE ?
+        ",
+        execute_array:[strtoupper("%$search%")],
+        fetch_object: true
+    )->data;
+} else {
+    $all_products = stmt(
+        prepare: "
+            SELECT * FROM FCM_PRODUTOS
+            JOIN FCM_CATEGORIAS ON CAT_CODIGO = PRO_CAT_CODIGO
+            JOIN FCM_USUARIOS ON USU_CODIGO = PRO_CMT_CODIGO
+            JOIN FCM_COMERCIOS ON CMR_USU_CODIGO = USU_CODIGO
+        ",
+        fetch_object: true
+    )->data;
+}
 
 $all_places = stmt(
     prepare: "SELECT * FROM FCM_LOCALIDADES",
