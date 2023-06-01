@@ -121,14 +121,14 @@ foreach ($all_places as $place) {
         </div>
 
         <div class="products-container">     
-            <?php foreach ($all_products as $product): ?>
+            <?php foreach ($all_products as $key => $product): ?>
                 <div class="grid-item" onclick="openModal(<?= $product->PRO_CODIGO ?>)">
                     <div class="item-container">
                         <div class="img-container">
                             <img class="img-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/800px-Placeholder_view_vector.svg.png">
                         </div>
-                        <div class="seller">
-                            <span><?= $product->CMR_NOME ?></span>
+                        <div class="seller" onclick="document.querySelectorAll('.grid-item')[<?= $key ?>].onclick = false">
+                            <span><a href=""><?= $product->CMR_NOME ?></a></span>
                         </div>
                         <div class="title"><?= $product->PRO_NOME ?></div>
                         <div class="price">R$ <?= number_format($product->PRO_VALOR, 2, ',', '.') ?></div>
