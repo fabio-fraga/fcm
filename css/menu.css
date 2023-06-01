@@ -1,11 +1,12 @@
 .menu-container {
-    width: 100%;
+    width: 25%;
     height: 457px;
     margin-right: 8%;
     background-image: url(../images/background.png);
     font-family: 'Montserrat', sans-serif;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 #999;
+    position: fixed;
 }
 
 .menu-item {
