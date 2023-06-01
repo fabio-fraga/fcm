@@ -128,20 +128,22 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
     </div> 
 
     <div class="container_form2">
-        <div class="name_product">
-            <p  class="name_left"> Clique aqui, você poderá facilmente visualizar e editar todos os detalhes dos produtos que você cadastrou e adicionou, proporcionando um controle completo <span class="left1"> sobre suas informações de produtos.</span></p>
-            <button class="product_button2"> <a href="products_page.php">Meus produtos</a> </button>
+        <div class="name_product1">
+            <p> Você terá acesso à sua área de produtos <br>
+             onde podera visalizar e editar informações. <br>
+            <span class="mao"> Clique aqui 👇🏻 </span> <br> </p>
+        <a href="products_page.php"> <img src="../images/img_seller/product.gif" alt=""></a> 
         </div>
         
-        <div class="name_product">
+        <div class="name_product2">
+                <p> Para apaguar sua conta de vendedor <br>
+                  <span class="mao"> Clique aqui👇🏻 </span> </p>
             <?php if ($seller->row_count > 0): ?>
-                <p class="name_left2">Por favor, esteja ciente de que ao clicar  essa opção <span class="left2"> todos os seus produtos e dados serão </span> <span class="left3"> permanentemente apagados </span> </p>
-                    <button class="product_button3">
                         <a
-                        href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
+                        href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>" 
                         onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')">
-                        Apagar conta de vendedor </a>
-                </button>
+                        <img src="../images/img_seller/lixo.gif" alt="lixo"> </a>
+            </div>
         </div> 
     </div>    
 </div>      
