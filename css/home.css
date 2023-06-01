@@ -23,6 +23,7 @@ body {
 }
 
 .filters-container {
+    width: 21.5%;
     position: fixed;
     grid-column-start: 1;
     grid-column-end: 4;
@@ -83,9 +84,13 @@ body {
     border-top-right-radius: 10px;
 }
 
-.seller {
+.seller a {
     font-size: 14px;
     color: #45A351;
+}
+
+.seller a:hover {
+    text-decoration: underline;
 }
 
 .title {
