@@ -21,14 +21,16 @@ body {
 }
 
 .container_form1{
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 6;
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.72);
-    height: 107%;
+    height: 104%;
+    width: 90%;
     border-radius: 10px;
     margin-top: 4%;
+    margin-left: 18%;
 }
 
 .name_form1{
@@ -40,7 +42,7 @@ body {
 .name_p1{
     display: flex;
     flex-wrap: nowrap;
-    margin-left: 6%;
+    margin-left: 10%;
     padding-top: 1%;
     color: green;
 }
@@ -62,7 +64,6 @@ body {
 }
 
 .nickname{
-    font-weight: 600;
     color: green;
     display: flex;
     flex-direction: column;
@@ -83,7 +84,6 @@ body {
 }
 
 .adress {
-    font-weight: 600;
     color: green;
     display: flex;
     flex-direction: column;
@@ -137,53 +137,45 @@ body {
     background-color: #45A351;
     }
 
-
 .container_form2{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.product{
     grid-column-start: 6;
     grid-column-end: 12;
+    margin-top: -66%;
 }
 
-.name_product1{
-    margin-left: 30%;
-    margin-top: 3%;
+.product img{
+    margin-left: 51%;
+    width: 26%;
 }
 
-.name_product1 img{
-background-color: rgba(255, 255, 255, 0.72);
-width: 30%;
-border-radius: 25%;
-margin-top: 3%;
-margin-left: 18%;
-}
-
-.name_product1 p{
-    color: orangered;
-    font-weight: 600;
-    font-size: large;
-    margin-top: 3%;
-}
-
-.mao {
-    margin-left: 23%;
-}
-
-.name_product2{
-    margin-left: 30%;
-    margin-top: 10%;
-}
-
-.name_product2 img{
-    background-color: rgba(255, 255, 255, 0.72);
+.product button{
+    margin-left: 50%;
     width: 30%;
-    border-radius: 25%;
-   margin-left: 18%; 
-   margin-top: 3%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2C7736;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.name_product2 p{
-    color: orangered;
-    font-weight: 600;
-    font-size: large;
-    margin-top: 3%;
-    margin-left: 3%;
+.product a{
+    color: white;
+}
+
+.product button:hover{
+    background-color: #45A351;
+}
+
+.product2{
+    margin-top: 8%;
+}
+
+.button2{
+    margin-top: -3%;
 }

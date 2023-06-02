@@ -126,27 +126,23 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
         <?php endif ?>
             </form>
     </div> 
+</div>
 
     <div class="container_form2">
-        <div class="name_product1">
-            <p> Você terá acesso à sua área de produtos <br>
-             onde podera visalizar e editar informações. <br>
-            <span class="mao"> Clique aqui 👇🏻 </span> <br> </p>
-        <a href="products_page.php"> <img src="../images/img_seller/product.gif" alt=""></a> 
-        </div>
+        <div class="product">
+            <img src="../images/img_seller/produtos.png" alt="">
+            <button> <a href="products_page.php"> Visualize seus produtos </a> </button>
         
-        <div class="name_product2">
-                <p> Para apaguar sua conta de vendedor <br>
-                  <span class="mao"> Clique aqui👇🏻 </span> </p>
-            <?php if ($seller->row_count > 0): ?>
-                        <a
+            <div class="product2">
+                <img src="../images/img_seller/lixoverde.png" alt=""> 
+                <?php if ($seller->row_count > 0): ?>
+                      <button class="button2"> <a
                         href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>" 
                         onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')">
-                        <img src="../images/img_seller/lixo.gif" alt="lixo"> </a>
+                        Apague sua conta de vendedor </a> </button>
             </div>
         </div> 
-    </div>    
-</div>      
+    </div>         
     <?php endif ?>
 
     <script>
