@@ -37,17 +37,25 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/seller.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/menu_products.css">
     <title>Vendedor</title>
 </head>
 <body>
 
     <?php include "header_page.php" ?>
+    <div class="menu">
+        <?php include("menu_products.php") ?>
+    </div>
     
 <div class="container_top">
-    <div class="container_form1">
+
+        
+    <div class="largura_desc">
         <h3 class="name_form1">Olá, <?= $_SESSION["user_name"] ?>!</h3>
         <p class="name_p1"> Crie sua lojinha e comece a vender no Free-commerce</p>
-    
+    </div>
+
+    <div class="container_form1">
         <?php if ($seller->row_count === 0): ?>
             <p class="name_p3">Complete o cadastro para que possa começar <br> <span class="name_p3_left"> a vender seus produtos! É rapidinho </span> </p>
         <?php else: ?>
@@ -125,20 +133,14 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
             <button class="alt">Alterar</button>
         <?php endif ?>
             </form>
-    </div> 
-</div>
-
-    <div class="container_form2">
-        <div class="product">
-            <img src="../images/img_seller/produtos.png" alt="">
-            <button> <a href="products_page.php"> Visualize seus produtos </a> </button>
-        
+        </div> 
+</div>  
             <div class="product2">
-                <img src="../images/img_seller/lixoverde.png" alt=""> 
+                <img class="imglixo" src="../images/img_seller/lixoverde.png" alt="">
                 <?php if ($seller->row_count > 0): ?>
-                      <button class="button2"> <a
-                        href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>" 
-                        onclick="return confirm('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')">
+                      <button class="button2"> <a 
+                        href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
+                        onclick="return confirm ( <spam class="a"> 'Essa ação não poderá ser desfeita! Clique em OK para prosseguir.' </span>)">
                         Apague sua conta de vendedor </a> </button>
             </div>
         </div> 

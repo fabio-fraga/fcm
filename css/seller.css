@@ -19,55 +19,62 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
-
+    
 .container_form1{
-    grid-column-start: 1;
-    grid-column-end: 6;
-    display: flex;
-    flex-direction: column;
+    grid-column-start: 6;
+    grid-column-end: 12;
     background-color: rgba(255, 255, 255, 0.72);
-    height: 104%;
-    width: 90%;
-    border-radius: 10px;
     margin-top: 4%;
-    margin-left: 18%;
+    margin-left: 12%;
+    border-radius: 15px;
+    width: 80%;
+    height: 100%;
+}
+
+.largura_desc{
+    grid-column-start: 6;
+    grid-column-end: 12;
 }
 
 .name_form1{
-    margin-left: 28%;
-    padding-top: 4%;
+    margin-left: 38%;
+    padding-top: 2%;
     color: orangered;
 }
 
 .name_p1{
     display: flex;
     flex-wrap: nowrap;
-    margin-left: 10%;
+    margin-left: 23%;
     padding-top: 1%;
     color: green;
 }
 
 .name_p2{
-    margin-left: 35%;
+    margin-left: 43%;
     padding-top: 4%;
     color: green;
+    font-weight: 600;
 }
 
 .name_p3{
-    padding-top: 7%;
-    margin-left: 10%;
-    color: orangered;
+    margin-left: 20%;
+    padding-top: 4%;
+    color:red;
+    font-weight: 600;
 }
 
 .name_p3_left{
-    margin-left: 9%;
+    margin-left:7%;
+    color: red;
 }
 
 .nickname{
     color: green;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
-    padding-top: 6%;
+    padding-top: 4%;
     margin-left: 8%;
 }
 
@@ -76,6 +83,9 @@ body {
     height: 30px;
     border: 1px solid #b4b4b4;
     border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    color: #6e6868;
+    padding-left: 1%;
 }
 
 .nickname input:focus{
@@ -85,9 +95,11 @@ body {
 
 .adress {
     color: green;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     margin-left: 8%;
+    margin-top: -3%;
 }
 
 .padding_adress{
@@ -100,6 +112,9 @@ body {
     height: 30px;
     border: 1px solid #b4b4b4;
     border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    color: #6e6868;
+    padding-left: 1%;
 }
 
 .input-adress:focus{
@@ -111,9 +126,11 @@ body {
     margin-top: 6%;
     margin-left: 26%;
     gap: 10%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .select-state{
+    color: green;
     margin-left: 75%;
     height: 30px;
     border: 1px solid #b4b4b4;
@@ -122,7 +139,7 @@ body {
 
 .alt{
     position: absolute;
-    margin-left: 3%;
+    margin-left: 5%;
     margin-top: -2%;
     width: 22%;
     height: 35px;
@@ -131,31 +148,27 @@ body {
     background-color: #2C7736;
     cursor: pointer;
     color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .alt:hover {
     background-color: #45A351;
     }
 
-.container_form2{
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+.product2{
+    margin-left: 20%;
+    margin-top: -8%;
 }
 
-.product{
-    grid-column-start: 6;
-    grid-column-end: 12;
-    margin-top: -66%;
+.imglixo{
+    width: 7%;
 }
 
-.product img{
-    margin-left: 51%;
-    width: 26%;
-}
-
-.product button{
-    margin-left: 50%;
-    width: 30%;
+.button2{
+    position: absolute;
+    margin-top: 6%;
+    margin-left: -12%;
+    width: 20%;
     height: 35px;
     border: none;
     border-radius: 5px;
@@ -164,18 +177,14 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.product a{
+.button2 a{
     color: white;
 }
 
-.product button:hover{
-    background-color: #45A351;
+.button2:hover{
+   background-color:  #45A351;
 }
 
-.product2{
-    margin-top: 8%;
-}
-
-.button2{
-    margin-top: -3%;
+span{
+    color: #2C7736;
 }

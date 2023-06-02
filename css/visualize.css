@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-image: url(../images/background.png);
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+.Container_grid2{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.Container_2{
+    grid-column-start: 2;
+    grid-column-end: 12;
+    margin-top: 5%;
+   
+}
+
+.name_container2{
+text-align: center;
+padding-bottom: 4%;
+margin-left: 47%;
+color: green;
+font-family: 'Montserrat', sans-serif;
+}
+
+.table, th, td{
+    border: 1px solid rgb(196, 190, 190);
+    border-collapse: collapse;
+    padding: 5px 2px 5px 5px;
+    border-radius: 5px;
+}
+
+.tl_container2{
+    width: 70%;
+    margin-left: 38%;
+    margin-top: -2%;
+}
+
+.cont_left{
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.72);
+}
+
+.cont_center{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.72);
+}
+
+.cont_center a{
+    color: rgb(99, 109, 109);
+    
+}
+
+table th{
+    color: green;
+}
+
+table td{
+    color: rgb(99, 109, 109);
+    font-weight: 600;
+}
+
+.lixin{
+    width: 50%;
+    margin-left: 15%;
+}
+
+.tamanho_lixin{
+    background-color: rgba(255, 255, 255, 0.72);
+    width: 5%;
+}
