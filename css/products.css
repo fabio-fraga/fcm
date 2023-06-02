@@ -12,7 +12,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed; 
 }
 
 .Container_grid{
@@ -21,22 +21,22 @@ body {
 }
 
 .Container{
-    grid-column-start: 2;
-    grid-column-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 10;
     background-color: rgba(255, 255, 255, 0.72);
-    margin-top: 10%;
+    margin-top: 5%;
     border-radius: 15px;
     height: 95%;
 }
 
 .nameh1_form{
   margin-top: 5%;
-  margin-left: 20%;
+  margin-left: 30%;
   color: orangered;
 }
 
 .form{
-    margin-top: 7%;
+    margin-top: 5%;
 }
 
 .choice{
@@ -79,7 +79,6 @@ body {
 }
 
 .button{
-    margin-top: 1%;
     margin-left: 19%;
     width: 60%;
     height: 35px;
@@ -100,79 +99,58 @@ body {
 }
 
 .Container_2{
-    grid-column-start: 6;
+    grid-column-start: 2;
     grid-column-end: 12;
-    margin-top: -65%;
-    margin-left: 20%;
+    margin-top: 7%;
+   
 }
 
 .name_container2{
-    margin-top: 14%;
-    margin-left: 28%;
-    color: orangered;
+text-align: center;
+padding-bottom: 2%;
+color: green;
+}
+
+.table, th, td{
+    border: 1px solid rgb(196, 190, 190);
+    border-collapse: collapse;
+    padding: 5px 2px 5px 5px;
+    border-radius: 5px;
 }
 
 .tl_container2{
-    display: flex;
-    flex-direction: column;
-    width: 120%;
-    height: 70%;
-    margin-left: -10%;
-    border-radius: 15px;
+    width: 100%;
 }
 
-.fast{
-    display: flex;
-    gap: 25%;
-    margin-left: 10%;
-    margin-top: 5%;
+.cont_left{
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.72);
+}
+
+.cont_center{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.72);
+}
+
+.cont_center a{
+    color: rgb(99, 109, 109);
+}
+
+table th{
     color: green;
 }
 
-.name_th{
-    margin-left: -15%;
-
-}
-
-.oi{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 4%;
-    color: rgb(0, 0, 0);
+table td{
+    color: rgb(99, 109, 109);
     font-weight: 600;
 }
 
-.name_td1{
-position: absolute;
-margin-right: 30%;
+.lixin{
+    width: 50%;
+    margin-left: 15%;
 }
 
-.name_td2{
-    position: absolute;
-    margin-right: 7%;
-}
-
-.name_td3{
-    position: absolute;
-    margin-left: 10%;
-}
-
-.update4{
-    margin-left: 60%;
-}
-
-.update4 a{
-    color: green;
-}
-
-.trash{
-    margin-left: 7%;
-}
-
-.trash a{
-    color: red;
-    height: 20%;
-    font-weight: 600;
-    
+.tamanho_lixin{
+    background-color: rgba(255, 255, 255, 0.72);
+    width: 5%;
 }

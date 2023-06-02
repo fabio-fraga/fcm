@@ -87,33 +87,37 @@ $seller_products = stmt(
 <div class="Container_grid2">
     <div class="Container_2">
         <?php if ($seller_products->row_count > 0): ?>
-            <h2 class="name_container2">Seus produtos</h2>
-        
+            <h2 class="name_container2">Seus produtos</h2
+            >
             <table class="tl_container2">
                 <thead>
-                    <tr class="fast">
-                        <th class="name_t">Nome</th>
-                        <th class="name_t">Valor</th>
-                        <th class="name_th">Quantidade</th>
+                    <tr>
+                        <th class="cont_left">Nome do produto</th>
+                        <th class="cont_center">Valor</th>
+                        <th class="cont_center" >Quantidade</th>
+                        <th class="cont_center" > Editar </th>
+                        <th class="cont_center" > Deletar </th>
                     </tr>
                 </thead>
             
                 <tbody>
                     <?php foreach ($seller_products->data as $product): ?>
-                        <tr class="oi">
-                            <td class="name_td1"><?= $product->PRO_NOME ?></td>
-                            <td class="name_td2"><?= $product->PRO_VALOR ?></td>
-                            <td class="name_td3"><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
-                            <td class="update4">
-                                <a href="product_update_page.php?product_id=<?= $product->PRO_CODIGO?>">atualizar</a>
+                        <tr>
+                            <td class="cont_left"><?= $product->PRO_NOME ?></td>
+                            <td class="cont_center"><?= $product->PRO_VALOR ?></td>
+                            <td class="cont_center"><?= $product->PRO_QUANTIDADE_DISPONIVEL ?></td>
+                            
+                            <td class="cont_center">
+                                <a href="product_update_page.php?product_id=<?= $product->PRO_CODIGO?>">atualizar</a> 
                             </td>
-                            <td class="trash">
-                                <a href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')">&#128465;</a>
+
+                            <td class="tamanho_lixin">
+                                <a href="../product_delete.php?product_id=<?= $product->PRO_CODIGO ?>" onclick="return confirm('Você tem certeza que deseja excluir este produto?')"> <img class="lixin" src="../images/img_seller/lixoverde.png" alt=""></a> 
                             </td>
                         </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
         <?php endif ?>
     </div>
 </div>
