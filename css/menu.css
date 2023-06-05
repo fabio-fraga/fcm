@@ -2,7 +2,7 @@
     width: 25%;
     height: 457px;
     margin-right: 8%;
-    background-image: url(../images/background.png);
+    background-color: rgba(255, 255, 255, 0.72);
     font-family: 'Montserrat', sans-serif;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 #999;

@@ -1,10 +1,12 @@
 body {
+    font-family: "Montserrat", sans-serif;
+    background-image: url(../images/background.png);
     font-family: 'Montserrat', sans-serif;
-    background-color: #EDFFD6;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     margin-top: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; 
 }
 
 input[type=number]::-webkit-inner-spin-button { 
@@ -142,6 +144,15 @@ input[type=number]::-webkit-inner-spin-button {
 
 .btn-card {
     cursor: pointer;
+    width: 20px;
+}
+
+.img-btncard-delete {
+    width: 30px;
+    margin-top: -1px;
+}
+.green{
+    color: green;
 }
 
 .edit, .save {

@@ -23,7 +23,7 @@ body {
 .Container{
     grid-column-start: 4;
     grid-column-end: 10;
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: white;
     margin-top: 5%;
     border-radius: 15px;
     height: 95%;
@@ -125,12 +125,12 @@ color: green;
 
 .cont_left{
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: white;
 }
 
 .cont_center{
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: white;
 }
 
 .cont_center a{

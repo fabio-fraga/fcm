@@ -43,9 +43,7 @@ body {
 }
 
 .name_p1{
-    display: flex;
-    flex-wrap: nowrap;
-    margin-left: 23%;
+    text-align: center;
     padding-top: 1%;
     color: green;
 }
@@ -160,15 +158,10 @@ body {
     margin-top: -8%;
 }
 
-.imglixo{
-    width: 7%;
-}
-
 .button2{
-    position: absolute;
-    margin-top: 6%;
-    margin-left: -12%;
-    width: 20%;
+    margin-top: 8%;
+    margin-left: -9%;
+    width: 25%;
     height: 35px;
     border: none;
     border-radius: 5px;
@@ -182,7 +175,7 @@ body {
 }
 
 .button2:hover{
-   background-color:  #45A351;
+   background-color:  red;
 }
 
 span{

@@ -136,12 +136,11 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
         </div> 
 </div>  
             <div class="product2">
-                <img class="imglixo" src="../images/img_seller/lixoverde.png" alt="">
                 <?php if ($seller->row_count > 0): ?>
                       <button class="button2"> <a 
                         href="../seller_delete.php?user_id=<?= $_SESSION["user_id"] ?>"
-                        onclick="return confirm ( <spam class="a"> 'Essa ação não poderá ser desfeita! Clique em OK para prosseguir.' </span>)">
-                        Apague sua conta de vendedor </a> </button>
+                        onclick="return confirm ('Essa ação não poderá ser desfeita! Clique em OK para prosseguir.')">
+                        Apague sua conta de vendedor</a> </button>
             </div>
         </div> 
     </div>         
