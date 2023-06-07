@@ -2,10 +2,11 @@
 
 require("../database/db.php");
 
-$id = $_GET["id"];
+$search = $_GET["search"];
 
 $data = stmt(
-    prepare: "SELECT * FROM FCM_PRODUTOS",
+    prepare: "SELECT * FROM FCM_PRODUTOS WHERE PRO_NOME LIKE ?",
+    execute_array: ["%$search%"],
     fetch_object: true
 )->data;
 
