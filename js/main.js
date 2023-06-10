@@ -14,10 +14,10 @@ document.addEventListener("click", (e) => {
 async function getProducts(e) {    
     if (e.target.value.length > 2) {
         let response = await fetch("../api/products.php?search=" + e.target.value).then((res) => res.json())
-
+        
+        cleanSearch()
+        
         if (response.length > 0) {
-            cleanSearch()
-
             for (let i in response) {
                 let p = document.createElement("p")
                 p.innerHTML = response[i].PRO_NOME + "  |  R$ " + response[i].PRO_VALOR
