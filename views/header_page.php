@@ -2,6 +2,14 @@
 
 session_start();
 
+require_once("../database/db.php");
+
+$items_in_cart = stmt(
+    prepare: "SELECT COUNT(*) AS CDC_ITEMS_IN_CART FROM FCM_CARRINHO_DE_COMPRAS WHERE CDC_USU_CODIGO = ?",
+    execute_array: [$_SESSION["user_id"]],
+    fetch_object: true
+)->data[0]->CDC_ITEMS_IN_CART;
+
 ?>
 
 <header> 
@@ -26,7 +34,12 @@ session_start();
         </div>
 
         <div class="tamanho_link">
-            <a  href="cart_page.php"> <img class="tamanho_img" src="../images/img_home/cart.png" alt="CarrinhoDeCompras"> </a>
+            <div class="cart">
+                <a href="cart_page.php"> 
+                    <img class="tamanho_img" src="../images/img_home/cart.png" alt="CarrinhoDeCompras">
+                    <p class="items-in-cart"><?= $items_in_cart ?></p>
+                </a>
+            </div>
              <?php  if (isset($_SESSION["user_id"])): ?> 
                 <a href="notification.php"> <img class="tamanho_img" src="../images/img_home/sino.png" alt="notificação"> </a>
                         

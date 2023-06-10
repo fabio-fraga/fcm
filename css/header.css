@@ -93,11 +93,12 @@
 .tamanho_link{
     grid-column-start: 10;
     grid-column-end: 12;
-    gap: 15%;
-    margin-left: 10%;
+    margin-left: 8%;
+    margin-right: 8%;
     margin-top: 8%;  
     position: relative;
     display: flex;
+    justify-content: space-between;
 }
 
 #searchContent {
@@ -154,4 +155,26 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.cart {
+    position: relative;
+    display: block;
+    margin-right: 10px;
+}
+
+.items-in-cart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fc5d02;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.7;
 }
