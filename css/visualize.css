@@ -23,39 +23,76 @@ body {
 .Container_2{
     grid-column-start: 2;
     grid-column-end: 12;
-    margin-top: 5%;
-   
+    margin-top: 4%;
+    margin-left: -7%;
 }
 
 .name_container2{
-text-align: center;
-padding-bottom: 4%;
-margin-left: 47%;
-color: green;
-font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-top: -2%;
+    margin-left: 37%;
+    color:  #FF6600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.namee_container2{
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 4%;
+    margin-left: 37%;
+    font-weight: 600;
+    color:  green;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .table, th, td{
     border: 1px solid rgb(196, 190, 190);
-    border-collapse: collapse;
-    padding: 5px 2px 5px 5px;
-    border-radius: 5px;
+    border-radius: 5px; 
+}
+
+th, td{
+}
+
+th{
+    height: 35px;
+    background-color: rgb(62, 110, 62);
 }
 
 .tl_container2{
-    width: 70%;
     margin-left: 38%;
     margin-top: -2%;
 }
 
+.cont_top{
+color: white;
+font-weight: 100;
+font-size: medium;
+}
+
 .cont_left{
-    text-align: left;
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: white;
+}
+
+input{
+    border: none;
+    width:200px;
+    height: 30px;
+    color: rgb(76, 80, 80);
+    font-size: small;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid #FF6600;
+    border-radius: 5px;
 }
 
 .cont_center{
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.72);
+   background-color: white;
 }
 
 .cont_center a{
@@ -68,16 +105,22 @@ table th{
 }
 
 table td{
-    color: rgb(99, 109, 109);
+    color: rgb(84, 87, 87);
     font-weight: 600;
 }
 
-.lixin{
+.green{
+    color: green;
+    width: 45%;
+    margin-left: 23px;
+}
+
+.mine-trash{
     width: 50%;
-    margin-left: 15%;
+    margin-left: 15px;
 }
 
 .tamanho_lixin{
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: white;
     width: 5%;
 }

@@ -1,0 +1,33 @@
+.menu-container {
+    width: 25%;
+    height: 200px;
+    margin-left: 6%;
+    margin-top: 7%;
+    background-color: rgba(255, 255, 255, 0.72);
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 #999;
+    position: fixed;
+}
+
+.menu-item {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin-top: 22px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-icon {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.menu-title {
+    grid-column-start: 4;
+    grid-column-end: 12;
+    font-size: 15px;
+    font-weight: bold;
+    color: #FF6600;
+}

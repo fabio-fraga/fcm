@@ -165,7 +165,7 @@ body {
     height: 35px;
     border: none;
     border-radius: 5px;
-    background-color: #2C7736;
+    background-color: rgb(202, 1, 1);
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
 }
