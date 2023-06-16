@@ -146,11 +146,38 @@ foreach ($all_places as $place) {
                         ?>
                         <div class="sales"><?= $product_sales == 0 ? "Nenhuma venda" : $product_sales . " vendido(s)"?></div>
                         <div class="rating">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="14" height="14" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="14" height="14" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="14" height="14" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="14" height="14" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="14" height="14" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+
+                            <?php
+                                    
+                            $product_avg = stmt(
+                                        prepare: "
+                                    SELECT AVG(AVA_NOTA) AS PRO_MEDIA_DE_NOTAS
+                                    FROM FCM_AVALIACOES_DOS_PRODUTOS
+                                    WHERE AVA_PRO_CODIGO = ?
+                                        ",
+                                execute_array: [$product->PRO_CODIGO],
+                                fetch_object: true
+                            )->data[0]->PRO_MEDIA_DE_NOTAS;
+                                    
+                            $evaluations_amount = stmt(
+                                prepare: "
+                                    SELECT COUNT(*) AS PRO_QUANTIDADE_DE_AVALIACOES
+                                    FROM FCM_AVALIACOES_DOS_PRODUTOS
+                                    WHERE AVA_PRO_CODIGO = ?
+                                ",
+                                execute_array: [$product->PRO_CODIGO],
+                                fetch_object: true
+                            )->data[0]->PRO_QUANTIDADE_DE_AVALIACOES;
+                                                                        
+                            ?>
+
+                            <?php for($i = 1; $i <= 5; $i++): ?>
+                                <?php if($i <= $product_avg): ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                                <?php else: ?>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                                <?php endif ?>
+                            <?php endfor ?>
                         </div>
                     </div>
                 </div>
@@ -177,13 +204,21 @@ foreach ($all_places as $place) {
             
                             <div class="data-grid">
                                 <div class="modal-product-title"><?= $product->PRO_NOME ?></div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                                <div class="evaluations">
+                                    <div>
+                                        <?php for($i = 1; $i <= 5; $i++): ?>
+                                            <?php if($i <= $product_avg): ?>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                                            <?php else: ?>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                                            <?php endif ?>
+                                        <?php endfor ?>
+                                    </div>
+                                    <span class="reviews-average"><?= number_format($product_avg, 1, '.') ?></span>
+                                    <span class="reviews-amount">(<?= $evaluations_amount ?>)</span>
+                                    <a class="evaluations-link" href="product_page.php?product_id=<?= $product->PRO_CODIGO ?>">Ver avaliações</a>
                                 </div>
+                                <div class="sales" style="color: black;"><?= $product_sales == 0 ? "Nenhuma venda" : $product_sales . " vendido(s)"?></div>
                                 <div class="modal-seller">
                                     Vendido por <strong><?= $product->CMR_NOME ?></strong>
                                 </div>

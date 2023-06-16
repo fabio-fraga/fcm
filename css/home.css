@@ -205,16 +205,22 @@ body {
     font-size: 50px;
 }
 
+.evaluations {
+    display: flex;
+    gap: 5px;
+    vertical-align: center;
+}
+
 .payment {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.payment-link, .promotions-link {
+.payment-link, .promotions-link, .evaluations-link {
     color: #fc5d02;
 }
 
-.payment-link:hover, .promotions-link:hover {
+.payment-link:hover, .promotions-link:hover, .evaluations-link:hover {
     text-decoration: underline;
 }
 

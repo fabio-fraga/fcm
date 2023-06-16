@@ -22,7 +22,7 @@ async function getProducts(e) {
                 let p = document.createElement("p")
                 p.innerHTML = response[i].PRO_NOME + "  |  R$ " + response[i].PRO_VALOR
                 p.classList.add("search-item")
-                p.onclick = () => openModal(response[i].PRO_CODIGO)
+                p.onclick = () => window.location = "product_page.php?product_id=" + response[i].PRO_CODIGO
                 searchContent.appendChild(p)
             }
         } else {
