@@ -190,14 +190,6 @@ $evaluations_amount = stmt(
 
         let editMode = false
 
-        setInterval(() => {
-            if (editMode === false) {
-                getEvaluations(productId)
-            } else {
-                clearInterval(this)
-            }
-        }, 10000)
-
         let starsContainer = document.querySelector(".stars")
         let inputRating = document.querySelector(".rating-range")
         
@@ -270,9 +262,7 @@ $evaluations_amount = stmt(
 
         async function getEvaluations(productId) {
             let response = await fetch(`../api/evaluations.php?product_id=${productId}`).then(res => res.json())
-            
-            console.log(response)
-            
+                        
             let reviewsAmount = document.querySelector(".reviews-amount")
             reviewsAmount.innerHTML = `(${response.evaluations.length})`
 
