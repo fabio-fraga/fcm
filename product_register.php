@@ -3,7 +3,6 @@
 session_start();
 
 require("database/db.php");
-require("functions/functions.php");
 
 $name = $_POST["name"];
 $price = $_POST["price"];
@@ -18,6 +17,33 @@ stmt(
     execute_array: [$name, $price, $amount, $category, $_SESSION["user_id"]]
 );
 
-header("location: views/products_page.php");
+$product_id = $dbh->lastInsertId();
+
+for ($i = 0; $i < sizeof($_POST["images"]); $i++) {
+    list(, $img) = explode(';', $_POST["images"][$i]);
+    
+    list(, $img) = explode(',', $img);
+    
+    $img = base64_decode($img);
+
+    $img_name = (time() + $i) . ".jpg";
+
+    if (!file_exists("images/products")) {
+        mkdir("images/products");
+    }
+
+    $path = "images/products/" . $img_name;
+
+    file_put_contents($path, $img);
+
+    stmt(
+        prepare: "
+            INSERT INTO FCM_PRODUTOS_FOTOS
+            (PFT_CAMINHO, PFT_PRO_CODIGO)
+            VALUES(?, ?)
+        ",
+        execute_array: [$path, $product_id]
+    );
+}
 
 ?>
