@@ -26,13 +26,22 @@ $product_sales = stmt(
     fetch_object: true
 )->data[0]->PRO_SALES;
 
+$product_images = stmt(
+    prepare: "
+        SELECT * FROM FCM_PRODUTOS_FOTOS
+        WHERE PFT_PRO_CODIGO = ?
+    ",
+    execute_array: [$_GET["product_id"]],
+    fetch_object: true
+)->data;
+
 $product_avg = stmt(
     prepare: "
         SELECT AVG(AVA_NOTA) AS PRO_MEDIA_DE_NOTAS
         FROM FCM_AVALIACOES_DOS_PRODUTOS
         WHERE AVA_PRO_CODIGO = ?
     ",
-    execute_array: [$_GET["product_id"]],
+    execute_array: [$product->PRO_CODIGO],
     fetch_object: true
 )->data[0]->PRO_MEDIA_DE_NOTAS;
 
@@ -66,15 +75,17 @@ $evaluations_amount = stmt(
         <div class="main-container">
             <div class="product-container">
                 <div class="carousel">
-                    <div class="previous">
+                    <div class="previous" onclick="changeImg('preview')">
                         <svg fill="#45a351" width="36" height="36" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
                             <path d="m1394.006 0 92.299 92.168-867.636 867.767 867.636 867.636-92.299 92.429-959.935-960.065z" fill-rule="evenodd"/>
                         </svg>
                     </div>
                     <div class="imgs-product">
-                        <img class="item-carousel" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/800px-Placeholder_view_vector.svg.png">
+                        <?php foreach($product_images as $image): ?>
+                            <img class="item-carousel" src="<?= "../" . $image->PFT_CAMINHO ?>">
+                        <?php endforeach ?>
                     </div>
-                    <div class="next">
+                    <div class="next" onclick="changeImg('next')">
                         <svg fill="#45a351" width="36" height="36" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
                             <path d="M526.299 0 434 92.168l867.636 867.767L434 1827.57l92.299 92.43 959.935-960.065z" fill-rule="evenodd"/>
                         </svg>
@@ -262,28 +273,29 @@ $evaluations_amount = stmt(
 
         async function getEvaluations(productId) {
             let response = await fetch(`../api/evaluations.php?product_id=${productId}`).then(res => res.json())
-                        
+            
             let reviewsAmount = document.querySelector(".reviews-amount")
             reviewsAmount.innerHTML = `(${response.evaluations.length})`
 
             let reviewsAverage = document.querySelector(".reviews-average")
-            reviewsAverage.innerHTML = response.product_avg.toFixed(1)
+            reviewsAverage.innerHTML = response.product_avg != null ? response.product_avg.toFixed(1) : parseFloat(0).toFixed(1)
 
-            let evaluationDate = document.querySelector(".evaluations").children[0]
+            let evaluationData = document.querySelector(".evaluations").children[0]
 
-            while (evaluationDate.firstChild) {
-                evaluationDate.removeChild(evaluationDate.firstChild)
+            while (evaluationData.firstChild) {
+                evaluationData.removeChild(evaluationData.firstChild)
             }
 
             for (let i = 1; i <= 5; i++) {
                 if (i <= response.product_avg) {
-                    evaluationDate.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>`
+                    evaluationData.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>`
                 } else {
-                    evaluationDate.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>`
+                    evaluationData.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#ffca0f" width="18" height="18" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>`
                 }
             }
 
-            if (response.user_bought == true) {
+
+            if (response.user_bought === true) {
                 if (response.user_evaluated === false) {
                     evaluationAddContainer.style.display = "block"
                 } else {
@@ -332,10 +344,10 @@ $evaluations_amount = stmt(
                 authorName.classList.add("author-name")
                 authorName.innerHTML = response.evaluations[i].USU_NOME
 
-                let evaluationDate = document.createElement("p")
-                evaluationDate.classList.add("evaluation-date")
+                let evaluationData = document.createElement("p")
+                evaluationData.classList.add("evaluation-date")
                 let date = response.evaluations[i].AVA_DATA.split(' ')
-                evaluationDate.innerHTML = `Em ${date[0].replaceAll('-', '/')} às ${date[1]}`
+                evaluationData.innerHTML = `Em ${date[0].replaceAll('-', '/')} às ${date[1]}`
 
                 let productStars = document.createElement("div")
                 productStars.classList.add("product-stars")
@@ -349,7 +361,7 @@ $evaluations_amount = stmt(
                 comment.innerHTML = response.evaluations[i].AVA_COMENTARIO
 
                 evaluation.appendChild(authorName)
-                evaluation.appendChild(evaluationDate)
+                evaluation.appendChild(evaluationData)
                 evaluation.appendChild(productStars)
                 evaluation.appendChild(comment)
 
@@ -447,6 +459,37 @@ $evaluations_amount = stmt(
             starsContainer.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" fill="#ffca0f" stroke="#ffca0f" width="24" height="24" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>`
 
             evaluationAddContainer.style.display = "block"
+        }
+
+        function changeImg(direction) {
+            let item = document.querySelectorAll(".item-carousel")
+
+            let index = 0
+
+            for (let i = 0; i < item.length; i++) {
+                if (item[i].style.display != "none") {
+                    index = i
+                    break
+                }
+            }
+            
+            if (direction == "preview") {
+                if (index == 0) {
+                    item[item.length - 1].style.display = "block"
+                    item[index].style.display = "none"
+                } else {
+                    item[index - 1].style.display = "block"
+                    item[index].style.display = "none"
+                }
+            } else {
+                if (index == item.length - 1) {
+                    item[0].style.display = "block"
+                    item[index].style.display = "none"
+                } else {
+                    item[index + 1].style.display = "block"
+                    item[index].style.display = "none"
+                }
+            }
         }
     </script>
 </body>
