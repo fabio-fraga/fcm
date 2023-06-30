@@ -106,6 +106,7 @@ $addresses = stmt(
             <?php foreach ($addresses->data as $key => $address): ?>
                 <div id="address-<?= $address->LOG_CODIGO ?>" class="address-card">
                     <form id="form-update-<?= $key ?>" action="../address_update.php" method="POST">
+                        <input type="hidden" value="<?= $address->LDU_LOG_CODIGO ?>">
                         <div class="btns">
                             <span class="btn-card edit" onclick="updateAddress(<?= $address->LOG_CODIGO ?>, <?= $key ?>, 'update')"><span class="green">&#9998;</span></span>
                             <span class="btn-card delete" onclick="window.location='../address_delete.php?street_id=<?= $address->LOG_CODIGO ?>'"><img class="img-btncard-delete"src="../images/img_seller/lixored.png" alt=""></span>
