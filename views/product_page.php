@@ -333,7 +333,7 @@ $evaluations_amount = stmt(
 
                 let authorImage = document.createElement("img")
                 authorImage.classList.add("author-image")
-                authorImage.src = `../${response.evaluations[i].USU_FOTO}`
+                authorImage.src = response.evaluations[i].USU_FOTO != null ? `../${response.evaluations[i].USU_FOTO}` : "../images/user_default_photo.png"
 
                 authorImageContainer.appendChild(authorImage)
 
