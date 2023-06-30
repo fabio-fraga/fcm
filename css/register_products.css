@@ -57,13 +57,14 @@ body {
 .choice{
     display: flex;
     flex-direction: column;
-    padding-bottom: 5%;
+    padding-bottom: 4%;
 }
 
 .choice label{
     color: green;
     font-weight: 600;
     margin-left: 5%;
+    margin-bottom: 1%;
 }
 
 .choice input{
@@ -133,4 +134,12 @@ body {
 
 .required {
     color: red;
+}
+
+.warning {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-top: 1%;
 }

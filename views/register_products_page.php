@@ -80,6 +80,7 @@ $seller_products = stmt(
                 <div class="choice" >
                     <label for="">Imagens: <span class="max-10">(Até 10)</span> <span class="required">*</label>
                     <input class="images-upload" type="file" accept="image/*" multiple>
+                    <div class="warning">A primeira foto adicionada será a principal.</div>
                 </div>
 
                 <div class="choice">
@@ -217,8 +218,6 @@ $seller_products = stmt(
                 break
             }
         }
-
-        console.log(index)
         
         if (direction == "preview") {
             if (index == 0) {
