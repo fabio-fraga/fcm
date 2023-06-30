@@ -125,7 +125,17 @@ foreach ($all_places as $place) {
                 <div class="grid-item" onclick="openModal(<?= $product->PRO_CODIGO ?>)">
                     <div class="item-container">
                         <div class="img-container">
-                            <img class="img-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/800px-Placeholder_view_vector.svg.png">
+                            <?php
+                            $product_images = stmt(
+                                prepare: "
+                                    SELECT * FROM FCM_PRODUTOS_FOTOS
+                                    WHERE PFT_PRO_CODIGO = ?
+                                ",
+                                execute_array: [$product->PRO_CODIGO],
+                                fetch_object: true
+                            )->data;
+                            ?>
+                            <img class="img-item" src="<?= "../" . $product_images[0]->PFT_CAMINHO ?>">
                         </div>
                         <div class="seller" onclick="document.querySelectorAll('.grid-item')[<?= $key ?>].onclick = false">
                             <span><a href=""><?= $product->CMR_NOME ?></a></span>
@@ -186,15 +196,17 @@ foreach ($all_places as $place) {
                 <div id="modal-<?= $product->PRO_CODIGO ?>" class="modal">
                     <div class="modal-content">
                         <div class="carousel">
-                            <div class="previous">
+                            <div class="previous" onclick="changeImg('preview', <?= $key ?>)">
                                 <svg fill="#45a351" width="36" height="36" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m1394.006 0 92.299 92.168-867.636 867.767 867.636 867.636-92.299 92.429-959.935-960.065z" fill-rule="evenodd"/>
                                 </svg>
                             </div>
                             <div class="imgs-product">
-                                <img class="item-carousel" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/800px-Placeholder_view_vector.svg.png">
+                                <?php foreach ($product_images as $product_image): ?>
+                                    <img id="item-carousel-<?= $key ?>" class="item-carousel" src="<?= "../" . $product_image->PFT_CAMINHO ?>">
+                                <?php endforeach ?>
                             </div>
-                            <div class="next">
+                            <div class="next" onclick="changeImg('next', <?= $key ?>)">
                                 <svg fill="#45a351" width="36" height="36" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M526.299 0 434 92.168l867.636 867.767L434 1827.57l92.299 92.43 959.935-960.065z" fill-rule="evenodd"/>
                                 </svg>
@@ -328,6 +340,37 @@ foreach ($all_places as $place) {
                 openModal(productId)
             }
         })
+
+        function changeImg(direction, id) {
+            let item = document.querySelectorAll("#item-carousel-" + id)
+
+            let index = 0
+
+            for (let i = 0; i < item.length; i++) {
+                if (item[i].style.display != "none") {
+                    index = i
+                    break
+                }
+            }
+            
+            if (direction == "preview") {
+                if (index == 0) {
+                    item[item.length - 1].style.display = "block"
+                    item[index].style.display = "none"
+                } else {
+                    item[index - 1].style.display = "block"
+                    item[index].style.display = "none"
+                }
+            } else {
+                if (index == item.length - 1) {
+                    item[0].style.display = "block"
+                    item[index].style.display = "none"
+                } else {
+                    item[index + 1].style.display = "block"
+                    item[index].style.display = "none"
+                }
+            }
+        }
     </script>
     <script src="../js/main.js"></script>
 </body>

@@ -131,7 +131,7 @@ body {
 
 .carousel {
     grid-column-start: 1;
-    grid-column-end: 8;
+    grid-column-end: 7;
     background-color: #fff;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -144,16 +144,24 @@ body {
     grid-column-end: 12;
     margin-top: 10%;
     margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .item-carousel {
     width: 100%;
-    height: 100%;
     border-radius: 10px;
+    width: 90%;
+    height: 90%;
+}
+
+.item-carousel:not(:first-child) {
+    display: none;
 }
 
 .data-product {
-    grid-column-start: 8;
+    grid-column-start: 7;
     grid-column-end: 13;
 }
 
