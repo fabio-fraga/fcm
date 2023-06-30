@@ -289,7 +289,54 @@ foreach ($all_places as $place) {
         </div>
     </div>
 
-    <script>  
+    <script>
+        let modals = document.querySelectorAll(".modal")
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            let productAmount = document.querySelectorAll(".product_amount")
+                    
+            for (i = 0; i < productAmount.length; i++) {
+                productAmountId = productAmount[i].id.split("-")[2]
+                if (parseInt(productAmount[i].innerHTML) == 0) {
+                    let productBuyButton = document.querySelector(`#btn-buy-now-${productAmountId}`)
+                    let addCartButton = document.querySelector(`#btn-add-cart-${productAmountId}`)
+        
+                    productBuyButton.setAttribute("disabled", '');
+                    productBuyButton.style.cursor = "not-allowed"
+                    productBuyButton.style.backgroundColor = "#bac1bb"
+                    addCartButton.setAttribute("disabled", '');
+                    addCartButton.style.cursor = "not-allowed"
+                    addCartButton.style.backgroundColor = "#bac1bb"
+                }
+            }
+        
+            let urlParams = new URLSearchParams(window.location.search);
+        
+            let err = urlParams.get("err");
+            let productId = urlParams.get("product_id");
+        
+            if (err != null && productId != null) {
+                openModal(productId)
+            }
+        
+            for (let i = 0; i < modals.length; i++) {
+                modals[i].addEventListener("click", (e) => {
+                    if (e.target == modals[i]) {
+                        closeModal(modals[i].id.split("-")[1])
+                    }
+                })
+            }
+        })
+        
+        document.addEventListener("keydown", (e) => {
+            if (e.key == "Escape") {
+        
+                for (let i = 0; i < modals.length; i++) {
+                    closeModal(modals[i].id.split("-")[1])
+                }
+            }
+        })
+
         function openModal(id) {
             let modal = document.querySelector(`#modal-${id}`);
             modal.style.display = "block";
@@ -312,34 +359,6 @@ foreach ($all_places as $place) {
                 document.querySelector(`#item-amount-${itemId}`).innerHTML = itemAmount + 1
             }         
         }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            let productAmount = document.querySelectorAll(".product_amount")
-            
-            for (i = 0; i < productAmount.length; i++) {
-                productAmountId = productAmount[i].id.split("-")[2]
-                if (parseInt(productAmount[i].innerHTML) == 0) {
-                    let productBuyButton = document.querySelector(`#btn-buy-now-${productAmountId}`)
-                    let addCartButton = document.querySelector(`#btn-add-cart-${productAmountId}`)
-
-                    productBuyButton.setAttribute("disabled", '');
-                    productBuyButton.style.cursor = "not-allowed"
-                    productBuyButton.style.backgroundColor = "#bac1bb"
-                    addCartButton.setAttribute("disabled", '');
-                    addCartButton.style.cursor = "not-allowed"
-                    addCartButton.style.backgroundColor = "#bac1bb"
-                }
-            }
-
-            let urlParams = new URLSearchParams(window.location.search);
-
-            let err = urlParams.get("err");
-            let productId = urlParams.get("product_id");
-
-            if (err != null && productId != null) {
-                openModal(productId)
-            }
-        })
 
         function changeImg(direction, id) {
             let item = document.querySelectorAll("#item-carousel-" + id)
