@@ -20,7 +20,13 @@ async function getProducts(e) {
         if (response.length > 0) {
             for (let i in response) {
                 let p = document.createElement("p")
-                p.innerHTML = response[i].PRO_NOME + "  |  R$ " + response[i].PRO_VALOR
+
+                let productValue = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                }).format(response[i].PRO_VALOR)
+
+                p.innerHTML = response[i].PRO_NOME + "  |  " + productValue
                 p.classList.add("search-item")
                 p.onclick = () => window.location = "product_page.php?product_id=" + response[i].PRO_CODIGO
                 searchContent.appendChild(p)

@@ -87,5 +87,6 @@ $seller_products = stmt(
         <?php endif ?>
     </div>
 </div>
+<script src="../js/main.js"></script>
 </body>
 </html>

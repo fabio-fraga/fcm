@@ -170,6 +170,7 @@ $_SESSION["street_id"] = $seller->data[0]->LOG_CODIGO;
         }
     }
     </script>
+    <script src="../js/main.js"></script>
 </body>
 </body>
 </html>
