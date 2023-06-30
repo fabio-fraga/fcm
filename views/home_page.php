@@ -344,6 +344,10 @@ foreach ($all_places as $place) {
         function changeImg(direction, id) {
             let item = document.querySelectorAll("#item-carousel-" + id)
 
+            if (item.length == 1) {
+                return
+            }
+
             let index = 0
 
             for (let i = 0; i < item.length; i++) {

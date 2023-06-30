@@ -100,11 +100,15 @@ $seller_products = stmt(
 
                 <div class="choice" >
                     <label for="">Categoria: <span class="required">*</span></label>
-                    <select  class="category" name="category">
+                    <select class="category" name="category">
                         <?php foreach ($categories as $categorie): ?>
                             <option value="<?= $categorie->CAT_CODIGO ?>"><?= $categorie->CAT_NOME ?></option>
                         <?php endforeach ?>
                     </select>
+                </div>
+                <div class="choice">
+                    <label for="">Descrição do produto  <span class="required">*</span></label>
+                    <textarea class="description" type="text" name="description" placeholder="Descrição do produto" rows="10"></textarea>
                 </div>
                 <button class="button">Cadastrar</button>
             </form>
@@ -210,6 +214,10 @@ $seller_products = stmt(
     }
 
     function changeImgPreview(direction) {
+        if (items.length == 1) {
+                return
+        }
+
         let index = 0
 
         for (let i = 0; i < items.length; i++) {

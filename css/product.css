@@ -42,6 +42,10 @@ body {
     grid-column-end: 12;
     margin-top: 10%;
     margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .item-carousel {
