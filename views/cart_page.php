@@ -155,5 +155,6 @@ foreach ($cart->data as $product) {
             }
         })
     </script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

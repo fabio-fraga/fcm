@@ -276,6 +276,7 @@ $addresses = stmt(
                 clicks++
             }
         }
-    </script>    
+    </script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
