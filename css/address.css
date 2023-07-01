@@ -147,28 +147,20 @@ input[type=number]::-webkit-inner-spin-button {
     width: 20px;
 }
 
-.img-btncard-delete {
-    width: 30px;
-    margin-top: -1px;
-}
-.green{
-    color: green;
-}
-
 .edit, .save {
-    color: blue;
+    color: #087b08;
 }
 
 .edit:hover, .save:hover {
-    color: #094DBD;
+    color: #096109;
 }
 
 .delete, .cancel {
-    color: red;
+    color: #DE2D2D;
 }
 
 .delete:hover, .cancel:hover {
-    color: #DE2D2D;
+    color: red;
 }
 
 .edit, .delete, .save, .cancel {
@@ -187,4 +179,14 @@ input[type=number]::-webkit-inner-spin-button {
     color: red;
     text-align: center;
     margin: 10px 0;
+}
+
+.required {
+    color: red;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.address-saved {
+    display: none;
 }

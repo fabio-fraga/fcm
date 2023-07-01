@@ -43,22 +43,22 @@ $addresses = stmt(
             <h3 class="main-title">Cadastrar endereço</h3>
 
             <form action="../address_create.php" method="POST" class="form-public-info">
-                <label class="title">CEP:</label>
+                <label class="title">CEP: <span class="required">*</span></label>
                 <input oninput="getAddress(this.value)" id="cep" class="field" name="cep" type="number" maxlength="8">
 
-                <label class="title">Rua:</label>
+                <label class="title">Rua: <span class="required">*</span></label>
                 <input id="street" class="field" name="street" type="text" required>
                 
-                <label class="title">Número:</label>
+                <label class="title">Número: </label>
                 <input id="number" class="field" name="number" type="text">
 
-                <label class="title">Complemento:</label>
+                <label class="title">Complemento: </label>
                 <input id="complement" class="field" name="complement" type="text">
 
-                <label class="title">Localidade:</label>
+                <label class="title">Localidade: <span class="required">*</span></label>
                 <input id="locality" class="field" name="locality" type="text" required>
 
-                <label class="title">UF:</label>
+                <label class="title">UF: <span class="required">*</span></label>
                 <select class="field" id="federative_unit" name="federative_unit" required>
                     <option value="UF" selected disabled>UF</option>
                     <option value="AC">AC</option>
@@ -116,20 +116,20 @@ $addresses = stmt(
                         </div>
                         <div class="address-title">Endereço <?= $key + 1 ?>:</div>
                         <div class="cep">
-                            CEP: <input oninput="getAddress(this.value, <?= $address->LOG_CODIGO ?>)" class="field cep-input" name="cep" type="number" value="<?= $address->LDU_CEP ?>" maxlength="8" disabled>
+                            CEP: <span class="required address-saved">*</span> <input oninput="getAddress(this.value, <?= $address->LOG_CODIGO ?>)" class="field cep-input" name="cep" type="number" value="<?= $address->LDU_CEP ?>" maxlength="8" disabled>
                         </div>
                         <div class="street-number">
-                            Rua: <input class="field street-input" name="street" type="text" value="<?= $address->LOG_NOME ?>" required disabled>
+                            Rua: <span class="required address-saved">*</span> <input class="field street-input" name="street" type="text" value="<?= $address->LOG_NOME ?>" required disabled>
                             Número: <input class="field number-input" name="number" type="number" value="<?= $address->LDU_NUMERO ?>" disabled>
                         </div>
                         <div class="complement">
                             Complemento: <input class="field complement-input" name="complement" type="text" value="<?= $address->LDU_COMPLEMENTO ?>" disabled>
                         </div>
                         <div class="locality">
-                            Localidade: <input class="field locality-input" name="locality" type="text" value="<?= $address->LOC_NOME ?>" required disabled>
+                            Localidade: <span class="required address-saved">*</span> <input class="field locality-input" name="locality" type="text" value="<?= $address->LOC_NOME ?>" required disabled>
                         </div>
                         <div class="uf-country">
-                            UF: <select class="field uf-select" id="federative_unit" name="federative_unit" required disabled>
+                            UF: <span class="required address-saved">*</span> <select class="field uf-select" id="federative_unit" name="federative_unit" required disabled>
                                 <option value="UF" selected disabled>UF</option>
                                 <option value="AC" <?= $address->UNF_NOME == "AC" ? "selected" : '' ?>>AC</option>
                                 <option value="AL" <?= $address->UNF_NOME == "AL" ? "selected" : '' ?>>AL</option>
@@ -233,7 +233,13 @@ $addresses = stmt(
                 addressData[i].disabled = !addressData[i].disabled
                 addressData[i].style.cursor = cep.disabled ? "not-allowed" : addressData[i].classList[1] == "uf-select" ? "pointer" : "text"
             }
-
+            
+            let requiredFields = address.querySelectorAll(".address-saved")
+            
+            for (let i = 0; i < requiredFields.length; i++) {
+                requiredFields[i].style.display = "block"
+            }
+            
             if (cep.disabled) {
                 btnEdit.style.display = "block"
                 btnDelete.style.display = "block"
@@ -250,6 +256,10 @@ $addresses = stmt(
             if (key !== false && action == "cancel") {
                 for (let i in addressData) {
                     addressData[i].value = addresses[key][i]
+                }
+
+                for (let i = 0; i < requiredFields.length; i++) {
+                    requiredFields[i].style.display = "none"
                 }
             }
         }
