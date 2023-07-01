@@ -80,8 +80,18 @@ foreach ($cart->data as $product) {
                             <input class="checkbox" type="checkbox" onclick="this.form.submit()" <?= $product->CDC_SELECIONADO == 1 ? "checked" : '' ?>>
                         </form>
                     </div>
-                    <div>
-                        <img class="img-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/100px-Placeholder_view_vector.svg.png">
+                    <div class="img-container">
+                        <?php
+                            $image_path = stmt(
+                                prepare: "
+                                    SELECT PFT_CAMINHO
+                                    FROM FCM_PRODUTOS_FOTOS
+                                    WHERE PFT_PRO_CODIGO = ?",
+                                execute_array: [$product->PRO_CODIGO],
+                                fetch_object: true
+                            )->data[0]->PFT_CAMINHO;
+                        ?>
+                        <img class="img-item" src="<?= "../" . $image_path ?>">
                     </div>
                     <div>
                         <?= $product->PRO_NOME ?>

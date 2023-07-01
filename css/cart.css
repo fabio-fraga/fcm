@@ -86,6 +86,8 @@ body {
     justify-content: center;
     align-items: center;
     padding-left: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 
@@ -178,6 +180,16 @@ input[type=checkbox] {
     border: solid 1px #737373;
 }
 
+.img-container {
+    border-radius: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .img-item {
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
 }
