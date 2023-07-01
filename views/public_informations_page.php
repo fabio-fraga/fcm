@@ -24,20 +24,7 @@ $user = stmt(
     <link rel="stylesheet" href="../css/public_informations.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../croppie/croppie.css" />
-    <script>
-        function uploadBackground() {
-            document.querySelector('.btn-upload').style.backgroundImage = "url('../images/upload_icon.png')"
-            document.querySelector('.btn-upload').style.backgroundSize = "60%"
-            document.querySelector('.btn-upload').style.backgroundColor = "#45A351"
-        }
-
-        function removeUploadBackground() {
-            document.querySelector('.btn-upload').style.backgroundImage = `url(../${document.getElementById('img-path').innerHTML})`
-            document.querySelector('.btn-upload').style.backgroundSize = "cover"
-            document.querySelector('.btn-upload').style.backgroundColor = "#edffd6"
-        }
-    </script>
+    <link rel="stylesheet" href="../croppie/croppie.css" /> 
 </head>
 <body>
     <?php include("header_page.php") ?>
@@ -48,10 +35,10 @@ $user = stmt(
         </div>
         <div class="content">
             <h3 class="main-title">Informações públicas</h3>
-            <p id="img-path"><?= $user->USU_FOTO ?></p>
+            <p id="img-path"><?= $user->USU_FOTO === null ? 'images/user_default_photo.png' : $user->USU_FOTO?></p>
             <div class="img-upload">
                 <label id="img=" class="label-img" for="file-input" onmouseover="uploadBackground()" onmouseout="removeUploadBackground()">
-                    <button class="btn-upload" type="button" style="background-image: url(../<?= $user->USU_FOTO ?>)"></button>
+                    <button class="btn-upload" type="button" style="background-image: url(../<?= $user->USU_FOTO === null ? 'images/user_default_photo.png' : $user->USU_FOTO ?>)"></button>
                 </label>
                 <input id="file-input" class="file-input" type="file" name="img"/>
             </div>
@@ -140,6 +127,18 @@ $user = stmt(
 
             });
         })
+
+        function uploadBackground() {
+            document.querySelector('.btn-upload').style.backgroundImage = "url('../images/upload_icon.png')"
+            document.querySelector('.btn-upload').style.backgroundSize = "60%"
+            document.querySelector('.btn-upload').style.backgroundColor = "#45A351"
+        }
+
+        function removeUploadBackground() {
+            document.querySelector('.btn-upload').style.backgroundImage = `url(../${document.getElementById('img-path').innerHTML})`
+            document.querySelector('.btn-upload').style.backgroundSize = "cover"
+            document.querySelector('.btn-upload').style.backgroundColor = "#edffd6"
+        }
     </script>
     <script src="../js/main.js"></script>
 </body>
