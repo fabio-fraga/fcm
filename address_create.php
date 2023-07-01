@@ -4,6 +4,7 @@ session_start();
 
 require('database/db.php');
 
+$cep = $_POST["cep"];
 $street = $_POST["street"];
 $number = $_POST["number"] ?: null;
 $complement = $_POST["complement"] ?: null;
@@ -25,6 +26,7 @@ $user_addresses = stmt(
 
 foreach ($user_addresses as $address) {
     if (
+        strtoupper(str_replace(' ', '', $address->LDU_CEP)) == strtoupper(str_replace(' ', '', $cep)) &&
         strtoupper(str_replace(' ', '', $address->LOG_NOME)) == strtoupper(str_replace(' ', '', $street)) &&
         strtoupper(str_replace(' ', '', $address->LDU_NUMERO)) == strtoupper(str_replace(' ', '', $number)) &&
         strtoupper(str_replace(' ', '', $address->LDU_COMPLEMENTO)) == strtoupper(str_replace(' ', '', $complement)) &&
@@ -36,12 +38,11 @@ foreach ($user_addresses as $address) {
     }
 }
 
-//armazena o valor do código da unidade federativa
 $federative_unit_id = stmt(
-    prepare: "SELECT * FROM FCM_UNIDADES_FEDERATIVAS WHERE UNF_NOME = ?",
+    prepare: "SELECT UNF_CODIGO FROM FCM_UNIDADES_FEDERATIVAS WHERE UNF_NOME = ?",
     execute_array: [$federative_unit],
     fetch_object: true
-)->data[0]->UNF_CODIGO; 
+)->data[0]->UNF_CODIGO;
 
 stmt(
     prepare: "
@@ -65,10 +66,10 @@ $street_id = $dbh->lastInsertId();
 
 stmt(
     prepare:"
-        INSERT INTO FCM_LOGRADOUROS_DOS_USUARIOS (LDU_USU_CODIGO, LDU_LOG_CODIGO, LDU_NUMERO, LDU_COMPLEMENTO)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO FCM_LOGRADOUROS_DOS_USUARIOS (LDU_USU_CODIGO, LDU_LOG_CODIGO, LDU_NUMERO, LDU_COMPLEMENTO, LDU_CEP)
+        VALUES (?, ?, ?, ?, ?)
     ",
-    execute_array: [$_SESSION['user_id'], $street_id, $number, $complement]
+    execute_array: [$_SESSION['user_id'], $street_id, $number, $complement, $cep]
 );
 
 header("location: views/address_page.php");

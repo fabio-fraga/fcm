@@ -67,6 +67,7 @@ $addresses = stmt(
                     <option value="AM">AM</option>
                     <option value="BA">BA</option>
                     <option value="CE">CE</option>
+                    <option value="DF">DF</option>
                     <option value="ES">ES</option>
                     <option value="GO">GO</option>
                     <option value="MA">MA</option>
@@ -87,7 +88,6 @@ $addresses = stmt(
                     <option value="SP">SP</option>
                     <option value="SE">SE</option>
                     <option value="TO">TO</option>
-                    <option value="DF">DF</option>
                 </select>
 
                 <?php if (isset($_GET["error_create"])): ?>
@@ -106,16 +106,17 @@ $addresses = stmt(
             <?php foreach ($addresses->data as $key => $address): ?>
                 <div id="address-<?= $address->LOG_CODIGO ?>" class="address-card">
                     <form id="form-update-<?= $key ?>" action="../address_update.php" method="POST">
-                        <input type="hidden" value="<?= $address->LDU_LOG_CODIGO ?>">
+                        <input type="hidden" name="locality_id" value="<?= $address->LOC_CODIGO ?>">
+                        <input type="hidden" name="street_id" value="<?= $address->LDU_LOG_CODIGO ?>">
                         <div class="btns">
-                            <span class="btn-card edit" onclick="updateAddress(<?= $address->LOG_CODIGO ?>, <?= $key ?>, 'update')"><span class="green">&#9998;</span></span>
-                            <span class="btn-card delete" onclick="window.location='../address_delete.php?street_id=<?= $address->LOG_CODIGO ?>'"><img class="img-btncard-delete"src="../images/img_seller/lixored.png" alt=""></span>
+                            <span class="btn-card edit" onclick="updateAddress(<?= $address->LOG_CODIGO ?>, <?= $key ?>, 'update')">&#9998;</span>
+                            <span class="btn-card delete" onclick="if (confirm('Esta ação não poderá ser desfeita! Deseja continuar?')) window.location='../address_delete.php?street_id=<?= $address->LOG_CODIGO ?>'">&#128465;</span>
                             <span class="btn-card save">&#10004;</span>
                             <span class="btn-card cancel" onclick="updateAddress(<?= $address->LOG_CODIGO ?>, <?= $key ?>, 'cancel')">&#10006;</span>
                         </div>
                         <div class="address-title">Endereço <?= $key + 1 ?>:</div>
                         <div class="cep">
-                            CEP: <input oninput="getAddress(this.value, <?= $address->LOG_CODIGO ?>)" class="field cep-input" type="number" maxlength="8" disabled>
+                            CEP: <input oninput="getAddress(this.value, <?= $address->LOG_CODIGO ?>)" class="field cep-input" name="cep" type="number" value="<?= $address->LDU_CEP ?>" maxlength="8" disabled>
                         </div>
                         <div class="street-number">
                             Rua: <input class="field street-input" name="street" type="text" value="<?= $address->LOG_NOME ?>" required disabled>
@@ -125,7 +126,7 @@ $addresses = stmt(
                             Complemento: <input class="field complement-input" name="complement" type="text" value="<?= $address->LDU_COMPLEMENTO ?>" disabled>
                         </div>
                         <div class="locality">
-                            Localidade: <input class="field locality-input" name="" type="locality" value="<?= $address->LOC_NOME ?>" required disabled>
+                            Localidade: <input class="field locality-input" name="locality" type="text" value="<?= $address->LOC_NOME ?>" required disabled>
                         </div>
                         <div class="uf-country">
                             UF: <select class="field uf-select" id="federative_unit" name="federative_unit" required disabled>
@@ -136,6 +137,7 @@ $addresses = stmt(
                                 <option value="AM" <?= $address->UNF_NOME == "AM" ? "selected" : '' ?>>AM</option>
                                 <option value="BA" <?= $address->UNF_NOME == "BA" ? "selected" : '' ?>>BA</option>
                                 <option value="CE" <?= $address->UNF_NOME == "CE" ? "selected" : '' ?>>CE</option>
+                                <option value="DF" <?= $address->UNF_NOME == "DF" ? "selected" : '' ?>>DF</option>
                                 <option value="ES" <?= $address->UNF_NOME == "ES" ? "selected" : '' ?>>ES</option>
                                 <option value="GO" <?= $address->UNF_NOME == "GO" ? "selected" : '' ?>>GO</option>
                                 <option value="MA" <?= $address->UNF_NOME == "MA" ? "selected" : '' ?>>MA</option>
@@ -156,7 +158,6 @@ $addresses = stmt(
                                 <option value="SP" <?= $address->UNF_NOME == "SP" ? "selected" : '' ?>>SP</option>
                                 <option value="SE" <?= $address->UNF_NOME == "SE" ? "selected" : '' ?>>SE</option>
                                 <option value="TO" <?= $address->UNF_NOME == "TO" ? "selected" : '' ?>>TO</option>
-                                <option value="DF" <?= $address->UNF_NOME == "DF" ? "selected" : '' ?>>DF</option>
                             </select>
                             País: <span class="country"><?= $address->PAIS_NOME ?></span>
                         </div>
@@ -178,6 +179,7 @@ $addresses = stmt(
         
         for (let i in elAddresses) {
             addresses.push([])
+            addresses[i].push(elAddresses[i].querySelector(".cep-input").value)
             addresses[i].push(elAddresses[i].querySelector(".street-input").value)
             addresses[i].push(elAddresses[i].querySelector(".number-input").value)
             addresses[i].push(elAddresses[i].querySelector(".complement-input").value)
@@ -220,16 +222,13 @@ $addresses = stmt(
             let locality = address.querySelector(".locality-input")
             let uf = address.querySelector(".uf-select")
 
-            let addressData = [street, number, complement, locality, uf]
+            let addressData = [cep, street, number, complement, locality, uf]
 
             let btnEdit = address.querySelector(".edit")
             let btnDelete = address.querySelector(".delete")
             let btnSave = address.querySelector(".save")
             let btnCancel = address.querySelector(".cancel")   
-            
-            cep.disabled = !cep.disabled
-            cep.style.cursor = cep.disabled ? "not-allowed" : "text"
-            
+                        
             for (let i in addressData) {
                 addressData[i].disabled = !addressData[i].disabled
                 addressData[i].style.cursor = cep.disabled ? "not-allowed" : addressData[i].classList[1] == "uf-select" ? "pointer" : "text"
@@ -266,7 +265,6 @@ $addresses = stmt(
             } else {
                 clicks++
             }
-            console.log(clicks)
         }
     </script>    
 </body>

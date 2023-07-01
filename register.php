@@ -10,6 +10,7 @@ $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 $phone_number = $_POST["phone_number"];
 $password = $_POST["password"];
 
+$cep = $_POST["cep"];
 $house_number = $_POST["house_number"] ?: null;
 $complement = $_POST["complement"] ?: null;
 $street = $_POST["street"];
@@ -112,10 +113,10 @@ $user_id = $dbh->lastInsertId();
 
 stmt(
     prepare:"
-        INSERT INTO FCM_LOGRADOUROS_DOS_USUARIOS (LDU_USU_CODIGO, LDU_LOG_CODIGO, LDU_NUMERO, LDU_COMPLEMENTO)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO FCM_LOGRADOUROS_DOS_USUARIOS (LDU_USU_CODIGO, LDU_LOG_CODIGO, LDU_NUMERO, LDU_COMPLEMENTO, LDU_CEP)
+        VALUES (?, ?, ?, ?, ?)
     ",
-    execute_array: [$user_id, $street_id, $house_number, $complement]
+    execute_array: [$user_id, $street_id, $house_number, $complement, $cep]
 );
 
 header("location: views/login_page.php");

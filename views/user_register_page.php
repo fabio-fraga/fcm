@@ -71,7 +71,7 @@ if (isset($_SESSION["user_id"])) {
                     <div class="adress">
                         <legend class="adress-title"><strong>Endereço</strong></legend>
                         
-                        <input class="input-adress" id="cep" type="text" name="cep" placeholder="CEP">
+                        <input class="input-adress" id="cep" type="text" name="cep" placeholder="CEP" required>
                         <input class="input-adress" id="street" type="text" name="street" placeholder="Rua" required>
                         <input class="input-adress" id="houseNumber" type="number" name="house_number" placeholder="N°">
                         <input class="input-adress" id="complement" type="text" name="complement" placeholder="Complemento">
@@ -157,5 +157,3 @@ if (isset($_SESSION["user_id"])) {
     </script>
 </body>
 </html>
-
-
