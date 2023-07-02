@@ -55,6 +55,21 @@ foreach ($user_products as $product) {
     );
 }
 
-header("location: send_email.php");
+$seller = stmt(
+    prepare: "
+        SELECT CMR_NOME
+        FROM FCM_PRODUTOS
+        JOIN FCM_USUARIOS ON USU_CODIGO = PRO_CMT_CODIGO
+        JOIN FCM_COMERCIOS ON CMR_USU_CODIGO = USU_CODIGO
+        WHERE PRO_CODIGO = ?
+    ",
+    execute_array: [$product_id],
+    fetch_object: true
+)->data[0]->CMR_NOME;
+
+$product_name = $product->PRO_NOME;
+$product_price = number_format($product->PRO_VALOR, 2, ',', '.');
+
+header("location: send_email.php?product_name=" . $product_name . "&product_price=" . $product_price . "&seller=" . $seller);
 
 ?>
